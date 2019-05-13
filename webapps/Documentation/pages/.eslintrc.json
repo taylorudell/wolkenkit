@@ -1,0 +1,9 @@
+{
+  "extends": "es/2015/server",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}
