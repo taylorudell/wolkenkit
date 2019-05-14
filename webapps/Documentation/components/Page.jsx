@@ -1,5 +1,12 @@
 'use strict';
 
+const classNames = require('classnames'),
+      injectSheet = require('react-jss').default,
+      React = require('react'),
+      { Application, View } = require('thenativeweb-ux');
+
+const Symbols = require('../components/Symbols.jsx');
+
 const styles = theme => ({
   '@global': {
     body: {
@@ -42,7 +49,7 @@ const styles = theme => ({
     }
   },
 
-  Docs: {
+  Page: {
     position: 'absolute !important',
     left: 0,
     top: 0,
@@ -51,4 +58,17 @@ const styles = theme => ({
   }
 });
 
-module.exports = styles;
+const Page = function ({ classes, className, children }) {
+  const componentClasses = classNames(classes.Page, className);
+
+  return (
+    <View orientation='horizontal' className={ componentClasses }>
+      <Application.Services />
+      <Symbols />
+
+      { children }
+    </View>
+  );
+};
+
+module.exports = injectSheet(styles)(Page);

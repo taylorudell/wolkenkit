@@ -1,8 +1,10 @@
 'use strict';
 
-const repository = require('./repository');
+const getMetadata = function ({ repository }) {
+  if (!repository) {
+    throw new Error('Repository is missing.');
+  }
 
-const getMetadata = function () {
   return async function (req, res) {
     const metadata = await repository.readMetadata();
 

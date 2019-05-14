@@ -1,19 +1,18 @@
 import axios from 'axios';
 import classNames from 'classnames';
 import Head from '../components/Head.jsx';
-import injectSheet from 'react-jss';
 import IntroPage from '../components/IntroPage.jsx';
 import MobileNavigation from '../components/MobileNavigation.jsx';
 import Navigation from '../components/navigation/Navigation.jsx';
 import page from '../services/page';
+import Page from '../components/Page.jsx';
 import PageContent from '../components/PageContent/index.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './styles';
-import Symbols from '../components/Symbols.jsx';
-import { Application, View } from 'thenativeweb-ux';
+import theme from '../theme/docs';
+import { ThemeProvider } from 'thenativeweb-ux';
 
-class Docs extends React.Component {
+class Home extends React.Component {
   static async getInitialProps ({ asPath }) {
     const activePath = asPath.split('/').filter(item => item);
     const activeVersion = page.getVersion({ path: activePath });
@@ -43,33 +42,6 @@ class Docs extends React.Component {
     };
   }
 
-  handlePageClick (path) {
-    const { history } = this.props;
-
-    this.setState({
-      showMobileNav: false
-    });
-
-    history.push(path);
-  }
-
-  handleLogoClick () {
-    const { history } = this.props;
-    const { activeVersion } = this.state;
-
-    this.setState({
-      showMobileNav: false
-    });
-
-    history.push(`/${activeVersion}/`);
-  }
-
-  handleVersionChange (newVersion) {
-    const { history } = this.props;
-
-    history.push(`/${newVersion}/`);
-  }
-
   handleMobileNavigationClick () {
     const { showMobileNav } = this.state;
 
@@ -87,7 +59,6 @@ class Docs extends React.Component {
       activePath,
       activeVersion,
       pageContent,
-      classes,
       metadata
     } = this.props;
 
@@ -95,53 +66,52 @@ class Docs extends React.Component {
 
     const isRootPath = activePath.length <= 1;
 
-    const componentClasses = classNames(classes.Docs, {
+    const componentClasses = classNames({
       'wk-mobile--nav-visible': showMobileNav
     });
 
     return (
-      <View orientation='horizontal' className={ componentClasses }>
-        <Application.Services />
-        <Symbols />
+      <ThemeProvider theme={ theme }>
+        <Page className={ componentClasses }>
+          <Head>
+            <title>{ metadata.name }</title>
+          </Head>
 
-        <Head>
-          <title>{ metadata.name }</title>
-        </Head>
+          <IntroPage
+            isCollapsed={ !isRootPath }
+          />
 
-        <IntroPage
-          isCollapsed={ !isRootPath }
-        />
+          <Navigation
+            showLogo={ !isRootPath }
+            activePath={ activePath }
+            metadata={ metadata }
+            activeVersion={ activeVersion }
+            isVisibleOnMobile={ showMobileNav }
+            onLogoClick={ this.handleLogoClick }
+            onPageClick={ this.handlePageClick }
+            onVersionChange={ this.handleVersionChange }
+          />
 
-        <Navigation
-          showLogo={ !isRootPath }
-          activePath={ activePath }
-          metadata={ metadata }
-          activeVersion={ activeVersion }
-          isVisibleOnMobile={ showMobileNav }
-          onLogoClick={ this.handleLogoClick }
-          onPageClick={ this.handlePageClick }
-          onVersionChange={ this.handleVersionChange }
-        />
+          <PageContent
+            activePath={ activePath }
+            activeVersion={ activeVersion }
+            content={ pageContent }
+            isCollapsed={ isRootPath }
+            info={ pageInfo }
+            metadata={ metadata }
+          />
 
-        <PageContent
-          activePath={ activePath }
-          activeVersion={ activeVersion }
-          content={ pageContent }
-          isCollapsed={ isRootPath }
-          info={ pageInfo }
-          metadata={ metadata }
-        />
-
-        <MobileNavigation
-          onClick={ this.handleMobileNavigationClick }
-          isVisible={ showMobileNav }
-        />
-      </View>
+          <MobileNavigation
+            onClick={ this.handleMobileNavigationClick }
+            isVisible={ showMobileNav }
+          />
+        </Page>
+      </ThemeProvider>
     );
   }
 }
 
-Docs.propTypes = {
+Home.propTypes = {
   activePath: PropTypes.array.isRequired,
   activeVersion: PropTypes.string.isRequired,
   metadata: PropTypes.object.isRequired,
@@ -152,4 +122,4 @@ Docs.propTypes = {
   ])
 };
 
-export default injectSheet(styles)(Docs);
+export default Home;

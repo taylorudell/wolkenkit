@@ -1,8 +1,10 @@
 'use strict';
 
-const repository = require('./repository');
+const getPage = function ({ repository }) {
+  if (!repository) {
+    throw new Error('Repository is missing.');
+  }
 
-const getPage = function () {
   return async function (req, res) {
     const pagePath = req.url.replace('/page', '');
 

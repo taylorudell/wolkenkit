@@ -1,10 +1,12 @@
 'use strict';
 
+const path = require('path');
+
 const express = require('express'),
       next = require('next');
 
 class Documentation {
-  async initialize ({ nodeEnv }) {
+  async initialize ({ nodeEnv, contentDirectory }) {
     if (!nodeEnv) {
       throw new Error('Node env is missing.');
     }
@@ -28,6 +30,9 @@ class Documentation {
 
       return nextApp.render(req, res, '/index', { version, section, chapter, page });
     });
+
+    this.api.use('/', express.static(path.join(__dirname, 'static')));
+    this.api.use('/', express.static(contentDirectory));
 
     this.api.get('*', (req, res) => handle(req, res));
 
