@@ -61,17 +61,14 @@ const IntroPage = function ({ classes, isCollapsed }) {
     [classes.IsCollapsed]: isCollapsed
   });
 
-  /* eslint-disable no-process-env */
-  const newsUrl = process.env.NEWS_URL || 'https://docs.wolkenkit.io/news.json';
-  /* eslint-enable no-process-env */
-
   return (
     <View orientation='horizontal' background='dark' className={ componentClasses }>
       <View className={ classes.Brand } orientation='vertical' alignItems='center' justifyContent='center' adjust='flex'>
         <Product name='wolkenkit' isAnimated={ !isCollapsed } size='xl' />
         <div className={ classes.Title }>Documentation</div>
       </View>
-      <Feed url={ newsUrl } />
+
+      <Feed path={ 'news' } />
     </View>
   );
 };

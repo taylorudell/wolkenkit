@@ -3,6 +3,7 @@
 const express = require('express');
 
 const getMetadata = require('./getMetadata'),
+      getNews = require('./getNews'),
       getPage = require('./getPage'),
       Repository = require('./Repository');
 
@@ -24,6 +25,7 @@ class V2 {
 
     this.api.get('/page/*', getPage({ repository }));
     this.api.get('/metadata', getMetadata({ repository }));
+    this.api.get('/news', getNews({ repository }));
 
     // this.api.get('/sitemap', getSitemap());
     // this.api.get('/content/:version/:section/:chapter/:page')

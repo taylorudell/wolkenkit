@@ -66,6 +66,16 @@ class Repository {
     return this.metadata;
   }
 
+  async readNews ({} = {}) {
+    const filePath = path.join(this.contentDirectory, 'news.json');
+
+    const newsAsPlainText = await fs.readFile(filePath, 'utf8');
+
+    const news = JSON.parse(newsAsPlainText);
+
+    return news;
+  }
+
   async readPage ({ pagePath } = {}) {
     if (!pagePath) {
       throw new Error('Page path is missing.');

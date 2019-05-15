@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../services/api';
 import classNames from 'classnames';
 import Head from '../components/Head.jsx';
 import IntroPage from '../components/IntroPage.jsx';
@@ -37,17 +37,13 @@ class Home extends React.Component {
     let metadata;
 
     try {
-      const metdataResponse = await axios.get('http://localhost:3000/api/v2/metadata');
-
-      metadata = metdataResponse.data;
+      metadata = await api.get({ path: 'metadata' });
     } catch (ex) {
       pageContent = '';
     }
 
     try {
-      const pageContentResponse = await axios.get(`http://localhost:3000/api/v2/page/${asPath}`);
-
-      pageContent = pageContentResponse.data;
+      pageContent = await api.get({ path: `page/${asPath}` });
     } catch (ex) {
       pageContent = '';
     }

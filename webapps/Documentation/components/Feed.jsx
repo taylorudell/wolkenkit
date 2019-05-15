@@ -4,11 +4,11 @@ const injectSheet = require('react-jss').default,
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Bar = require('./Bar/index.jsx'),
+const api = require('../services/api'),
+      Bar = require('./Bar/index.jsx'),
       FeedFallback = require('./FeedFallback.jsx'),
       FeedItem = require('./FeedItem.jsx'),
-      LoadingIndicator = require('./LoadingIndicator.jsx'),
-      news = require('../services/news');
+      LoadingIndicator = require('./LoadingIndicator.jsx');
 
 const styles = theme => ({
   Feed: {
@@ -76,23 +76,22 @@ class Feed extends React.PureComponent {
     };
   }
 
-  componentDidMount () {
-    const { url } = this.props;
+  async componentDidMount () {
+    const { path } = this.props;
 
-    news.load({
-      url
-    }, (err, feed) => {
-      if (err) {
-        return this.setState({
-          isLoading: false
-        });
-      }
+    try {
+      const feed = await api.get({ path, avoidCache: true });
 
       this.setState({
-        isLoading: false,
         feed
       });
-    });
+    } catch (ex) {
+      // Left blank intentionally
+    } finally {
+      this.setState({
+        isLoading: false
+      });
+    }
   }
 
   render () {
@@ -112,7 +111,7 @@ class Feed extends React.PureComponent {
 }
 
 Feed.propTypes = {
-  url: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired
 };
 
 module.exports = injectSheet(styles)(Feed);
