@@ -14,16 +14,6 @@ class VersionBar extends React.PureComponent {
     super(props);
 
     this.handleVersionChanged = this.handleVersionChanged.bind(this);
-    this.handleLogoClicked = this.handleLogoClicked.bind(this);
-  }
-
-  handleLogoClicked (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const { onLogoClick } = this.props;
-
-    onLogoClick();
   }
 
   handleVersionChanged (newVersion) {
@@ -68,9 +58,7 @@ class VersionBar extends React.PureComponent {
 
 VersionBar.propTypes = {
   activeVersion: PropTypes.string.isRequired,
-  versions: PropTypes.array.isRequired,
-  onLogoClick: PropTypes.func.isRequired,
-  onVersionChange: PropTypes.func.isRequired
+  versions: PropTypes.array.isRequired
 };
 
 module.exports = VersionBar;

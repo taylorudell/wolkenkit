@@ -31,6 +31,12 @@ class Documentation {
       return nextApp.render(req, res, '/index', { version, section, chapter, page });
     });
 
+    this.api.get('/:version', (req, res) => {
+      const { version } = req.params;
+
+      return nextApp.render(req, res, '/index', { version });
+    });
+
     this.api.use('/', express.static(path.join(__dirname, 'static')));
     this.api.use('/', express.static(contentDirectory));
 

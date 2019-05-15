@@ -5,7 +5,7 @@ const injectSheet = require('react-jss').default,
       React = require('react');
 
 const Bar = require('../Bar/index.jsx'),
-      pages = require('../../services/pages'),
+      search = require('../../services/search'),
       SearchResults = require('./SearchResults.jsx');
 
 const styles = theme => ({
@@ -63,7 +63,7 @@ class Search extends React.PureComponent {
     const query = event.target.value;
 
     if (query.length > 1) {
-      const results = pages.search({ query, version });
+      const results = search.query({ query, version });
 
       this.setState({
         query,

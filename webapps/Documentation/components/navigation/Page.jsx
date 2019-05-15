@@ -5,7 +5,8 @@ const classNames = require('classnames'),
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Link = require('../Link.jsx');
+const Link = require('../Link.jsx'),
+      pageService = require('../../services/page');
 
 const styles = theme => ({
   Page: {
@@ -47,23 +48,14 @@ const styles = theme => ({
 });
 
 class Page extends React.PureComponent {
-  constructor (props) {
-    super(props);
-
-    this.handlePageClicked = this.handlePageClicked.bind(this);
-  }
-
-  getUrl () {
+  getPrettyUrl () {
     return `/${this.props.path.join('/')}/`;
   }
 
-  handlePageClicked (event) {
-    event.preventDefault();
-    event.stopPropagation();
+  getUrl () {
+    const { version, section, chapter, page } = pageService.getComponents({ path: this.props.path });
 
-    const { onClick } = this.props;
-
-    onClick(this.getUrl());
+    return `index?version=${version}&section=${section}&chapter=${chapter}&page=${page}`;
   }
 
   render () {
@@ -74,11 +66,9 @@ class Page extends React.PureComponent {
       [classes.IsEmphasized]: isEmphasized
     });
 
-    // <a onClick={ this.handlePageClicked } href={ this.getUrl() }>{ title }</a>
-
     return (
       <li className={ componentClasses }>
-        <Link href={ this.getUrl() }>{ title }</Link>
+        <Link href={ this.getUrl() } as={ this.getPrettyUrl() }>{ title }</Link>
       </li>
     );
   }
@@ -88,8 +78,7 @@ Page.propTypes = {
   isActive: PropTypes.bool.isRequired,
   isEmphasized: PropTypes.bool.isRequired,
   path: PropTypes.array.isRequired,
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired
 };
 
 module.exports = injectSheet(styles)(Page);

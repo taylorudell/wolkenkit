@@ -69,7 +69,7 @@ class PageMenu extends React.Component {
     );
   }
 
-  static renderSecondLevel ({ activeVersion, activePath, expandedPath, navigation, onNavigate, onPageClick }) {
+  static renderSecondLevel ({ activeVersion, activePath, expandedPath, navigation, onNavigate }) {
     if (expandedPath.length < 2) {
       return null;
     }
@@ -93,7 +93,6 @@ class PageMenu extends React.Component {
               isActive={ activePath.join('/') === itemPath.join('/') }
               title={ chapter.title }
               path={ itemPath }
-              onClick={ onPageClick }
             />
           );
         }
@@ -108,7 +107,6 @@ class PageMenu extends React.Component {
             title={ chapter.title }
             pages={ chapter.children }
             onClick={ onNavigate }
-            onPageClick={ onPageClick }
           />
         );
       }
@@ -122,8 +120,7 @@ class PageMenu extends React.Component {
       classes,
       expandedPath,
       metadata,
-      onNavigate,
-      onPageClick
+      onNavigate
     } = this.props;
 
     const navigation = metadata.navigation[activeVersion];
@@ -158,8 +155,7 @@ class PageMenu extends React.Component {
                 activePath,
                 expandedPath,
                 navigation,
-                onNavigate,
-                onPageClick
+                onNavigate
               })
             }
           </div>
@@ -174,8 +170,7 @@ PageMenu.propTypes = {
   activeVersion: PropTypes.string.isRequired,
   expandedPath: PropTypes.array.isRequired,
   metadata: PropTypes.object.isRequired,
-  onNavigate: PropTypes.func.isRequired,
-  onPageClick: PropTypes.func.isRequired
+  onNavigate: PropTypes.func.isRequired
 };
 
 module.exports = injectSheet(styles)(PageMenu);

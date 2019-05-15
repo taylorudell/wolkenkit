@@ -43,7 +43,7 @@ const page = {
       return path[0];
     }
 
-    return undefined;
+    return 'latest';
   },
 
   getSection ({ path }) {
@@ -76,6 +76,25 @@ const page = {
     }
 
     return undefined;
+  },
+
+  getComponents ({ path }) {
+    if (!path) {
+      throw new Error('Path is missing');
+    }
+    if (!Array.isArray(path)) {
+      throw new Error('Path is not an array.');
+    }
+    if (path.length !== 4) {
+      throw new Error('Path does not consist of 4 items.');
+    }
+
+    return {
+      version: path[0],
+      section: path[1],
+      chapter: path[2],
+      page: path[3]
+    };
   }
 };
 

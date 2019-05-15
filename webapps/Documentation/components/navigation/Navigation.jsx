@@ -115,7 +115,6 @@ class Navigation extends React.Component {
     this.handleBack = this.handleBack.bind(this);
     this.handleShowSearch = this.handleShowSearch.bind(this);
     this.handleSearchClose = this.handleSearchClose.bind(this);
-    this.handleVersionChange = this.handleVersionChange.bind(this);
   }
 
   handleNavigate (newPath) {
@@ -144,16 +143,6 @@ class Navigation extends React.Component {
     });
   }
 
-  handleVersionChange (newVersion) {
-    const { onVersionChange } = this.props;
-
-    this.setState({
-      showSearch: false
-    });
-
-    onVersionChange(newVersion);
-  }
-
   render () {
     const {
       activePath,
@@ -161,9 +150,7 @@ class Navigation extends React.Component {
       classes,
       isVisibleOnMobile,
       metadata,
-      showLogo,
-      onPageClick,
-      onLogoClick
+      showLogo
     } = this.props;
 
     const {
@@ -188,8 +175,6 @@ class Navigation extends React.Component {
             activeVersion={ activeVersion }
             showLogo={ showLogo }
             versions={ Object.keys(metadata.navigation) }
-            onLogoClick={ onLogoClick }
-            onVersionChange={ this.handleVersionChange }
           />
 
           <MenuBar
@@ -203,7 +188,6 @@ class Navigation extends React.Component {
             activeVersion={ activeVersion }
             expandedPath={ expandedPath }
             metadata={ metadata }
-            onPageClick={ onPageClick }
             onNavigate={ this.handleNavigate }
           />
 
@@ -231,10 +215,7 @@ Navigation.propTypes = {
   activeVersion: PropTypes.string.isRequired,
   isVisibleOnMobile: PropTypes.bool.isRequired,
   metadata: PropTypes.object.isRequired,
-  showLogo: PropTypes.bool.isRequired,
-  onLogoClick: PropTypes.func.isRequired,
-  onPageClick: PropTypes.func.isRequired,
-  onVersionChange: PropTypes.func.isRequired
+  showLogo: PropTypes.bool.isRequired
 };
 
 module.exports = injectSheet(styles)(Navigation);

@@ -44,19 +44,20 @@ class PageContent extends React.Component {
     const {
       activePath,
       activeVersion,
+      breadcrumbs,
       classes,
       content,
       isCollapsed,
-      info,
-      metadata
+      metadata,
+      title
     } = this.props;
 
-    let title = `${activeVersion} | ${metadata.name}`;
+    let pageTitle = `${activeVersion} | ${metadata.name}`;
 
-    if (info.title) {
-      const pageTitle = [ ...info.breadcrumbs ].reverse().join(' | ');
+    if (title) {
+      const breadcrumbsForTitle = breadcrumbs.slice().reverse().join(' | ');
 
-      title = `${pageTitle} | ${title}`;
+      pageTitle = `${breadcrumbsForTitle} | ${pageTitle}`;
     }
 
     const componentClasses = classNames(classes.PageContent, {
@@ -66,10 +67,10 @@ class PageContent extends React.Component {
     return (
       <div ref={ this.saveContainerRef } className={ componentClasses }>
         <Head>
-          <title>{ title }</title>
+          <title>{ pageTitle }</title>
         </Head>
 
-        <Breadcrumbs breadcrumbs={ info.breadcrumbs } />
+        <Breadcrumbs breadcrumbs={ breadcrumbs } />
 
         <Markdown
           className={ classes.Page }
@@ -90,10 +91,8 @@ PageContent.propTypes = {
   activeVersion: PropTypes.string.isRequired,
   metadata: PropTypes.object.isRequired,
   content: PropTypes.string,
-  info: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ])
+  title: PropTypes.string,
+  breadcrumbs: PropTypes.array
 };
 
 module.exports = injectSheet(styles)(PageContent);

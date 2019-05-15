@@ -80,7 +80,7 @@ class Chapter extends React.PureComponent {
   }
 
   renderPages () {
-    const { activePath, classes, isActive, isExpanded, pages, path, onPageClick } = this.props;
+    const { activePath, classes, isActive, isExpanded, pages, path } = this.props;
 
     if (!isExpanded) {
       return null;
@@ -102,7 +102,6 @@ class Chapter extends React.PureComponent {
                   isEmphasized={ isActive }
                   title={ page.title }
                   path={ pagePath }
-                  onClick={ onPageClick }
                 />
               );
             }
@@ -141,8 +140,7 @@ Chapter.propTypes = {
   pages: PropTypes.array.isRequired,
   path: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onPageClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 module.exports = injectSheet(styles)(Chapter);

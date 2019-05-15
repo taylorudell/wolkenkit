@@ -64,8 +64,16 @@ const collectPages = function ({ from, into, parent, parentSlug, section, chapte
   });
 };
 
-const pages = {
-  search ({ query, version }) {
+const search = {
+  initialize ({ metadata }) {
+    if (!metadata) {
+      throw new Error('Metadata is missing.');
+    }
+
+    this.metadata = metadata;
+  },
+
+  query ({ query, version }) {
     if (!query) {
       throw new Error('Query is missing.');
     }
@@ -76,12 +84,12 @@ const pages = {
     if (!flatPages[version]) {
       flatPages[version] = [];
 
-      // collectPages({
-      //   from: metadata.navigation[version],
-      //   parentSlug: version,
-      //   into: flatPages[version],
-      //   version
-      // });
+      collectPages({
+        from: this.metadata.navigation[version],
+        parentSlug: version,
+        into: flatPages[version],
+        version
+      });
     }
 
     const queryWords = query.
@@ -114,4 +122,4 @@ const pages = {
   }
 };
 
-module.exports = pages;
+module.exports = search;

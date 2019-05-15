@@ -9,22 +9,59 @@ import Page from '../components/Page.jsx';
 import PageContent from '../components/PageContent/index.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
+import search from '../services/search';
 import theme from '../theme/docs';
 import { ThemeProvider } from 'thenativeweb-ux';
 
 class Home extends React.Component {
-  static async getInitialProps ({ asPath }) {
-    const activePath = asPath.split('/').filter(item => item);
-    const activeVersion = page.getVersion({ path: activePath });
+  static async getInitialProps ({ res, asPath, query }) {
+    // We're on the server, so we can rederict if
+    if (res) {
+      if (!query.version) {
+        res.redirect(301, '/latest/');
+        res.end();
 
-    const metdataResponse = await axios.get('http://localhost:3000/api/v2/metadata');
-    const pageContentResponse = await axios.get(`http://localhost:3000/api/v2/page/${asPath}`);
+        return {};
+      }
+
+      if (!query.version && (!query.section || !query.chapter || !query.page)) {
+        res.redirect(301, `/${query.version}/`);
+        res.end();
+
+        return {};
+      }
+    }
+
+    const activePath = asPath.split('/').filter(item => item);
+    let pageContent;
+    let metadata;
+
+    try {
+      const metdataResponse = await axios.get('http://localhost:3000/api/v2/metadata');
+
+      metadata = metdataResponse.data;
+    } catch (ex) {
+      pageContent = '';
+    }
+
+    try {
+      const pageContentResponse = await axios.get(`http://localhost:3000/api/v2/page/${asPath}`);
+
+      pageContent = pageContentResponse.data;
+    } catch (ex) {
+      pageContent = '';
+    }
+
+    const pageInfo = page.getInfo({ metadata, path: activePath });
+    const isRootPath = activePath.length <= 1;
 
     return {
       activePath,
-      activeVersion,
-      metadata: metdataResponse.data,
-      pageContent: pageContentResponse.data
+      activeVersion: query.version,
+      metadata,
+      pageContent,
+      pageInfo,
+      isRootPath
     };
   }
 
@@ -34,12 +71,14 @@ class Home extends React.Component {
     this.handleMobileNavigationClick = this.handleMobileNavigationClick.bind(this);
 
     this.state = {
-      activePath: props.activePath,
-      activeVersion: props.activeVersion,
-      pageContent: props.pageContent,
-      pageInfo: props.pageInfo,
       showMobileNav: false
     };
+  }
+
+  componentDidMount () {
+    const { metadata } = this.props;
+
+    search.initialize({ metadata });
   }
 
   handleMobileNavigationClick () {
@@ -59,12 +98,10 @@ class Home extends React.Component {
       activePath,
       activeVersion,
       pageContent,
-      metadata
+      pageInfo,
+      metadata,
+      isRootPath
     } = this.props;
-
-    const pageInfo = page.getInfo({ metadata, path: activePath });
-
-    const isRootPath = activePath.length <= 1;
 
     const componentClasses = classNames({
       'wk-mobile--nav-visible': showMobileNav
@@ -74,7 +111,7 @@ class Home extends React.Component {
       <ThemeProvider theme={ theme }>
         <Page className={ componentClasses }>
           <Head>
-            <title>{ metadata.name }</title>
+            <title>Hans{ metadata.name }</title>
           </Head>
 
           <IntroPage
@@ -87,17 +124,15 @@ class Home extends React.Component {
             metadata={ metadata }
             activeVersion={ activeVersion }
             isVisibleOnMobile={ showMobileNav }
-            onLogoClick={ this.handleLogoClick }
-            onPageClick={ this.handlePageClick }
-            onVersionChange={ this.handleVersionChange }
           />
 
           <PageContent
             activePath={ activePath }
             activeVersion={ activeVersion }
+            breadcrumbs={ pageInfo.breadcrumbs }
             content={ pageContent }
             isCollapsed={ isRootPath }
-            info={ pageInfo }
+            title={ pageInfo.title }
             metadata={ metadata }
           />
 
