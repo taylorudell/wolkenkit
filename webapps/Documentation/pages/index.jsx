@@ -39,13 +39,16 @@ class Home extends React.Component {
     try {
       metadata = await api.get({ path: 'metadata' });
     } catch (ex) {
-      pageContent = '';
+      metadata = {};
     }
 
-    try {
-      pageContent = await api.get({ path: `page/${asPath}` });
-    } catch (ex) {
-      pageContent = '';
+    // Query page content only if we're not on root level
+    if (query.section && query.chapter && query.page) {
+      try {
+        pageContent = await api.get({ path: `page/${asPath}` });
+      } catch (ex) {
+        pageContent = '';
+      }
     }
 
     const pageInfo = page.getInfo({ metadata, path: activePath });

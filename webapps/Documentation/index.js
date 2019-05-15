@@ -25,20 +25,14 @@ class Documentation {
 
     this.api = express();
 
-    this.api.get('/:version/:section/:chapter/:page', (req, res) => {
+    this.api.use('/', express.static(path.join(__dirname, 'static')));
+    this.api.use('/', express.static(contentDirectory));
+
+    this.api.get('/:version/:section?/:chapter?/:page?', (req, res) => {
       const { version, section, chapter, page } = req.params;
 
       return nextApp.render(req, res, '/index', { version, section, chapter, page });
     });
-
-    this.api.get('/:version', (req, res) => {
-      const { version } = req.params;
-
-      return nextApp.render(req, res, '/index', { version });
-    });
-
-    this.api.use('/', express.static(path.join(__dirname, 'static')));
-    this.api.use('/', express.static(contentDirectory));
 
     this.api.get('*', (req, res) => handle(req, res));
 

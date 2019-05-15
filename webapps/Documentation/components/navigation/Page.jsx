@@ -55,7 +55,7 @@ class Page extends React.PureComponent {
   getUrl () {
     const { version, section, chapter, page } = pageService.getComponents({ path: this.props.path });
 
-    return `index?version=${version}&section=${section}&chapter=${chapter}&page=${page}`;
+    return `/index?version=${version}&section=${section}&chapter=${chapter}&page=${page}`;
   }
 
   render () {

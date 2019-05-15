@@ -10,14 +10,8 @@ const Bar = require('../Bar/index.jsx'),
       Link = require('../Link.jsx');
 
 class VersionBar extends React.PureComponent {
-  constructor (props) {
-    super(props);
-
-    this.handleVersionChanged = this.handleVersionChanged.bind(this);
-  }
-
-  handleVersionChanged (newVersion) {
-    Router.push(`/${newVersion}/`);
+  static handleVersionChanged (newVersion) {
+    Router.push(`/index?version=${newVersion}`, `/${newVersion}/`);
   }
 
   renderLogo () {
@@ -29,7 +23,8 @@ class VersionBar extends React.PureComponent {
 
     return (
       <Link
-        href={ `/${activeVersion}/` }
+        href={ `/index?version=${activeVersion}` }
+        as={ `/${activeVersion}/` }
       >
         <Product name='wolkenkit' type='typo-only' size='l' />
       </Link>
@@ -48,7 +43,7 @@ class VersionBar extends React.PureComponent {
           <Dropdown
             options={ versions }
             selected={ activeVersion }
-            onChange={ this.handleVersionChanged }
+            onChange={ VersionBar.handleVersionChanged }
           />
         </Bar.Right>
       </Bar>
