@@ -5,10 +5,14 @@ const express = require('express');
 const getMetadata = require('./getMetadata'),
       getNews = require('./getNews'),
       getPage = require('./getPage'),
+      getUrls = require('./getUrls'),
       Repository = require('./Repository');
 
 class V2 {
-  constructor ({ contentDirectory, runtimeVersions } = {}) {
+  constructor ({ baseUrl, contentDirectory, runtimeVersions } = {}) {
+    if (!baseUrl) {
+      throw new Error('Base url is missing.');
+    }
     if (!contentDirectory) {
       throw new Error('Content directory is missing.');
     }
@@ -19,6 +23,7 @@ class V2 {
     this.api = express();
 
     const repository = new Repository({
+      baseUrl,
       contentDirectory,
       runtimeVersions
     });
@@ -26,9 +31,9 @@ class V2 {
     this.api.get('/page/*', getPage({ repository }));
     this.api.get('/metadata', getMetadata({ repository }));
     this.api.get('/news', getNews({ repository }));
+    this.api.get('/urls', getUrls({ repository }));
 
     // this.api.get('/sitemap', getSitemap());
-    // this.api.get('/content/:version/:section/:chapter/:page')
   }
 }
 

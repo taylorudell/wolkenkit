@@ -27,8 +27,36 @@ const slugify = function (text) {
   throw new Error('Invalid operation.');
 };
 
+const collectUrls = function ({ from, parent, into, baseUrl } = {}) {
+  if (!from) {
+    throw new Error('From is missing.');
+  }
+  if (!parent) {
+    throw new Error('Parent is missing.');
+  }
+  if (!into) {
+    throw new Error('Into is missing.');
+  }
+  if (!baseUrl) {
+    throw new Error('Base url is missing.');
+  }
+
+  from.forEach(item => {
+    if (item.children) {
+      return collectUrls({ from: item.children, parent: `${baseUrl}/${parent}/${item.slug}`, into, baseUrl });
+    }
+    if (!item.slug) {
+      return;
+    }
+    into.push(`${baseUrl}/${parent}/${item.slug}/`);
+  });
+};
+
 class Repository {
-  constructor ({ contentDirectory, runtimeVersions }) {
+  constructor ({ baseUrl, contentDirectory, runtimeVersions }) {
+    if (!baseUrl) {
+      throw new Error('Base Url is missing.');
+    }
     if (!contentDirectory) {
       throw new Error('Content directory is missing.');
     }
@@ -36,6 +64,7 @@ class Repository {
       throw new Error('Runtime versions are missing.');
     }
 
+    this.baseUrl = baseUrl;
     this.contentDirectory = contentDirectory;
     this.runtimeVersions = runtimeVersions;
   }
@@ -47,7 +76,7 @@ class Repository {
 
     this.metadata = {
       name: 'wolkenkit Documentation',
-      baseUrl: 'https://docs.wolkenkit.io',
+      baseUrl: this.baseUrl,
       navigation: {},
       versions: {}
     };
@@ -103,6 +132,22 @@ class Repository {
     });
 
     return markdown;
+  }
+
+  async readUrls () {
+    if (this.urls) {
+      return this.urls;
+    }
+
+    this.urls = [];
+
+    const metadata = await this.readMetadata();
+
+    Object.keys(metadata.navigation).forEach(version => {
+      collectUrls({ from: metadata.navigation[version], parent: version, into: this.urls, baseUrl: this.baseUrl });
+    });
+
+    return this.urls;
   }
 }
 

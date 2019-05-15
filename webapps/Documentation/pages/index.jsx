@@ -14,27 +14,10 @@ import theme from '../theme/docs';
 import { ThemeProvider } from 'thenativeweb-ux';
 
 class Home extends React.Component {
-  static async getInitialProps ({ res, asPath, query }) {
-    // We're on the server, so we can rederict if
-    if (res) {
-      if (!query.version) {
-        res.redirect(301, '/latest/');
-        res.end();
-
-        return {};
-      }
-
-      if (!query.version && (!query.section || !query.chapter || !query.page)) {
-        res.redirect(301, `/${query.version}/`);
-        res.end();
-
-        return {};
-      }
-    }
-
+  static async getInitialProps ({ asPath, query }) {
     const activePath = asPath.split('/').filter(item => item);
-    let pageContent;
-    let metadata;
+    let metadata,
+        pageContent;
 
     try {
       metadata = await api.get({ path: 'metadata' });

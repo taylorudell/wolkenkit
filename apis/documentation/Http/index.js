@@ -8,7 +8,10 @@ const cors = require('cors'),
 const V2 = require('./V2');
 
 class Http {
-  async initialize ({ contentDirectory, corsOrigin, runtimeVersions }) {
+  async initialize ({ baseUrl, contentDirectory, corsOrigin, runtimeVersions }) {
+    if (!baseUrl) {
+      throw new Error('Base url is missing.');
+    }
     if (!contentDirectory) {
       throw new Error('Content directory is missing.');
     }
@@ -28,6 +31,7 @@ class Http {
     }
 
     this.v2 = new V2({
+      baseUrl,
       contentDirectory,
       runtimeVersions
     });
