@@ -68,7 +68,7 @@ const IntroPage = function ({ classes, isCollapsed }) {
         <div className={ classes.Title }>Documentation</div>
       </View>
 
-      <Feed path={ 'news' } />
+      <Feed path='news' />
     </View>
   );
 };

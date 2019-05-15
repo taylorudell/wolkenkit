@@ -85,7 +85,7 @@ class Feed extends React.PureComponent {
       this.setState({
         feed
       });
-    } catch (ex) {
+    } catch {
       // Left blank intentionally
     } finally {
       this.setState({

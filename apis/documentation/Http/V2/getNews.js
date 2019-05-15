@@ -10,7 +10,7 @@ const getPage = function ({ repository }) {
       const news = await repository.readNews();
 
       res.json(news);
-    } catch (ex) {
+    } catch {
       return res.status(500).end();
     }
   };

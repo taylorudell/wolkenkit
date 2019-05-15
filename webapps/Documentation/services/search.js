@@ -2,8 +2,6 @@
 
 const path = require('path');
 
-// const metadata = require('../docs/metadata');
-
 const flatPages = {};
 
 const collectPages = function ({ from, into, parent, parentSlug, section, chapter, version } = {}) {
@@ -24,22 +22,15 @@ const collectPages = function ({ from, into, parent, parentSlug, section, chapte
     const pagePath = path.join(parentSlug, page.slug);
 
     if (page.children) {
-      const pathDepth = pagePath.match(/\/.+?/g).length;
-
-      if (pathDepth === 1) {
-        section = page;
-      }
-      if (pathDepth === 2) {
-        chapter = page;
-      }
+      const pathDepth = pagePath.match(/\/.+?/gu).length;
 
       return collectPages({
         from: page.children,
         into,
         parent: page,
         parentSlug: path.join(parentSlug, page.slug),
-        section,
-        chapter,
+        section: pathDepth === 1 ? page : section,
+        chapter: pathDepth === 2 ? page : chapter,
         version
       });
     }
@@ -97,9 +88,9 @@ const search = {
       filter(word => word !== '');
 
     const patterns = queryWords.map(word => {
-      const test = new RegExp(`(\\b${word})`, 'i');
+      const pattern = new RegExp(`(\\b${word})`, 'iu');
 
-      return test;
+      return pattern;
     });
 
     const results = flatPages[version].filter(page => {

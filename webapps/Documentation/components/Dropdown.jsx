@@ -112,9 +112,9 @@ class Dropdown extends React.PureComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
   }
 
   handleOptionClicked (event) {

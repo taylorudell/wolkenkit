@@ -32,7 +32,7 @@ const markdown = markdownIt({
     if (lang && hljs.getLanguage(lang)) {
       try {
         return `<pre><code class="hljs ${lang}">${hljs.highlight(lang, str, true).value}</code></pre>`;
-      } catch (__) {
+      } catch {
         // Ignore errors
       }
     }

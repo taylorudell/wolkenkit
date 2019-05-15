@@ -10,7 +10,7 @@ const getUrls = function ({ repository }) {
       const urls = await repository.readUrls();
 
       res.send(urls);
-    } catch (ex) {
+    } catch {
       return res.status(500).end();
     }
   };

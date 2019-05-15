@@ -12,7 +12,7 @@ const getPage = function ({ repository }) {
       const pageContent = await repository.readPage({ pagePath });
 
       res.send(pageContent);
-    } catch (ex) {
+    } catch {
       return res.status(500).end();
     }
   };

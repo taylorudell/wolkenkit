@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleCollector } from 'thenativeweb-ux';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
-class CustomDocument extends Document {
+class CustomDocument extends NextDocument {
   static async getInitialProps (ctx) {
     const collection = StyleCollector.createCollection();
     const originalRenderPage = ctx.renderPage;
 
+    /* eslint-disable no-param-reassign */
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: App => props => (
@@ -15,9 +16,10 @@ class CustomDocument extends Document {
           </StyleCollector>
         )
       });
+    /* eslint-enable no-param-reassign */
 
     // Run the parent `getInitialProps` using `ctx` that now includes our custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await NextDocument.getInitialProps(ctx);
 
     return {
       ...initialProps,

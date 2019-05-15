@@ -31,8 +31,11 @@ class PageContent extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (prevProps.content !== this.props.content && this.container) {
-      this.container.scrollTop = 0;
+    const { container } = this;
+    const { content } = this.props;
+
+    if (prevProps.content !== content && container) {
+      container.scrollTop = 0;
     }
   }
 
@@ -90,9 +93,9 @@ PageContent.propTypes = {
   activePath: PropTypes.array.isRequired,
   activeVersion: PropTypes.string.isRequired,
   metadata: PropTypes.object.isRequired,
+  breadcrumbs: PropTypes.array,
   content: PropTypes.string,
-  title: PropTypes.string,
-  breadcrumbs: PropTypes.array
+  title: PropTypes.string
 };
 
 module.exports = injectSheet(styles)(PageContent);

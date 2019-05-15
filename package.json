@@ -140,7 +140,7 @@
     "p-queue": "5.0.0",
     "record-stdstreams": "1.0.0",
     "retry-ignore-abort": "1.0.1",
-    "roboter": "4.1.0",
+    "roboter": "6.0.0",
     "streamtoarray": "1.1.0",
     "strip-ansi": "5.2.0",
     "supertest": "4.0.2",

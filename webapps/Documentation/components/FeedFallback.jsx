@@ -18,9 +18,8 @@ const FeedFallback = function () {
               problem persists.
             </p>
             <p>
-              Meanwhile, you may <a href='https://twitter.com/thenativeweb'>follow us
-              on Twitter</a> or visit the <a href='https://www.wolkenkit.io/'>wolkenkit
-              website</a>.
+              Meanwhile, you may <a href='https://twitter.com/thenativeweb'>follow us on Twitter</a> or visit
+              the <a href='https://www.wolkenkit.io/'>wolkenkit website</a>.
             </p>
           </React.Fragment>
         )

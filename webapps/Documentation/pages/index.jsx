@@ -10,26 +10,25 @@ import PageContent from '../components/PageContent/index.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import search from '../services/search';
-import theme from '../theme/docs';
-import { ThemeProvider } from 'thenativeweb-ux';
 
 class Home extends React.Component {
   static async getInitialProps ({ asPath, query }) {
     const activePath = asPath.split('/').filter(item => item);
+
     let metadata,
         pageContent;
 
     try {
       metadata = await api.get({ path: 'metadata' });
-    } catch (ex) {
+    } catch {
       metadata = {};
     }
 
-    // Query page content only if we're not on root level
+    // Query for page content only if we're not at the root level
     if (query.section && query.chapter && query.page) {
       try {
         pageContent = await api.get({ path: `page/${asPath}` });
-      } catch (ex) {
+      } catch {
         pageContent = '';
       }
     }
@@ -90,40 +89,38 @@ class Home extends React.Component {
     });
 
     return (
-      <ThemeProvider theme={ theme }>
-        <Page className={ componentClasses }>
-          <Head>
-            <title>Hans{ metadata.name }</title>
-          </Head>
+      <Page className={ componentClasses }>
+        <Head>
+          <title>Hans{ metadata.name }</title>
+        </Head>
 
-          <IntroPage
-            isCollapsed={ !isRootPath }
-          />
+        <IntroPage
+          isCollapsed={ !isRootPath }
+        />
 
-          <Navigation
-            showLogo={ !isRootPath }
-            activePath={ activePath }
-            metadata={ metadata }
-            activeVersion={ activeVersion }
-            isVisibleOnMobile={ showMobileNav }
-          />
+        <Navigation
+          showLogo={ !isRootPath }
+          activePath={ activePath }
+          metadata={ metadata }
+          activeVersion={ activeVersion }
+          isVisibleOnMobile={ showMobileNav }
+        />
 
-          <PageContent
-            activePath={ activePath }
-            activeVersion={ activeVersion }
-            breadcrumbs={ pageInfo.breadcrumbs }
-            content={ pageContent }
-            isCollapsed={ isRootPath }
-            title={ pageInfo.title }
-            metadata={ metadata }
-          />
+        <PageContent
+          activePath={ activePath }
+          activeVersion={ activeVersion }
+          breadcrumbs={ pageInfo.breadcrumbs }
+          content={ pageContent }
+          isCollapsed={ isRootPath }
+          title={ pageInfo.title }
+          metadata={ metadata }
+        />
 
-          <MobileNavigation
-            onClick={ this.handleMobileNavigationClick }
-            isVisible={ showMobileNav }
-          />
-        </Page>
-      </ThemeProvider>
+        <MobileNavigation
+          onClick={ this.handleMobileNavigationClick }
+          isVisible={ showMobileNav }
+        />
+      </Page>
     );
   }
 }

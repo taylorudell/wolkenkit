@@ -24,9 +24,9 @@ const HighlightText = ({ classes, children, searchWords }) => {
   }
 
   const patterns = searchWords.map(word => {
-    const test = `(\\b${word})`;
+    const lookupWordPattern = `(\\b${word})`;
 
-    return test;
+    return lookupWordPattern;
   });
 
   return (

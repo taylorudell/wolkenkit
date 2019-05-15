@@ -47,32 +47,28 @@ const styles = theme => ({
   }
 });
 
-class Page extends React.PureComponent {
-  getPrettyUrl () {
-    return `/${this.props.path.join('/')}/`;
-  }
+const getPrettyUrl = function (path) {
+  return `/${path.join('/')}/`;
+};
 
-  getUrl () {
-    const { version, section, chapter, page } = pageService.getComponents({ path: this.props.path });
+const getUrl = function (path) {
+  const { version, section, chapter, page } = pageService.getComponents({ path });
 
-    return `/index?version=${version}&section=${section}&chapter=${chapter}&page=${page}`;
-  }
+  return `/index?version=${version}&section=${section}&chapter=${chapter}&page=${page}`;
+};
 
-  render () {
-    const { classes, isActive, isEmphasized, title } = this.props;
+const Page = function ({ classes, isActive, isEmphasized, title, path } = {}) {
+  const componentClasses = classNames(classes.Page, {
+    [classes.IsActive]: isActive,
+    [classes.IsEmphasized]: isEmphasized
+  });
 
-    const componentClasses = classNames(classes.Page, {
-      [classes.IsActive]: isActive,
-      [classes.IsEmphasized]: isEmphasized
-    });
-
-    return (
-      <li className={ componentClasses }>
-        <Link href={ this.getUrl() } as={ this.getPrettyUrl() }>{ title }</Link>
-      </li>
-    );
-  }
-}
+  return (
+    <li className={ componentClasses }>
+      <Link href={ getUrl(path) } as={ getPrettyUrl(path) }>{ title }</Link>
+    </li>
+  );
+};
 
 Page.propTypes = {
   isActive: PropTypes.bool.isRequired,

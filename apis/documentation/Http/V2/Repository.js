@@ -8,8 +8,8 @@ const ejs = require('ejs'),
 
 const slugify = function (text) {
   if (typeof text === 'string') {
-    return text.toLowerCase().replace(/ /g, '-').
-      replace(/[^A-Za-z0-9-]/g, '');
+    return text.toLowerCase().replace(/ /gu, '-').
+      replace(/[^A-Za-z0-9-]/gu, '');
   }
 
   if (Array.isArray(text)) {
@@ -95,7 +95,7 @@ class Repository {
     return this.metadata;
   }
 
-  async readNews ({} = {}) {
+  async readNews () {
     const filePath = path.join(this.contentDirectory, 'news.json');
 
     const newsAsPlainText = await fs.readFile(filePath, 'utf8');
@@ -115,7 +115,7 @@ class Repository {
 
     try {
       await fs.stat(filePath);
-    } catch (ex) {
+    } catch {
       throw new Error(`Page with path ${filePath} does not exist.`);
     }
 
