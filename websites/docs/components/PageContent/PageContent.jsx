@@ -50,17 +50,14 @@ class PageContent extends React.Component {
       children,
       classes,
       isCollapsed,
-      metadata,
-      title
+      metadata
     } = this.props;
 
     let pageTitle = `${activePage.version} | ${metadata.title}`;
 
-    if (title) {
-      const breadcrumbsForTitle = activePage.breadcrumbs.slice().reverse().join(' | ');
+    const breadcrumbsForTitle = activePage.breadcrumbs.slice().reverse().join(' | ');
 
-      pageTitle = `${breadcrumbsForTitle} | ${pageTitle}`;
-    }
+    pageTitle = `${breadcrumbsForTitle} | ${pageTitle}`;
 
     const componentClasses = classNames(classes.PageContent, {
       [classes.IsCollapsed]: isCollapsed
@@ -90,8 +87,7 @@ class PageContent extends React.Component {
 
 PageContent.propTypes = {
   activePage: PropTypes.instanceOf(ActivePage).isRequired,
-  metadata: PropTypes.instanceOf(Metadata).isRequired,
-  title: PropTypes.string
+  metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
 module.exports = injectSheet(styles)(PageContent);
