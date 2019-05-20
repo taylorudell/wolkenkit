@@ -4,7 +4,8 @@ const injectSheet = require('react-jss').default,
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Bar = require('../Bar/index.jsx'),
+const ActivePage = require('../../services/ActivePage'),
+      Bar = require('../Bar/index.jsx'),
       search = require('../../services/search'),
       SearchResults = require('./SearchResults.jsx');
 
@@ -59,11 +60,15 @@ class Search extends React.PureComponent {
   }
 
   handleSearchInputChange (event) {
-    const { version } = this.props;
+    const { activePage } = this.props;
     const query = event.target.value;
 
     if (query.length > 1) {
-      const results = search.query({ query, version });
+      const results = search.query({
+        query,
+        language: activePage.language,
+        version: activePage.version
+      });
 
       this.setState({
         query,
@@ -106,7 +111,7 @@ class Search extends React.PureComponent {
 }
 
 Search.propTypes = {
-  version: PropTypes.string.isRequired,
+  activePage: PropTypes.instanceOf(ActivePage).isRequired,
   onClose: PropTypes.func.isRequired
 };
 

@@ -4,7 +4,7 @@ const path = require('path');
 
 const flatPages = {};
 
-const collectPages = function ({ from, into, parent, parentSlug, section, chapter, version } = {}) {
+const collectPages = function ({ from, into, parent, parentSlug, section, chapter, version, language } = {}) {
   if (!from) {
     throw new Error('From is missing.');
   }
@@ -16,6 +16,9 @@ const collectPages = function ({ from, into, parent, parentSlug, section, chapte
   }
   if (!version) {
     throw new Error('Version is missing.');
+  }
+  if (!language) {
+    throw new Error('Language is missing.');
   }
 
   from.forEach(page => {
@@ -31,7 +34,8 @@ const collectPages = function ({ from, into, parent, parentSlug, section, chapte
         parentSlug: path.join(parentSlug, page.slug),
         section: pathDepth === 1 ? page : section,
         chapter: pathDepth === 2 ? page : chapter,
-        version
+        version,
+        language
       });
     }
     if (!page.slug) {
@@ -41,13 +45,14 @@ const collectPages = function ({ from, into, parent, parentSlug, section, chapte
     const pageMetaData = {
       id: pagePath,
       parent,
-      path: pagePath,
+      path: path.join(language, pagePath),
       title: page.title,
       keywords: page.keywords,
       keywordsAsString: page.keywords ? page.keywords.join(' ') : undefined,
       section,
       chapter,
       version,
+      language,
       breadcrumbsAsString: `${section.title} ${chapter && chapter.title}`
     };
 
@@ -66,9 +71,12 @@ const search = {
     this.metadata = metadata;
   },
 
-  query ({ query, version }) {
+  query ({ query, language, version }) {
     if (!query) {
       throw new Error('Query is missing.');
+    }
+    if (!language) {
+      throw new Error('Language is missing.');
     }
     if (!version) {
       throw new Error('Version is missing.');
@@ -81,6 +89,7 @@ const search = {
         from: this.metadata.navigation[version],
         parentSlug: version,
         into: flatPages[version],
+        language,
         version
       });
     }

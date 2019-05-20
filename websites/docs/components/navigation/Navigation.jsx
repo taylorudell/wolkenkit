@@ -201,7 +201,7 @@ class Navigation extends React.Component {
             </a>
           </BarBottom>
 
-          { showSearch ? <Search version={ activePage.version } onClose={ this.handleSearchClose } /> : null }
+          { showSearch ? <Search activePage={ activePage } onClose={ this.handleSearchClose } /> : null }
         </div>
       </div>
     );
