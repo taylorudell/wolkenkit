@@ -1,13 +1,11 @@
 import ActivePage from '../../services/ActivePage';
 import Base from '../Base.jsx';
-import { MDXProvider } from '@mdx-js/react';
 import Metadata from '../../services/Metadata';
 import PageContent from '../../components/PageContent';
+import { PageContextProvider } from '../PageContext';
 import React from 'react';
 import search from '../../services/search';
 import { withRouter } from 'next/router';
-
-const mdxComponents = {};
 
 class Documentation extends React.Component {
   constructor (props) {
@@ -51,9 +49,9 @@ class Documentation extends React.Component {
           metadata={ metadata }
           isCollapsed={ false }
         >
-          <MDXProvider components={ mdxComponents }>
+          <PageContextProvider context={{ activePage, metadata }}>
             { children }
-          </MDXProvider>
+          </PageContextProvider>
         </PageContent>
       </Base>
     );
