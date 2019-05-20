@@ -2,11 +2,7 @@
 
 const styles = {
   '& .hljs': {
-    display: 'block',
-    overflowX: 'auto',
-    padding: '0.5em',
-    color: '#abb2bf',
-    background: '#282c34'
+    overflowX: 'auto'
   },
 
   '& .hljs-comment, & .hljs-quote': {

@@ -110,11 +110,14 @@ const styles = theme => ({
       'margin-top': theme.grid.stepSize * 1.5,
       'margin-bottom': theme.grid.stepSize * 5,
       padding: 0,
-      border: 0,
+      border: 0
+    },
 
-      '& .hljs': {
-        padding: [ theme.grid.stepSize * 1.5, theme.grid.stepSize * 2 ]
-      }
+    '& pre code': {
+      display: 'block',
+      color: '#abb2bf',
+      background: '#282c34',
+      padding: [ theme.grid.stepSize * 1.5, theme.grid.stepSize * 2 ]
     },
 
     '& p code, & ul li code, & table code': {
