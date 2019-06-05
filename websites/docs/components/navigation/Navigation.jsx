@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import MenuBar from './MenuBar.jsx';
 import Metadata from '../../services/Metadata';
+import MobileToggle from './MobileToggle.jsx';
 import PageMenu from './PageMenu.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -41,9 +42,9 @@ const styles = theme => ({
     left: 0,
     right: 0,
     height: '498px',
-    'background-image': `url(/static/pattern/background-overlay.png)`,
-    'background-repeat': 'repeat-x',
-    'background-size': '1px 498px',
+    backgroundImage: `url(/static/pattern/background-overlay.png)`,
+    backgroundRepeat: 'repeat-x',
+    backgroundSize: '1px 498px',
     zIndex: theme.zIndices.navigationPattern + 1
   },
 
@@ -64,12 +65,14 @@ const styles = theme => ({
     fill: 'currentColor'
   },
 
-  [theme.device.small]: {
+  IsVisibleOnMobile: {},
+
+  [theme.breakpoints.down('sm')]: {
     Navigation: {
       position: 'fixed',
       top: 0,
       left: 0,
-      'pointer-events': 'none',
+      pointerEvents: 'none',
       zIndex: theme.zIndices.navigation,
       flex: theme.sidebarFlexMobile,
       width: theme.sidebarWidthMobile,
@@ -80,7 +83,7 @@ const styles = theme => ({
     },
 
     IsVisibleOnMobile: {
-      'pointer-events': 'auto',
+      pointerEvents: 'auto',
       transform: 'translate(0,0)',
       opacity: 1
     }
@@ -104,11 +107,13 @@ class Navigation extends React.Component {
     super(props);
 
     this.state = {
-      showSearch: false
+      showSearch: false,
+      isVisibleOnMobile: false
     };
 
     this.handleNavigate = this.handleNavigate.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleMobileToggleClick = this.handleMobileToggleClick.bind(this);
     this.handleShowSearch = this.handleShowSearch.bind(this);
     this.handleSearchClose = this.handleSearchClose.bind(this);
   }
@@ -127,6 +132,12 @@ class Navigation extends React.Component {
     });
   }
 
+  handleMobileToggleClick () {
+    this.setState(currentState => ({
+      isVisibleOnMobile: !currentState.isVisibleOnMobile
+    }));
+  }
+
   handleShowSearch () {
     this.setState({
       showSearch: true
@@ -143,13 +154,12 @@ class Navigation extends React.Component {
     const {
       activePage,
       classes,
-      isVisibleOnMobile,
-      metadata,
-      showLogo
+      metadata
     } = this.props;
 
     const {
       expandedPath,
+      isVisibleOnMobile,
       showSearch
     } = this.state;
 
@@ -160,55 +170,59 @@ class Navigation extends React.Component {
     });
 
     return (
-      <div className={ componentClasses }>
-        <Brand.Pattern className={ classes.Pattern } />
+      <React.Fragment>
+        <div className={ componentClasses }>
+          <Brand.Pattern className={ classes.Pattern } />
 
-        <div className={ classes.Mask } />
+          <div className={ classes.Mask } />
 
-        <div className={ classes.Content }>
-          <VersionBar
-            activePage={ activePage }
-            metadata={ metadata }
-            showLogo={ showLogo }
-          />
+          <div className={ classes.Content }>
+            <VersionBar
+              activePage={ activePage }
+              metadata={ metadata }
+            />
 
-          <MenuBar
-            backLabel={ expandedBreadcrumbs && expandedBreadcrumbs[0] }
-            onBack={ this.handleBack }
-            onShowSearch={ this.handleShowSearch }
-          />
+            <MenuBar
+              backLabel={ expandedBreadcrumbs && expandedBreadcrumbs[0] }
+              onBack={ this.handleBack }
+              onShowSearch={ this.handleShowSearch }
+            />
 
-          <PageMenu
-            activePage={ activePage }
-            expandedPath={ expandedPath }
-            metadata={ metadata }
-            onNavigate={ this.handleNavigate }
-          />
+            <PageMenu
+              activePage={ activePage }
+              expandedPath={ expandedPath }
+              metadata={ metadata }
+              onNavigate={ this.handleNavigate }
+            />
 
-          <BarBottom className={ classes.SocialBar }>
-            <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } name='github' />
-            </a>
-            <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } name='slack' />
-            </a>
-            <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } name='stackoverflow' />
-            </a>
-          </BarBottom>
+            <BarBottom className={ classes.SocialBar }>
+              <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'>
+                <Icon className={ classes.SocialIcon } name='github' />
+              </a>
+              <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'>
+                <Icon className={ classes.SocialIcon } name='slack' />
+              </a>
+              <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'>
+                <Icon className={ classes.SocialIcon } name='stackoverflow' />
+              </a>
+            </BarBottom>
 
-          { showSearch ? <Search activePage={ activePage } onClose={ this.handleSearchClose } /> : null }
+            { showSearch ? <Search activePage={ activePage } onClose={ this.handleSearchClose } /> : null }
+          </div>
         </div>
-      </div>
+
+        <MobileToggle
+          onClick={ this.handleMobileToggleClick }
+          isVisible={ isVisibleOnMobile }
+        />
+      </React.Fragment>
     );
   }
 }
 
 Navigation.propTypes = {
   activePage: PropTypes.instanceOf(ActivePage).isRequired,
-  isVisibleOnMobile: PropTypes.bool.isRequired,
-  metadata: PropTypes.instanceOf(Metadata).isRequired,
-  showLogo: PropTypes.bool.isRequired
+  metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
 export default withStyles(styles)(Navigation);

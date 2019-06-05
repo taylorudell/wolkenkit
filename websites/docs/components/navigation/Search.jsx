@@ -37,7 +37,7 @@ const styles = theme => ({
     outline: 0
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     QueryInput: {
       fontSize: 16
     }

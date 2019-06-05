@@ -34,7 +34,7 @@ const styles = theme => ({
     }
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     PageFooter: {
       margin: 0,
       paddingRight: theme.space(2)

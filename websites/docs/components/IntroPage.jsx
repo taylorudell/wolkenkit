@@ -13,19 +13,8 @@ const styles = theme => ({
     willChange: 'width'
   },
 
-  IsCollapsed: {
-    flex: '0 0 auto',
-    width: '0px',
-
-    '& $Brand': {
-      opacity: 0
-    }
-  },
-
-  Brand: {
-    transition: 'opacity 400ms',
-    willChange: 'opacity'
-  },
+  Brand: {},
+  News: {},
 
   Title: {
     fontSize: theme.font.size.lg,
@@ -33,9 +22,9 @@ const styles = theme => ({
     color: theme.color.brand.white
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     IntroPage: {
-      flexDirection: 'column',
+      flexDirection: 'column-reverse',
       overflow: 'auto',
       '-webkit-overflow-scrolling': 'touch'
     },
@@ -60,7 +49,9 @@ const IntroPage = ({ classes, metadata, isCollapsed }) => {
 
   return (
     <View orientation='horizontal' background='dark' className={ componentClasses }>
-      <Feed items={ metadata.news } />
+      <View className={ classes.News }>
+        <Feed items={ metadata.news } />
+      </View>
 
       <View className={ classes.Brand } orientation='vertical' alignItems='center' justifyContent='center' adjust='flex'>
         <Product name='wolkenkit' isAnimated={ !isCollapsed } size='xl' />

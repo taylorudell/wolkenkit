@@ -1,7 +1,6 @@
 import ActivePage from '../services/ActivePage';
 import Head from '../components/Head';
 import Metadata from '../services/Metadata';
-import MobileNavigation from '../components/MobileNavigation.jsx';
 import Navigation from '../components/navigation/Navigation.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -60,11 +59,7 @@ const styles = theme => ({
 });
 
 const Base = function ({ activePage, classes, className, children, metadata }) {
-  const [ showMobileNav, toggleMobileNav ] = React.useState(false);
-
-  const componentClasses = classNames(classes.Base, {
-    'wk-mobile--nav-visible': showMobileNav
-  }, className);
+  const componentClasses = classNames(classes.Base, className);
 
   return (
     <View orientation='horizontal' className={ componentClasses }>
@@ -75,18 +70,11 @@ const Base = function ({ activePage, classes, className, children, metadata }) {
       <Symbols />
 
       <Navigation
-        isVisibleOnMobile={ showMobileNav }
         activePage={ activePage }
         metadata={ metadata }
-        showLogo={ activePage.isContentPage() }
       />
 
       { children }
-
-      <MobileNavigation
-        onClick={ () => toggleMobileNav(!showMobileNav) }
-        isVisible={ showMobileNav }
-      />
     </View>
   );
 };

@@ -31,7 +31,7 @@ const styles = theme => ({
     paddingRight: theme.space(4)
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     FeedItem: {
       padding: 0,
       margin: [ theme.space(0.5), 0 ],

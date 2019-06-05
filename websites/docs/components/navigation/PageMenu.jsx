@@ -36,7 +36,7 @@ const styles = theme => ({
     width: theme.sidebarWidth
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     Level: {
       width: theme.sidebarWidthMobile
     }

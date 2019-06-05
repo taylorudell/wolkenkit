@@ -4,15 +4,17 @@ import injectSheet from 'react-jss';
 import React from 'react';
 
 const styles = theme => ({
-  MobileNavigation: {
+  MobileToggle: {
     position: 'fixed',
     zIndex: theme.zIndices.content,
     top: 0,
     right: 0,
     left: 0,
     bottom: 0,
-    'pointer-events': 'none'
+    pointerEvents: 'none'
   },
+
+  IsVisible: {},
 
   Backdrop: {
     position: 'absolute',
@@ -22,7 +24,7 @@ const styles = theme => ({
     left: 0,
     background: 'rgba(0, 0, 0, 0.3)',
     visibility: 'hidden',
-    'pointer-events': 'none'
+    pointerEvents: 'none'
   },
 
   Toggle: {
@@ -43,26 +45,24 @@ const styles = theme => ({
     fill: theme.color.brand.white
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     Toggle: {
       display: 'flex',
-      'pointer-events': 'auto'
+      pointerEvents: 'auto'
     },
-
-    Backdrop: {},
 
     IsVisible: {
       '& $Backdrop': {
         visibility: 'visible',
-        'pointer-events': 'auto'
+        pointerEvents: 'auto'
       }
     }
   }
 });
 
-const MobileNavigation = function ({ classes, isVisible, onClick }) {
+const MobileToggle = function ({ classes, isVisible, onClick }) {
   return (
-    <div className={ classNames(classes.MobileNavigation, { [classes.IsVisible]: isVisible }) }>
+    <div className={ classNames(classes.MobileToggle, { [classes.IsVisible]: isVisible }) }>
       <div onClick={ onClick } className={ classes.Backdrop } />
       <div onClick={ onClick } className={ classes.Toggle }>
         <Icon className={ classes.NavIcon } name='nav' size='md' />
@@ -72,4 +72,4 @@ const MobileNavigation = function ({ classes, isVisible, onClick }) {
   );
 };
 
-export default injectSheet(styles)(MobileNavigation);
+export default injectSheet(styles)(MobileToggle);

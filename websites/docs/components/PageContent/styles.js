@@ -95,23 +95,7 @@ const styles = theme => ({
     },
 
     '& pre, code': {
-      fontFamily: theme.font.family.code,
-      fontSize: theme.font.size.md
-    },
-
-    '& pre': {
-      maxWidth: theme.pageContent.maxWidth,
-      marginTop: theme.space(2),
-      marginBottom: theme.space(6),
-      padding: 0,
-      border: 0
-    },
-
-    '& pre code': {
-      display: 'block',
-      color: '#abb2bf',
-      background: '#282c34',
-      padding: [ theme.space(2), theme.space(3) ]
+      fontFamily: theme.font.family.code
     },
 
     '& p code, & ul li code, & table code': {
@@ -213,26 +197,24 @@ const styles = theme => ({
         left: -115,
         top: 0,
         content: '""',
-        'background-repeat': 'no-repeat'
+        backgroundRepeat: 'no-repeat'
       }
     },
 
     '& .read-model::after': {
-      'background-image': `url(/data-flow/read-model.svg)`
+      backgroundImage: `url(/data-flow/read-model.svg)`
     },
 
     '& .write-model::after': {
-      'background-image': `url(/data-flow/write-model.svg)`
+      backgroundImage: `url(/data-flow/write-model.svg)`
     },
 
     '& .flows::after': {
-      'background-image': `url(/data-flow/flows.svg)`
+      backgroundImage: `url(/data-flow/flows.svg)`
     }
-
-
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     PageContent: {
       flex: '3 3 100vw',
       width: '100vw',
@@ -247,7 +229,7 @@ const styles = theme => ({
       width: 0
     },
 
-    Page: {
+    Article: {
       paddingRight: theme.space(2),
 
       '& .header-anchor': {
@@ -297,19 +279,6 @@ const styles = theme => ({
       }
     }
   }
-
-  // /* Extra Small Devices, Phones */
-  // @media only screen and (max-width : 768px) {
-  //   .wk-page-content {
-  //   }
-  //
-  //   .wk-mobile--nav-visible .wk-page-content {
-  //     overflow: hidden;
-  //   }
-  //   .wk-mobile--nav-visible {
-  //     overflow: hidden;
-  //   }
-  // }
 });
 
 export default styles;

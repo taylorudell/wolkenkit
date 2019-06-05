@@ -31,7 +31,7 @@ const styles = theme => ({
     padding: [ 0, theme.space(4) ]
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     Feed: {
       overflow: 'visible',
       flex: '1 1 auto',

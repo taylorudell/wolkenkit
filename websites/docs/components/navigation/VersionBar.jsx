@@ -22,11 +22,7 @@ class VersionBar extends React.PureComponent {
   }
 
   renderLogo () {
-    const { activePage, showLogo } = this.props;
-
-    if (!showLogo) {
-      return null;
-    }
+    const { activePage } = this.props;
 
     return (
       <Link

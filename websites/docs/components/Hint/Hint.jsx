@@ -18,7 +18,7 @@ const styles = theme => ({
       top: '50%',
       marginTop: '-120px',
       content: '""',
-      'background-repeat': 'no-repeat'
+      backgroundRepeat: 'no-repeat'
     }
   },
 
@@ -48,27 +48,53 @@ const styles = theme => ({
 
   TypeCongrats: {
     '&::after': {
-      'background-image': 'url(/static/mascot/congrats-medium.svg)'
+      backgroundImage: 'url(/static/mascot/congrats-medium.svg)'
     }
   },
   TypeQuestion: {
     '&::after': {
-      'background-image': 'url(/static/mascot/question-medium.svg)'
+      backgroundImage: 'url(/static/mascot/question-medium.svg)'
     }
   },
   TypeTip: {
     '&::after': {
-      'background-image': 'url(/static/mascot/tip-medium.svg)'
+      backgroundImage: 'url(/static/mascot/tip-medium.svg)'
     }
   },
   TypeWarning: {
     '&::after': {
-      'background-image': 'url(/static/mascot/warning-medium.svg)'
+      backgroundImage: 'url(/static/mascot/warning-medium.svg)'
     }
   },
   TypeWisdom: {
     '&::after': {
-      'background-image': 'url(/static/mascot/wisdom-medium.svg)'
+      backgroundImage: 'url(/static/mascot/wisdom-medium.svg)'
+    }
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    Hint: {
+      '&:after': {
+        left: '50%',
+        top: -170,
+        marginLeft: -theme.space(10),
+        marginTop: 0,
+        width: theme.space(20),
+        height: theme.space(20)
+      }
+    },
+    Bubble: {
+      padding: theme.space(2),
+      marginTop: 180,
+      marginLeft: 0,
+
+      '&::after': {
+        top: 0,
+        left: '50%',
+        marginTop: -theme.grid.stepSize * 2,
+        marginLeft: -theme.grid.stepSize,
+        borderColor: `transparent transparent ${theme.color.panel.light} transparent`
+      }
     }
   }
 });

@@ -25,4 +25,4 @@ const FeedFallback = function () {
   );
 };
 
-module.exports = FeedFallback;
+export default FeedFallback;

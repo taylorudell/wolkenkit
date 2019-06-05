@@ -26,7 +26,7 @@ const styles = theme => ({
     alignItems: 'center'
   },
 
-  [theme.device.small]: {
+  [theme.breakpoints.down('sm')]: {
     Item: {
       '&:last-child': {
         paddingRight: theme.space(4)
