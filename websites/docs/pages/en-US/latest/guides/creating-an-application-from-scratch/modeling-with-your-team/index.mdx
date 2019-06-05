@@ -1,20 +1,24 @@
+import { Hint } from '../../../../../../components';
+
 # Modeling with your team
 
 You are probably tempted to start thinking about the technical parts of the application, such as encrypting messages, having an API, and so on.
 
 Anyway, this is not the application's core domain. You don't create the application because you want to do encryption or build an API. You create the application because you want to enable people to talk to each other by sending and receiving messages. So, for now, let's focus on the actual domain.
 
-:::hint-tip
-> **Take your time to discuss**
->
-> Although you probably read this guide alone, in reality software development is a team process. This means that you will discuss a lot about finding the right words and what their meanings are. Having these discussions right from the start makes a huge difference for the entire team. Take your time to discuss, play with variations, and do not stop before you have reached consensus.
-:::
+<Hint type='tip'>
+
+  **Take your time to discuss**
+
+  Although you probably read this guide alone, in reality software development is a team process. This means that you will discuss a lot about finding the right words and what their meanings are. Having these discussions right from the start makes a huge difference for the entire team. Take your time to discuss, play with variations, and do not stop before you have reached consensus.
+
+</Hint>
 
 ## Carve out commands
 
 When modeling an application, the first thing to do is to identify the user actions that update the application state. For that have a look at the following image.
 
-![The chat application](chat-commands.png)
+![The chat application](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/chat-commands.png)
 
 As you can see, there are a text box with a *Send message* button, and below each message a button to like it. In wolkenkit, actions like these are called **commands**.
 
@@ -22,19 +26,23 @@ When the user wants to run a command, the application decides whether this is al
 
 Since a command is an instruction to the application, it is phrased using the imperative. Hence we choose *send message* and *like message*.
 
-:::hint-tip
-> **Different words have different meanings**
->
-> It may be obvious to name the commands *send message* and *like message*, but there would have been alternatives. E.g., instead of *like* you might also have used *react*, *up-vote*, or *mark*. Each of these words comes with a different meaning, and you have to look for the word that best matches the intention of your core domain.
-:::
+<Hint type='tip'>
+
+  **Different words have different meanings**
+
+  It may be obvious to name the commands *send message* and *like message*, but there would have been alternatives. E.g., instead of *like* you might also have used *react*, *up-vote*, or *mark*. Each of these words comes with a different meaning, and you have to look for the word that best matches the intention of your core domain.
+
+</Hint>
 
 Maybe you have come up with something that uses words such as *create* and *update*. Keep in mind that this usually is not the language of your users to describe their needs. Developers often tend to use technical terminology such as *create*, *read*, *update*, and *delete*. Avoid these words when discussing the domain language, as these words are very generic and do not carry much semantics. What you get from this is a better understanding of your core domain.
 
-:::hint-warning
-> **Commands will write**
->
-> As commands are only about writing to the application, i.e. updating its state, there is no *receive message* command. Receiving messages means reading from the application, which does not change its state. We will take care of this later.
-:::
+<Hint type='warning'>
+
+  **Commands will write**
+
+  As commands are only about writing to the application, i.e. updating its state, there is no *receive message* command. Receiving messages means reading from the application, which does not change its state. We will take care of this later.
+
+</Hint>
 
 ## Carve out events
 
@@ -52,7 +60,7 @@ In our simple example there are now two options. You could model the entire chat
 
 Since the aggregate is now called *message*, there is no need to repeat the aggregate's name inside of every command and event. So, *send message*, *like message*, *sent message*, and *liked message* simply become *send*, *like*, *sent*, and *liked*. Now, your whiteboard might look similar to this:
 
-![The message aggregate](aggregate-message.png)
+![The message aggregate](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/aggregate-message.png)
 
 ## Defining the context
 
@@ -64,7 +72,7 @@ That's it for the write model.
 
 If you now have another look at the image below, you will realize that the list of messages is still missing, which is another important part of the application:
 
-![The chat application](chat-lists.png)
+![The chat application](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/chat-lists.png)
 
 In contrast to aggregates, commands, and events, reading a list does not update the application state. Hence defining a list does not belong to the write model, but to the read model.
 

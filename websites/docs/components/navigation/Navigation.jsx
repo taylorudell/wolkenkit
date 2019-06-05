@@ -1,5 +1,5 @@
 import ActivePage from '../../services/ActivePage';
-import BarBottom from '../BarBottom.jsx';
+import { Bar } from '..';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import MenuBar from './MenuBar.jsx';
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Search from './Search.jsx';
 import VersionBar from './VersionBar.jsx';
-import { Brand, Icon, withStyles } from 'thenativeweb-ux';
+import { Brand, Icon, Link, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Navigation: {
@@ -51,11 +51,7 @@ const styles = theme => ({
   SocialBar: {
     '& a': {
       display: 'flex',
-      marginRight: theme.space(4)
-    },
-
-    '& a:last-child': {
-      marginRight: 0
+      margin: theme.space(2)
     }
   },
 
@@ -195,17 +191,17 @@ class Navigation extends React.Component {
               onNavigate={ this.handleNavigate }
             />
 
-            <BarBottom className={ classes.SocialBar }>
-              <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'>
+            <Bar className={ classes.SocialBar } variant='bottom' justifyContent='center'>
+              <Link href='https://github.com/thenativeweb/wolkenkit' isExternal={ true }>
                 <Icon className={ classes.SocialIcon } name='github' />
-              </a>
-              <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'>
+              </Link>
+              <Link href='http://slackin.wolkenkit.io' isExternal={ true }>
                 <Icon className={ classes.SocialIcon } name='slack' />
-              </a>
-              <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'>
+              </Link>
+              <Link href='http://stackoverflow.com/questions/tagged/wolkenkit' isExternal={ true }>
                 <Icon className={ classes.SocialIcon } name='stackoverflow' />
-              </a>
-            </BarBottom>
+              </Link>
+            </Bar>
 
             { showSearch ? <Search activePage={ activePage } onClose={ this.handleSearchClose } /> : null }
           </div>

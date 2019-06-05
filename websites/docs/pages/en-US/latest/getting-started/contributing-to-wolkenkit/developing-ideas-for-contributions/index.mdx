@@ -1,5 +1,4 @@
-import Documentation from '../../../../../../layouts/Documentation';
-import Hint from '../../../../../../components/Hint';
+import { Hint, VersionedLink } from '../../../../../../components';
 
 # Developing ideas for contributions
 
@@ -9,9 +8,9 @@ In the following we describe different aspects how you can contribute to wolkenk
 
 <Hint type='question'>
 
-**Unsure what to contribute?**
+  **Unsure what to contribute?**
 
-Maybe you would like to contribute something to wolkenkit, but are unsure about your idea, or maybe you don't know where to start. Actually, we are always there to help, so feel free to [contact us](../../understanding-wolkenkit/getting-help/).
+  Maybe you would like to contribute something to wolkenkit, but are unsure about your idea, or maybe you don't know where to start. Actually, we are always there to help, so feel free to [contact us](../../understanding-wolkenkit/getting-help/).
 
 </Hint>
 
@@ -37,7 +36,7 @@ Typical questions to come up with ideas are:
 
 ## Improving the documentation
 
-A helpful contribution can be to correct a typo or to improve and enhance an explanation that is too vague. For this purpose, each page of the documentation contains a link at the bottom, which you can use to directly [edit the page](https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/<%= current.version %>/getting-started/contributing-to-wolkenkit/getting-ideas-for-contributions/index.md) on GitHub.
+A helpful contribution can be to correct a typo or to improve and enhance an explanation that is too vague. For this purpose, each page of the documentation contains a link at the bottom, which you can use to directly <VersionedLink href='https://github.com/thenativeweb/wolkenkit/edit/monorepo-documentation/websites/docs/pages/en-US/#VERSION#/getting-started/contributing-to-wolkenkit/getting-ideas-for-contributions/index.mdx'>edit the page</VersionedLink> on GitHub.
 
 Typical questions to come up with ideas are:
 
@@ -68,5 +67,3 @@ Typical questions to come up with ideas are:
 - What have you learned from using wolkenkit?
 
 If you would like to write, but don't have your own blog, we can also talk about a guest post for the [blog by the native web](https://www.thenativeweb.io/blog). Additionally, we would be happy to link to your content, such as videos of your talks. Either way, feel free to [contact us](mailto:hello@thenativeweb.io).
-
-export default ({ children }) => <Documentation>{ children }</Documentation>;

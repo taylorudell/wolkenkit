@@ -1,4 +1,4 @@
-import ActivePage from '../services/ActivePage';
+import ActivePage from '../../services/ActivePage';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Brand, withStyles } from 'thenativeweb-ux';

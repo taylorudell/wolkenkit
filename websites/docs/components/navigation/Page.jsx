@@ -1,4 +1,4 @@
-import Link from '../Link.jsx';
+import { Link } from '..';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames, withStyles } from 'thenativeweb-ux';

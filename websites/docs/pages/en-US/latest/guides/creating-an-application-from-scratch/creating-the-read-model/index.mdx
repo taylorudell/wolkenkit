@@ -1,4 +1,4 @@
-import Hint from '../../../../../../components/Hint';
+import { Hint } from '../../../../../../components';
 
 # Creating the read model
 
@@ -10,9 +10,9 @@ $ touch chat/server/readModel/lists/messages.js
 
 <Hint type='question'>
 
-**Where is the context?**
+  **Where is the context?**
 
-In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
+  In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
 
 </Hint>
 
@@ -121,9 +121,9 @@ module.exports = { fields, projections };
 
 <Hint type='congrats'>
 
-**Yay, congratulations!**
+  **Yay, congratulations!**
 
-You have created your first read model, and clients can read and observe it in real-time!
+  You have created your first read model, and clients can read and observe it in real-time!
 
 </Hint>
 

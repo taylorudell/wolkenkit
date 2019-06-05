@@ -1,4 +1,4 @@
-import Bar from '../Bar/index.jsx';
+import { Bar } from '..';
 import React from 'react';
 import { withStyles } from 'thenativeweb-ux';
 

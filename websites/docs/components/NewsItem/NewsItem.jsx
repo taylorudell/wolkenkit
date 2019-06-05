@@ -1,4 +1,4 @@
-import Date from '../Date';
+import { Date } from '..';
 import React from 'react';
 import { withStyles } from 'thenativeweb-ux';
 

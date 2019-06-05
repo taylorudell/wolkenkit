@@ -1,4 +1,4 @@
-import Head from '../components/Head.jsx';
+import { Head } from '../components';
 import React from 'react';
 import { Headline, View } from 'thenativeweb-ux';
 

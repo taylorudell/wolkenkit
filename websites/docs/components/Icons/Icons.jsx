@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Symbols = function () {
+const Icons = function () {
   return (
     <svg style={{ display: 'none' }}>
       <symbol id='icon-close' viewBox='0 0 24 24'>
@@ -26,4 +26,4 @@ const Symbols = function () {
   );
 };
 
-export default Symbols;
+export default Icons;

@@ -1,5 +1,4 @@
-import Documentation from '../../../../../../layouts/Documentation';
-import Hint from '../../../../../../components/Hint';
+import { Hint } from '../../../../../../components';
 
 # Submitting a contribution
 
@@ -13,9 +12,9 @@ When you have a concrete idea for a contribution to wolkenkit, the first thing t
 
 <Hint type='warning'>
 
-**No issue, no pull request**
+  **No issue, no pull request**
 
-If you want to make a substantial contribution, open an issue to ask before working on it. It helps to avoid unnecessary work, and gives context to the pull request you will create later.
+  If you want to make a substantial contribution, open an issue to ask before working on it. It helps to avoid unnecessary work, and gives context to the pull request you will create later.
 
 </Hint>
 
@@ -35,9 +34,9 @@ Once you are done with your work, you are basically ready to create a pull reque
 
 <Hint type='warning'>
 
-**Watch the scope of pull requests**
+  **Watch the scope of pull requests**
 
-Keep your pull requests focused on one thing. If you want to contribute multiple things, use separate pull requests, as they can be reviewed, discussed and merged individually. The more a pull request contains, the harder this gets.
+  Keep your pull requests focused on one thing. If you want to contribute multiple things, use separate pull requests, as they can be reviewed, discussed and merged individually. The more a pull request contains, the harder this gets.
 
 </Hint>
 
@@ -53,10 +52,8 @@ Next, a maintainer will review your pull request. This includes a functional and
 
 <Hint type='congrats'>
 
-**Merging your pull requests**
+  **Merging your pull requests**
 
-When everything is ready, the maintainer will finally merge the pull request.
+  When everything is ready, the maintainer will finally merge the pull request.
 
 </Hint>
-
-export default ({ children }) => <Documentation>{ children }</Documentation>;

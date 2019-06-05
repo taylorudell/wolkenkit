@@ -10,7 +10,6 @@ const styles = theme => ({
   Bar: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     'min-height': theme.barHeight,
     fontSize: theme.font.size.md,
@@ -25,15 +24,36 @@ const styles = theme => ({
     '& a:focus, a:hover': {
       color: theme.color.brand.highlight
     }
+  },
 
+  JustifyContentCenter: {
+    justifyContent: 'center'
+  },
+
+  JustifyContentSpaceBetween: {
+    justifyContent: 'space-between'
+  },
+
+  VariantBottom: {
+    background: theme.color.brand.dark,
+    borderBottom: 0,
+    borderTop: '1px solid rgba(255,255,255, 0.1)'
   }
 });
 
-const Bar = ({ children, classes, className = '', style }) => (
-  <div className={ classNames(classes.Bar, className) } style={ style }>
-    { children }
-  </div>
-);
+const Bar = ({ children, classes, className, style, variant, justifyContent }) => {
+  const componentClasses = classNames(classes.Bar, {
+    [classes.JustifyContentCenter]: justifyContent === 'center',
+    [classes.JustifyContentSpaceBetween]: justifyContent === 'space-between',
+    [classes.VariantBottom]: variant === 'bottom'
+  }, className);
+
+  return (
+    <div className={ componentClasses } style={ style }>
+      { children }
+    </div>
+  );
+};
 
 Bar.Action = Action;
 Bar.BackAction = BackAction;
@@ -44,6 +64,10 @@ Bar.extendStyle = function (customStyles) {
   return function (theme) {
     return merge({}, styles(theme), customStyles(theme));
   };
+};
+
+Bar.defaultProps = {
+  justifyContent: 'space-between'
 };
 
 export default withStyles(styles)(Bar);

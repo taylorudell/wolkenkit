@@ -1,11 +1,9 @@
 import ActivePage from '../../services/ActivePage';
-import Breadcrumbs from '../Breadcrumbs.jsx';
-import Head from '../Head.jsx';
 import Metadata from '../../services/Metadata';
-import PageFooter from '../PageFooter.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './styles';
+import { Breadcrumbs, Head, PageFooter } from '..';
 import { classNames, withStyles } from 'thenativeweb-ux';
 
 class PageContent extends React.Component {

@@ -1,5 +1,5 @@
 import ActivePage from '../../services/ActivePage';
-import Bar from '../Bar/index.jsx';
+import { Bar } from '..';
 import PropTypes from 'prop-types';
 import React from 'react';
 import search from '../../services/search';

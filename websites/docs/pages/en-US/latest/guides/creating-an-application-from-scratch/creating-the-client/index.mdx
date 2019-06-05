@@ -1,7 +1,4 @@
-import Code from '../../../../../../components/Code';
-import Hint from '../../../../../../components/Hint';
-import ActivePage from '../../../../../../components/ActivePage';
-import VersionedLink from '../../../../../../components/VersionedLink';
+import { ActivePage, Code, Hint, VersionedLink } from '../../../../../../components';
 
 # Creating the client
 
@@ -31,7 +28,7 @@ your `chat` directory and, from within this directory, run the following command
 
 As a result, your directory structure should look like this:
 
-<Code language='shell'>{`
+```shell
   chat
     client
       package.json
@@ -42,13 +39,13 @@ As a result, your directory structure should look like this:
       ...
     server
       ...
-`}</Code>
+```
 
 <Hint type='congrats'>
 
-> **Vanilla JavaScript**
->
-> The client does not rely on a specific UI framework, so you do not need any special knowledge besides what you know about vanilla JavaScript anyway.
+  **Vanilla JavaScript**
+
+  The client does not rely on a specific UI framework, so you do not need any special knowledge besides what you know about vanilla JavaScript anyway.
 
 </Hint>
 
@@ -211,9 +208,9 @@ Once you reload your browser, you are now able to chat. This even works with mul
 
 <Hint type='congrats'>
 
-**Yay, congratulations!**
+  **Yay, congratulations!**
 
-You have created your first application from scratch, including a real-time client!
+  You have created your first application from scratch, including a real-time client!
 
 </Hint>
 

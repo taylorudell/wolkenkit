@@ -1,10 +1,9 @@
-import Blockquote from '../components/Blockquote';
-import Code from '../components/Code';
 import Documentation from '../layouts/Documentation';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import theme from '../theme/docs';
 import App, { Container } from 'next/app';
+import { Blockquote, Code } from '../components';
 import { removeServerSideStyles, ThemeProvider } from 'thenativeweb-ux';
 
 const mdxComponents = {

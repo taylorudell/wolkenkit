@@ -41,7 +41,7 @@ const styles = theme => ({
       top: '50%',
       content: '""',
       left: 0,
-      marginLeft: '205px',
+      marginLeft: `${theme.space(26)}px`,
       marginTop: '-10px'
     }
   },

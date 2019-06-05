@@ -1,7 +1,7 @@
 import ActivePage from '../../services/ActivePage';
 import Base from '../Base.jsx';
 import Metadata from '../../services/Metadata';
-import PageContent from '../../components/PageContent';
+import { PageContent } from '../../components';
 import { PageContextProvider } from '../PageContext';
 import React from 'react';
 import search from '../../services/search';

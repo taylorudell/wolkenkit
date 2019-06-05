@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { usePageContext } from '../../layouts/PageContext';
 
-const SpecialLink = function ({ href, children, rewriteLatestAs = 'latest' } = {}) {
+const VersionedLink = function ({ href, children, rewriteLatestAs } = {}) {
   const { activePage } = usePageContext();
   let { version } = activePage;
 
@@ -12,4 +13,13 @@ const SpecialLink = function ({ href, children, rewriteLatestAs = 'latest' } = {
   return <a href={ href.replace('#VERSION#', version) }>{ children }</a>;
 };
 
-export default SpecialLink;
+VersionedLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  rewriteLatestAs: PropTypes.string
+};
+
+VersionedLink.defaultProps = {
+  rewriteLatestAs: 'latest'
+};
+
+export default VersionedLink;

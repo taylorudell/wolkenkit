@@ -1,8 +1,6 @@
-import HighlightText from '../HighlightText.jsx';
-import Keywords from '../Keywords.jsx';
-import Link from '../Link.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { HighlightText, Keywords, Link } from '..';
 import { Icon, withStyles } from 'thenativeweb-ux';
 
 const subtleWhite = 'rgba(255, 255, 255, 0.65)';

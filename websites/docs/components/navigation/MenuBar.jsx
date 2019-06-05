@@ -1,4 +1,4 @@
-import Bar from '../Bar';
+import { Bar } from '..';
 import PropTypes from 'prop-types';
 import React from 'react';
 

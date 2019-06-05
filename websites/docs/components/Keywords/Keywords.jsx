@@ -1,4 +1,4 @@
-import HighlightText from './HighlightText.jsx';
+import { HighlightText } from '..';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { classNames, withStyles } from 'thenativeweb-ux';

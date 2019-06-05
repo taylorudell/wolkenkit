@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Creating the write model
 
 First, you need to create a new directory for your application. Call it `chat`:
@@ -26,11 +28,13 @@ $ mkdir chat/server/readModel/lists
 $ mkdir chat/server/flows
 ```
 
-::: hint-question
-> **What do write model, read model, and flows mean?**
->
-> If you are unsure about what the write model, the read model, and flows are, have a look at the [core concepts](../../../getting-started/understanding-wolkenkit/core-concepts/).
-:::
+<Hint type='question'>
+
+  **What do write model, read model, and flows mean?**
+
+  If you are unsure about what the write model, the read model, and flows are, have a look at the [core concepts](../../../getting-started/understanding-wolkenkit/core-concepts/).
+
+</Hint>
 
 As a result, your directory structure should look like this:
 
@@ -151,7 +155,7 @@ const commands = {
     message.events.publish('sent', {
       text: command.data.text
     });
-  }  
+  }
 };
 ```
 
@@ -183,7 +187,7 @@ const events = {
     message.setState({
       text: event.data.text
     });
-  }  
+  }
 };
 ```
 
@@ -198,7 +202,7 @@ const commands = {
   // ...
   like (message, command) {
     message.events.publish('liked');
-  }  
+  }
 };
 ```
 
@@ -223,7 +227,7 @@ const events = {
     message.setState({
       likes: event.data.likes
     });
-  }  
+  }
 };
 ```
 
@@ -316,11 +320,13 @@ $ wolkenkit start
 
 For more details, see [controlling the lifecycle](../../../reference/using-the-cli/controlling-the-lifecycle/).
 
-:::hint-congrats
-> **Yay, congratulations!**
->
-> You have created your first write model, and you are now also running a cloud-native application that is powered by an HTTP API that streams events in real-time, all securely encrypted using TLS!
-:::
+<Hint type='congrats'>
+
+  **Yay, congratulations!**
+
+  You have created your first write model, and you are now also running a cloud-native application that is powered by an HTTP API that streams events in real-time, all securely encrypted using TLS!
+
+</Hint>
 
 Let's try it. First subscribe to the real-time events. Open a new terminal and run the following command:
 

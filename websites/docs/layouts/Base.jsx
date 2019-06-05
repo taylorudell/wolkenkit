@@ -1,25 +1,17 @@
 import ActivePage from '../services/ActivePage';
-import Head from '../components/Head';
 import Metadata from '../services/Metadata';
-import Navigation from '../components/navigation/Navigation.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Symbols from '../components/Symbols.jsx';
 import { Application, classNames, View, withStyles } from 'thenativeweb-ux';
+import { Head, Icons, Navigation } from '../components';
 
 const styles = theme => ({
   '@global': {
     body: {
       color: theme.color.brand.dark,
-      lineHeight: '1.42857143',
+      lineHeight: '1.45',
       fontFamily: theme.font.family.default,
       fontWeight: 400
-    },
-
-    html: {
-      '-webkit-font-smoothing': 'antialiased',
-      'font-smoothing': 'antialiased',
-      'text-shadow': '1px 1px 1px rgba(0,0,0,0.004)'
     },
 
     'html, body': {
@@ -66,8 +58,10 @@ const Base = function ({ activePage, classes, className, children, metadata }) {
       <Head>
         <title>{ metadata.title }</title>
       </Head>
+
       <Application.Services />
-      <Symbols />
+
+      <Icons />
 
       <Navigation
         activePage={ activePage }

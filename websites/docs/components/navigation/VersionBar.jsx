@@ -1,12 +1,10 @@
 import ActivePage from '../../services/ActivePage';
-import Bar from '../Bar/index.jsx';
-import Dropdown from '../Dropdown.jsx';
-import Link from '../Link.jsx';
 import Metadata from '../../services/Metadata';
-import { Product } from 'thenativeweb-ux';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Router from 'next/router';
+import { Bar, Link } from '..';
+import { Dropdown, Product } from 'thenativeweb-ux';
 
 class VersionBar extends React.PureComponent {
   constructor (props) {
@@ -43,7 +41,9 @@ class VersionBar extends React.PureComponent {
         </Bar.Left>
         <Bar.Right>
           <Dropdown
-            options={ Object.keys(metadata.versions) }
+            style={{ margin: 0 }}
+            value={ activePage.version }
+            options={ Object.keys(metadata.versions).map(version => ({ label: version, value: version })) }
             selected={ activePage.version }
             onChange={ this.handleVersionChanged }
           />
