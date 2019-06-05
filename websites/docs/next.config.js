@@ -1,7 +1,6 @@
 'use strict';
 
-const slug = require('remark-slug'),
-      withCSS = require('@zeit/next-css');
+const slug = require('remark-slug');
 
 const withMDX = require('@next/mdx')({
   extension: /\.mdx$/u,
@@ -14,4 +13,4 @@ const config = {
   pageExtensions: [ 'js', 'jsx', 'mdx' ]
 };
 
-module.exports = withCSS(withMDX(config));
+module.exports = withMDX(config);

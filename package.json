@@ -52,7 +52,6 @@
     "wolkenkit": "bin/wolkenkit.js"
   },
   "dependencies": {
-    "@zeit/next-css": "1.0.1",
     "JSONStream": "1.3.5",
     "amqplib": "0.5.3",
     "app-root-path": "2.2.1",
