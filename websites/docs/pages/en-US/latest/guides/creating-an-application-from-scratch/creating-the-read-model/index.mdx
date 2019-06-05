@@ -1,3 +1,5 @@
+import Hint from '../../../../../../components/Hint';
+
 # Creating the read model
 
 To create the *messages* list, create a `messages.js` file within the `lists` directory:
@@ -5,11 +7,14 @@ To create the *messages* list, create a `messages.js` file within the `lists` di
 ```shell
 $ touch chat/server/readModel/lists/messages.js
 ```
-:::hint-question
-> **Where is the context?**
->
-> In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
-:::
+
+<Hint type='question'>
+
+**Where is the context?**
+
+In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
+
+</Hint>
 
 Then, open the file and add the following base structure:
 
@@ -114,10 +119,12 @@ const projections = {
 module.exports = { fields, projections };
 ```
 
-:::hint-congrats
-> **Yay, congratulations!**
->
-> You have created your first read model, and clients can read and observe it in real-time!
-:::
+<Hint type='congrats'>
+
+**Yay, congratulations!**
+
+You have created your first read model, and clients can read and observe it in real-time!
+
+</Hint>
 
 Now we are ready for [creating the client](../creating-the-client/), so let's go ahead!

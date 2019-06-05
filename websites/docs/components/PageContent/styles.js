@@ -1,10 +1,6 @@
-'use strict';
-
-const color = require('color');
+import color from 'color';
 
 const tableCellPadding = '8px 8px 10px 8px';
-
-const highlightStyles = require('./highlightStyles');
 
 const styles = theme => ({
   PageContent: {
@@ -13,7 +9,7 @@ const styles = theme => ({
     overflow: 'auto',
     '-webkit-overflow-scrolling': 'touch',
     transition: 'width 800ms cubic-bezier(0.190, 1.000, 0.220, 1.000)',
-    'will-change': 'width',
+    willChange: 'width',
     background: theme.color.content.background,
 
     '& > *': {
@@ -27,46 +23,44 @@ const styles = theme => ({
   },
 
   Article: {
-    ...highlightStyles,
-
-    padding: [ 0, theme.grid.stepSize * 4.8 ],
-    'font-size': theme.font.size.copytext,
+    padding: [ 0, theme.space(6) ],
+    fontSize: theme.font.size.lg,
 
     '& a': {
-      'font-weight': 400
+      fontWeight: 400
     },
 
     '& h1, h2, h3, h4, h5': {
       margin: '1em 0 0.5em 0',
-      'line-height': '1.1',
+      lineHeight: '1.1',
       position: 'relative',
-      'font-family': theme.font.family.headline,
-      'margin-top': theme.grid.stepSize * 5,
-      'font-weight': 500
+      fontFamily: theme.font.family.headline,
+      marginTop: theme.space(6),
+      fontWeight: 500
     },
 
     '& h1': {
-      'font-size': '40px'
+      fontSize: '40px'
     },
 
     '& h2': {
-      'font-size': '25px'
+      fontSize: '25px'
     },
 
     '& h3': {
-      'font-size': '20px'
+      fontSize: '20px'
     },
 
     '& h4': {
-      'font-size': theme.font.family.copytext,
-      'font-family': theme.font.family.default,
-      'font-weight': 600
+      fontSize: theme.font.family.copytext,
+      fontFamily: theme.font.family.default,
+      fontWeight: 600
     },
 
     '& h5': {
-      'font-size': theme.font.family.copytext,
-      'font-family': theme.font.family.default,
-      'font-weight': 600
+      fontSize: theme.font.family.copytext,
+      fontFamily: theme.font.family.default,
+      fontWeight: 600
     },
 
     '& .header-anchor': {
@@ -74,11 +68,11 @@ const styles = theme => ({
       display: 'block',
       left: '-22px',
       top: '50%',
-      'margin-top': '-0.55em',
-      'padding-right': '10px',
-      'font-size': '25px',
+      marginTop: '-0.55em',
+      paddingRight: '10px',
+      fontSize: '25px',
       color: theme.color.content.background,
-      'font-weight': 'normal'
+      fontWeight: 'normal'
     },
 
     '& h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:hover .header-anchor, h5:hover .header-anchor': {
@@ -86,29 +80,29 @@ const styles = theme => ({
     },
 
     '& p, ul, ol': {
-      'max-width': theme.pageContent.maxWidth,
-      'font-weight': 300,
+      maxWidth: theme.pageContent.maxWidth,
+      fontWeight: 300,
       color: theme.color.copyText
     },
 
     '& p': {
-      margin: [ theme.grid.stepSize * 1.5, 0 ]
+      margin: [ theme.space(2), 0 ]
     },
 
     '& img': {
-      'margin-top': theme.grid.stepSize * 3,
+      marginTop: theme.space(4),
       width: '100%'
     },
 
     '& pre, code': {
-      'font-family': theme.font.family.code,
-      'font-size': theme.font.size.code
+      fontFamily: theme.font.family.code,
+      fontSize: theme.font.size.md
     },
 
     '& pre': {
-      'max-width': theme.pageContent.maxWidth,
-      'margin-top': theme.grid.stepSize * 1.5,
-      'margin-bottom': theme.grid.stepSize * 5,
+      maxWidth: theme.pageContent.maxWidth,
+      marginTop: theme.space(2),
+      marginBottom: theme.space(6),
       padding: 0,
       border: 0
     },
@@ -117,110 +111,99 @@ const styles = theme => ({
       display: 'block',
       color: '#abb2bf',
       background: '#282c34',
-      padding: [ theme.grid.stepSize * 1.5, theme.grid.stepSize * 2 ]
+      padding: [ theme.space(2), theme.space(3) ]
     },
 
     '& p code, & ul li code, & table code': {
       padding: '0.25em 0.3em',
-      'background-color': color(theme.color.brand.highlight).
+      backgroundColor: color(theme.color.brand.highlight).
         fade(0.9).
         rgb().
         string(),
-      'border-radius': 0,
-      'font-size': theme.font.size.default
+      borderRadius: 0,
+      fontSize: theme.font.size.md
     },
 
     '& ul': {
       margin: '0.5em 0 1em 0em',
       padding: 0,
-      'padding-left': '1em',
+      paddingLeft: '1em',
       'text-indent': '-0.85em',
 
       '& ul': {
-        'margin-left': '1.5em'
+        marginLeft: '1.5em'
       },
 
       '& li': {
         margin: 0,
         padding: 0,
-        'padding-bottom': '0.25em',
+        paddingBottom: '0.25em',
         'list-style-type': 'none'
       },
 
       '& li:before': {
-        'margin-right': '0.5em',
+        marginRight: '0.5em',
         content: '"\\2022"'
       }
     },
 
     '& table': {
       width: '100%',
-      'max-width': theme.pageContent.maxWidth,
-      'margin-bottom': theme.grid.stepSize * 2,
-      'border-bottom': `1px solid ${theme.color.content.border}`,
-      'font-weight': 300,
+      maxWidth: theme.pageContent.maxWidth,
+      marginBottom: theme.space(3),
+      borderBottom: `1px solid ${theme.color.content.border}`,
+      fontWeight: 300,
 
       '& th:first-child, & td:first-child': {
-        'padding-left': theme.grid.stepSize * 1.5
+        paddingLeft: theme.space(2)
       },
 
       '& th:last-child, & td:last-child': {
-        'padding-right': theme.grid.stepSize * 1.5
+        paddingRight: theme.space(2)
       },
 
       '& thead': {
         '& th': {
           padding: tableCellPadding,
-          'vertical-align': 'top',
+          verticalAlign: 'top',
           background: theme.color.panel.light
         },
 
         '& th:last-child': {
-          'border-right': `1px solid ${theme.color.content.border}`
+          borderRight: `1px solid ${theme.color.content.border}`
         }
       },
 
       '& tbody': {
         '& td': {
           padding: tableCellPadding,
-          'vertical-align': 'top',
-          'border-top': `1px solid ${theme.color.content.border}`
+          verticalAlign: 'top',
+          borderTop: `1px solid ${theme.color.content.border}`
         },
 
         '& tr:first-child td': {
-          'border-top': 'none'
+          borderTop: 'none'
         },
 
         '& td:first-child': {
-          'border-left': `1px solid ${theme.color.content.border}`
+          borderLeft: `1px solid ${theme.color.content.border}`
         },
 
         '& td:last-child': {
-          'border-right': `1px solid ${theme.color.content.border}`
+          borderRight: `1px solid ${theme.color.content.border}`
         }
       }
     },
 
-    '& blockquote': {
-      'max-width': theme.pageContent.maxWidth,
-      padding: [ theme.grid.stepSize * 3, theme.grid.stepSize * 6, theme.grid.stepSize * 3, theme.grid.stepSize * 3 ],
-      margin: [ theme.grid.stepSize * 1.5, theme.grid.stepSize * 3, theme.grid.stepSize * 1.5, 0 ],
-      background: theme.color.panel.light,
-
-      '& p:first-child': {
-        'margin-top': 0
-      }
-    },
-
     '& .read-model, .write-model, .flows': {
-      'padding-left': theme.grid.stepSize * 3,
-      'margin-bottom': theme.grid.stepSize * 8,
-      'margin-left': 115,
-      'border-left': '1px solid #eeeeee',
+      paddingLeft: theme.space(4),
+      marginBottom: theme.space(10),
+      marginLeft: 115,
+      borderLeft: '1px solid #eeeeee',
       position: 'relative',
 
       '& p': {
-        'max-width': theme.pageContent.maxWidth - 3 * theme.grid.stepSize - 115
+        maxWidth: theme.pageContent.maxWidth - 3 * theme.grid.stepSize - 115
       },
 
       '&::after': {
@@ -235,15 +218,15 @@ const styles = theme => ({
     },
 
     '& .read-model::after': {
-      'background-image': `url('/data-flow/read-model.svg')`
+      'background-image': `url(/data-flow/read-model.svg)`
     },
 
     '& .write-model::after': {
-      'background-image': `url('/data-flow/write-model.svg')`
+      'background-image': `url(/data-flow/write-model.svg)`
     },
 
     '& .flows::after': {
-      'background-image': `url('/data-flow/flows.svg')`
+      'background-image': `url(/data-flow/flows.svg)`
     }
 
 
@@ -265,47 +248,47 @@ const styles = theme => ({
     },
 
     Page: {
-      'padding-right': theme.grid.stepSize * 1.5,
+      paddingRight: theme.space(2),
 
       '& .header-anchor': {
         color: theme.color.brand.highlight
       },
 
       '& h1, h2, h3, h4, h5': {
-        margin: [ theme.grid.stepSize * 2.5, 0, 0, 0 ]
+        margin: [ theme.space(3), 0, 0, 0 ]
       },
 
       '& h1': {
-        'font-size': 26
+        fontSize: 26
       },
 
       '& h2': {
-        'font-size': 20
+        fontSize: 20
       },
 
       '& h3': {
-        'font-size': 18
+        fontSize: 18
       },
 
       '& h4': {
-        'font-size': 18
+        fontSize: 18
       },
 
       '& h5': {
         margin: 0,
-        'font-size': 18
+        fontSize: 18
       },
 
       '& ul ul': {
-        'margin-left': '0em'
+        marginLeft: '0em'
       },
 
       '& .read-model, .write-model, .flows': {
-        'padding-left': 0,
-        'margin-top': 115 + theme.grid.stepSize * 6,
-        'margin-bottom': theme.grid.stepSize * 8,
-        'margin-left': 0,
-        'border-left': 'none',
+        paddingLeft: 0,
+        marginTop: 115 + theme.space(8),
+        marginBottom: theme.space(10),
+        marginLeft: 0,
+        borderLeft: 'none',
 
         '&::after': {
           top: -115,
@@ -329,4 +312,4 @@ const styles = theme => ({
   // }
 });
 
-module.exports = styles;
+export default styles;

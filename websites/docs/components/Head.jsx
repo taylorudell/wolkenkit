@@ -1,10 +1,8 @@
-'use strict';
+import Head from 'next/head';
+import React from 'react';
 
-const Head = require('next/head').default,
-      React = require('react');
-
-const MyHead = ({ children }) => (
+const CustomHead = ({ children }) => (
   <Head>{ children }</Head>
 );
 
-module.exports = MyHead;
+export default CustomHead;

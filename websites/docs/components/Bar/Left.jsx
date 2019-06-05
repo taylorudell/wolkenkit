@@ -1,12 +1,9 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      React = require('react');
+import React from 'react';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Left: {
-    'margin-left': theme.grid.stepSize * 1.5
+    marginLeft: theme.space(2)
   }
 });
 
@@ -16,4 +13,4 @@ const Left = ({ children, classes, className = '', style }) => (
   </div>
 );
 
-module.exports = injectSheet(styles)(Left);
+export default withStyles(styles)(Left);

@@ -1,8 +1,5 @@
-'use strict';
-
-const semver = require('semver');
-
-const { baseUrl, title, versions, news } = require('../configuration');
+import semver from 'semver';
+import { baseUrl, news, title, versions } from '../configuration';
 
 const slugify = function (text) {
   if (typeof text === 'string') {
@@ -84,4 +81,4 @@ class Metadata {
   }
 }
 
-module.exports = Metadata;
+export default Metadata;

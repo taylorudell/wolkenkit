@@ -1,10 +1,8 @@
-'use strict';
+import Link from 'next/link';
+import React from 'react';
 
-const Link = require('next/link').default,
-      React = require('react');
-
-const MyLink = ({ as, href, children, className }) => (
+const CustomLink = ({ as, href, children, className }) => (
   <Link href={ href } as={ as }><a className={ className }>{ children }</a></Link>
 );
 
-module.exports = MyLink;
+export default CustomLink;

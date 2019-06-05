@@ -1,3 +1,1 @@
-import PageContent from './PageContent.jsx';
-
-export default PageContent;
+export { default } from './PageContent.jsx';

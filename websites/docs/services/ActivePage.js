@@ -1,5 +1,3 @@
-'use strict';
-
 const collectBreadcrumbs = function ({ language, children, path, into } = {}) {
   if (!language) {
     throw new Error('Language is missing.');
@@ -95,4 +93,4 @@ class ActivePage {
   }
 }
 
-module.exports = ActivePage;
+export default ActivePage;

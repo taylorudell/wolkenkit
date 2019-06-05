@@ -26,7 +26,7 @@ class CustomDocument extends NextDocument {
       styles: (
         <React.Fragment>
           { initialProps.styles }
-          <style type='text/css' id='server-side-styles' dangerouslySetInnerHTML={{ __html: collection.toString() }} />
+          { collection.generateStyleTag() }
         </React.Fragment>
       )
     };

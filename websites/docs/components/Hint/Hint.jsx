@@ -1,39 +1,14 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
+import { getBaseStyle as getBlockquoteBaseStyle } from '../Blockquote/Blockquote.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Hint: {
     position: 'relative',
-    'max-width': theme.pageContent.maxWidth,
-    'margin-top': theme.grid.stepSize * 6,
-    'margin-bottom': theme.grid.stepSize * 6,
-
-    '& blockquote': {
-      'border-left': 'none',
-      'margin-left': '224px',
-      'border-radius': theme.grid.stepSize,
-
-      '& strong': {
-        'font-family': 'Kalam',
-        'font-size': '24px',
-        'letter-spacing': '0.5px'
-      }
-    },
-    '& blockquote:after': {
-      position: 'absolute',
-      'border-color': `transparent ${theme.color.panel.light} transparent transparent`,
-      'border-style': 'solid',
-      'border-width': theme.grid.stepSize,
-      top: '50%',
-      content: '""',
-      left: 0,
-      'margin-left': '205px',
-      'margin-top': theme.grid.stepSize / -2
-    },
+    maxWidth: theme.pageContent.maxWidth,
+    marginTop: theme.space(8),
+    marginBottom: theme.space(8),
 
     '&::after': {
       position: 'absolute',
@@ -41,35 +16,59 @@ const styles = theme => ({
       height: '200px',
       left: '10px',
       top: '50%',
-      'margin-top': '-100px',
+      marginTop: '-120px',
       content: '""',
       'background-repeat': 'no-repeat'
     }
   },
 
+  Bubble: {
+    ...getBlockquoteBaseStyle(theme),
+    marginLeft: `${theme.space(28)}px`,
+    borderRadius: theme.grid.stepSize,
+
+    '& strong': {
+      fontFamily: 'Kalam',
+      fontSize: '24px',
+      'letter-spacing': '0.5px'
+    },
+
+    '&:after': {
+      position: 'absolute',
+      'border-color': `transparent ${theme.color.panel.light} transparent transparent`,
+      'border-style': 'solid',
+      'border-width': theme.grid.stepSize,
+      top: '50%',
+      content: '""',
+      left: 0,
+      marginLeft: '205px',
+      marginTop: '-10px'
+    }
+  },
+
   TypeCongrats: {
     '&::after': {
-      'background-image': `url('/static/mascot/congrats-medium.svg')`
+      'background-image': 'url(/static/mascot/congrats-medium.svg)'
     }
   },
   TypeQuestion: {
     '&::after': {
-      'background-image': `url('/static/mascot/question-medium.svg')`
+      'background-image': 'url(/static/mascot/question-medium.svg)'
     }
   },
   TypeTip: {
     '&::after': {
-      'background-image': `url('/static/mascot/tip-medium.svg')`
+      'background-image': 'url(/static/mascot/tip-medium.svg)'
     }
   },
   TypeWarning: {
     '&::after': {
-      'background-image': `url('/static/mascot/warning-medium.svg')`
+      'background-image': 'url(/static/mascot/warning-medium.svg)'
     }
   },
   TypeWisdom: {
     '&::after': {
-      'background-image': `url('/static/mascot/wisdom-medium.svg')`
+      'background-image': 'url(/static/mascot/wisdom-medium.svg)'
     }
   }
 });
@@ -85,7 +84,9 @@ const Hint = ({ children, classes, className = '', style, type }) => {
 
   return (
     <div className={ componentClasses } style={ style }>
-      { children }
+      <blockquote className={ classes.Bubble }>
+        { children }
+      </blockquote>
     </div>
   );
 };
@@ -94,4 +95,4 @@ Hint.propTypes = {
   type: PropTypes.oneOf([ 'congrats', 'question', 'tip', 'warning', 'wisdom' ])
 };
 
-module.exports = injectSheet(styles)(Hint);
+export default withStyles(styles)(Hint);

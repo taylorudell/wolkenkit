@@ -1,29 +1,25 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      merge = require('lodash/merge'),
-      React = require('react');
-
-const Action = require('./Action.jsx'),
-      BackAction = require('./BackAction.jsx'),
-      Left = require('./Left.jsx'),
-      Right = require('./Right.jsx');
+import Action from './Action.jsx';
+import BackAction from './BackAction.jsx';
+import Left from './Left.jsx';
+import merge from 'lodash/merge';
+import React from 'react';
+import Right from './Right.jsx';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Bar: {
     display: 'flex',
-    'flex-direction': 'row',
-    'justify-content': 'space-between',
-    'align-items': 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     'min-height': theme.barHeight,
-    'font-size': theme.font.size.default,
-    'border-bottom': '1px solid rgba(255,255,255, 0.1)',
+    fontSize: theme.font.size.md,
+    borderBottom: '1px solid rgba(255,255,255, 0.1)',
     color: 'rgba(255, 255, 255, 0.65)',
 
     '& a, a:visited': {
       color: 'rgba(255, 255, 255, 0.65)',
-      'text-decoration': 'none'
+      textDecoration: 'none'
     },
 
     '& a:focus, a:hover': {
@@ -50,4 +46,4 @@ Bar.extendStyle = function (customStyles) {
   };
 };
 
-module.exports = injectSheet(styles)(Bar);
+export default withStyles(styles)(Bar);

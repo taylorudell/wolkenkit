@@ -1,23 +1,20 @@
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Application, View } = require('thenativeweb-ux');
-
-const ActivePage = require('../services/ActivePage'),
-      Head = require('../components/Head.jsx'),
-      Metadata = require('../services/Metadata'),
-      MobileNavigation = require('../components/MobileNavigation.jsx'),
-      Navigation = require('../components/navigation/Navigation.jsx'),
-      Symbols = require('../components/Symbols.jsx');
+import ActivePage from '../services/ActivePage';
+import Head from '../components/Head';
+import Metadata from '../services/Metadata';
+import MobileNavigation from '../components/MobileNavigation.jsx';
+import Navigation from '../components/navigation/Navigation.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Symbols from '../components/Symbols.jsx';
+import { Application, classNames, View, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   '@global': {
     body: {
       color: theme.color.brand.dark,
-      'line-height': '1.42857143',
-      'font-family': theme.font.family.default,
-      'font-weight': 400
+      lineHeight: '1.42857143',
+      fontFamily: theme.font.family.default,
+      fontWeight: 400
     },
 
     html: {
@@ -40,7 +37,7 @@ const styles = theme => ({
 
     'a, a:visited, a:active': {
       color: theme.color.brand.highlight,
-      'text-decoration': 'none'
+      textDecoration: 'none'
     },
 
     table: {
@@ -48,7 +45,7 @@ const styles = theme => ({
       'border-spacing': 0,
 
       '& th': {
-        'text-align': 'left'
+        textAlign: 'left'
       }
     }
   },
@@ -99,4 +96,4 @@ Base.propTypes = {
   metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
-module.exports = injectSheet(styles)(Base);
+export default withStyles(styles)(Base);

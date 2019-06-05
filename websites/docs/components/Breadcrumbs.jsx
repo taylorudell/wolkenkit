@@ -1,38 +1,35 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
+import React from 'react';
+import { Icon, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Breadcrumbs: {
     display: 'flex',
-    'align-items': 'center',
+    alignItems: 'center',
     'min-height': theme.barHeight,
-    padding: [ 0, theme.grid.stepSize * 5 ],
-    'font-size': theme.font.size.default,
-    'line-height': theme.font.size.default,
-    'border-bottom': `1px solid ${theme.color.content.border}`,
+    padding: [ 0, theme.space(6) ],
+    fontSize: theme.font.size.md,
+    lineHeight: theme.font.size.md,
+    borderBottom: `1px solid ${theme.color.content.border}`,
     color: '#666',
     overflow: 'auto',
     '-webkit-overflow-scrolling': 'touch',
-    'white-space': 'nowrap'
+    whiteSpace: 'nowrap'
   },
 
   SeparatorIcon: {
     fill: '#aaa',
-    margin: [ 1, theme.grid.stepSize / 2, 0, theme.grid.stepSize / 2 ]
+    margin: [ 1, theme.space(0.5), 0, theme.space(0.5) ]
   },
 
   Item: {
     display: 'flex',
-    'align-items': 'center'
+    alignItems: 'center'
   },
 
   [theme.device.small]: {
     Item: {
       '&:last-child': {
-        'padding-right': theme.grid.stepSize * 3
+        paddingRight: theme.space(4)
       }
     }
   }
@@ -46,7 +43,7 @@ const renderItems = function ({ breadcrumbs, classes }) {
   return breadcrumbs.map(breadcrumb =>
     (
       <span className={ classes.Item } key={ breadcrumb }>
-        <Icon className={ classes.SeparatorIcon } name='chevron' size='s' />
+        <Icon className={ classes.SeparatorIcon } name='chevron' size='sm' />
         <span>{ breadcrumb }</span>
       </span>
     ));
@@ -61,4 +58,4 @@ const Breadcrumbs = function ({ breadcrumbs, classes }) {
   );
 };
 
-module.exports = injectSheet(styles)(Breadcrumbs);
+export default withStyles(styles)(Breadcrumbs);

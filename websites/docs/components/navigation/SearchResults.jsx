@@ -1,38 +1,34 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
-
-const HighlightText = require('../HighlightText.jsx'),
-      Keywords = require('../Keywords.jsx'),
-      Link = require('../Link.jsx');
+import HighlightText from '../HighlightText.jsx';
+import Keywords from '../Keywords.jsx';
+import Link from '../Link.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Icon, withStyles } from 'thenativeweb-ux';
 
 const subtleWhite = 'rgba(255, 255, 255, 0.65)';
 
 const styles = theme => ({
   SearchResults: {
     height: `calc(100vh - ${theme.barHeight * 2}px)`,
-    'background-color': theme.color.brand.dark,
+    backgroundColor: theme.color.brand.dark,
     overflow: 'scroll',
     '-webkit-overflow-scrolling': 'touch'
   },
 
   Errors: {
-    'margin-top': theme.grid.stepSize * 3,
-    padding: theme.grid.stepSize * 1.5,
-    'text-align': 'center',
+    marginTop: theme.space(4),
+    padding: theme.space(2),
+    textAlign: 'center',
     color: subtleWhite
   },
 
   ErrorCause: {
-    'font-size': theme.font.size.large
+    fontSize: theme.font.size.lg
   },
 
   ErrorTip: {
-    'margin-top': theme.grid.stepSize * 2,
-    'font-weight': 400,
+    marginTop: theme.space(3),
+    fontWeight: 400,
 
     '& p': {
       margin: '0 0 4px 0'
@@ -40,21 +36,21 @@ const styles = theme => ({
   },
 
   ErrorHelp: {
-    'margin-top': theme.grid.stepSize,
-    'font-weight': 400,
+    marginTop: theme.grid.stepSize,
+    fontWeight: 400,
     color: subtleWhite,
 
     '& p': {
-      'margin-bottom': theme.grid.stepSize * 2
+      marginBottom: theme.space(3)
     },
 
     '& a, & a:visited': {
-      'margin-right': theme.grid.stepSize * 3,
+      marginRight: theme.space(4),
       color: 'inherit'
     },
 
     '& a:last-child': {
-      'margin-right': 0
+      marginRight: 0
     },
 
     '& a:hover': {
@@ -68,19 +64,19 @@ const styles = theme => ({
 
   SearchResult: {
     margin: 0,
-    padding: [ theme.grid.stepSize * 1.5, theme.grid.stepSize * 2 ],
-    'border-bottom': '1px solid rgba(255,255,255, 0.1)',
-    'font-size': theme.font.size.default
+    padding: [ theme.space(2), theme.space(2.5) ],
+    borderBottom: '1px solid rgba(255,255,255, 0.1)',
+    fontSize: theme.font.size.md
   },
 
   Path: {
-    'font-weight': 400,
-    'font-size': theme.font.size.small,
+    fontWeight: 400,
+    fontSize: theme.font.size.sm,
     color: '#66686d',
-    'padding-bottom': theme.grid.stepSize / 2,
+    paddingBottom: theme.space(0.5),
     display: 'flex',
-    'flex-wrap': 'wrap',
-    'align-items': 'center'
+    flexWrap: 'wrap',
+    alignItems: 'center'
   },
 
   Section: {
@@ -90,7 +86,7 @@ const styles = theme => ({
 
   PathSeparator: {
     display: 'inline-flex',
-    'margin-left': 2
+    marginLeft: 2
   },
 
   PathSeparatorIcon: {
@@ -106,7 +102,7 @@ const styles = theme => ({
     display: 'block',
 
     '&:link, &:visited': {
-      'font-weight': 600,
+      fontWeight: 600,
       color: theme.color.brand.white
     },
 
@@ -136,13 +132,13 @@ const SearchResults = ({ classes, results, query }) => {
           <div className={ classes.ErrorHelp }>
             <p>Or get help from the community:</p>
             <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } size='m' name='slack' />
+              <Icon className={ classes.SocialIcon } size='md' name='slack' />
             </a>
             <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } size='m' name='stackoverflow' />
+              <Icon className={ classes.SocialIcon } size='md' name='stackoverflow' />
             </a>
             <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'>
-              <Icon className={ classes.SocialIcon } size='m' name='github' />
+              <Icon className={ classes.SocialIcon } size='md' name='github' />
             </a>
           </div>
         </div>
@@ -168,7 +164,7 @@ const SearchResults = ({ classes, results, query }) => {
             { result.chapter ? (
               <React.Fragment>
                 <div className={ classes.PathSeparator }>
-                  <Icon className={ classes.PathSeparatorIcon } name='chevron' size='s' />
+                  <Icon className={ classes.PathSeparatorIcon } name='chevron' size='sm' />
                 </div>
                 <div className={ classes.Chapter }>
                   <HighlightText searchWords={ searchWords }>
@@ -199,4 +195,4 @@ SearchResults.propTypes = {
   results: PropTypes.array
 };
 
-module.exports = injectSheet(styles)(SearchResults);
+export default withStyles(styles)(SearchResults);

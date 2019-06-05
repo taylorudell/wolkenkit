@@ -1,9 +1,7 @@
-'use strict';
-
-const color = require('color'),
-      Highlighter = require('react-highlight-words'),
-      injectSheet = require('react-jss').default,
-      React = require('react');
+import color from 'color';
+import Highlighter from 'react-highlight-words';
+import React from 'react';
+import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   HighlightText: {},
@@ -39,4 +37,4 @@ const HighlightText = ({ classes, children, searchWords }) => {
   );
 };
 
-module.exports = injectSheet(styles)(HighlightText);
+export default withStyles(styles)(HighlightText);

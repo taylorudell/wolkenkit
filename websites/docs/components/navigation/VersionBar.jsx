@@ -1,15 +1,12 @@
-'use strict';
-
-const PropTypes = require('prop-types'),
-      React = require('react'),
-      Router = require('next/router').default,
-      { Product } = require('thenativeweb-ux');
-
-const ActivePage = require('../../services/ActivePage'),
-      Bar = require('../Bar/index.jsx'),
-      Dropdown = require('../Dropdown.jsx'),
-      Link = require('../Link.jsx'),
-      Metadata = require('../../services/Metadata');
+import ActivePage from '../../services/ActivePage';
+import Bar from '../Bar/index.jsx';
+import Dropdown from '../Dropdown.jsx';
+import Link from '../Link.jsx';
+import Metadata from '../../services/Metadata';
+import { Product } from 'thenativeweb-ux';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Router from 'next/router';
 
 class VersionBar extends React.PureComponent {
   constructor (props) {
@@ -35,7 +32,7 @@ class VersionBar extends React.PureComponent {
       <Link
         href={ `/${activePage.language}/${activePage.version}` }
       >
-        <Product name='wolkenkit' type='typo-only' size='l' />
+        <Product name='wolkenkit' type='typo-only' size='lg' />
       </Link>
     );
   }
@@ -65,4 +62,4 @@ VersionBar.propTypes = {
   metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
-module.exports = VersionBar;
+export default VersionBar;

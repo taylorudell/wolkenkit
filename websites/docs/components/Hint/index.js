@@ -1,5 +1,1 @@
-'use strict';
-
-const Hint = require('./Hint');
-
-module.exports = Hint;
+export { default } from './Hint.jsx';

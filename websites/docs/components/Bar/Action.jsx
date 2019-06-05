@@ -1,19 +1,15 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
+import React from 'react';
+import { classNames, Icon, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Action: {
     display: 'flex',
-    'margin-right': theme.grid.stepSize * 1.5,
+    marginRight: theme.space(2),
 
     '& a': {
       display: 'flex',
-      'flex-direction': 'row',
-      'align-items': 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
       color: 'rgba(255, 255, 255, 0.65)'
     },
 
@@ -39,7 +35,7 @@ const Action = ({ children, classes, className = '', icon, style, onClick }) => 
     >
       {
         typeof icon === 'string' ?
-          <Icon className={ classes.Icon } name={ icon } size='s' /> :
+          <Icon className={ classes.Icon } name={ icon } size='sm' /> :
           icon
       }
       <span className='label'>{ children }</span>
@@ -47,4 +43,4 @@ const Action = ({ children, classes, className = '', icon, style, onClick }) => 
   </div>
 );
 
-module.exports = injectSheet(styles)(Action);
+export default withStyles(styles)(Action);

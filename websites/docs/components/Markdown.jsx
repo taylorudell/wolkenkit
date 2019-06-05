@@ -1,50 +1,11 @@
-'use strict';
-
-/* eslint-disable no-process-env, global-require */
-// if (process.env.APP_ENV === 'browser') {
-//   require('../../../node_modules/highlight.js/styles/atom-one-dark.css');
-// }
-/* eslint-enable no-process-env, global-require */
-
-// const hljs = require('highlight.js/lib/highlight'),
-const markdownIt = require('markdown-it'),
-      // markdownItAnchor = require('markdown-it-anchor'),
-      // markdownItContainer = require('markdown-it-container'),
-      memoize = require('lodash/memoize'),
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-// const css = require('highlight.js/lib/languages/css'),
-//       javascript = require('highlight.js/lib/languages/javascript'),
-//       json = require('highlight.js/lib/languages/json'),
-//       shell = require('highlight.js/lib/languages/shell'),
-//       xml = require('highlight.js/lib/languages/xml');
-
-// hljs.registerLanguage('css', css);
-// hljs.registerLanguage('javascript', javascript);
-// hljs.registerLanguage('json', json);
-// hljs.registerLanguage('shell', shell);
-// hljs.registerLanguage('xml', xml);
+import markdownIt from 'markdown-it';
+import memoize from 'lodash/memoize';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const markdown = markdownIt({
   html: true
-  // highlight (str, lang) {
-  //   if (lang && hljs.getLanguage(lang)) {
-  //     try {
-  //       return `<pre><code class="hljs ${lang}">${hljs.highlight(lang, str, true).value}</code></pre>`;
-  //     } catch {
-  //       // Ignore errors
-  //     }
-  //   }
-  //
-  //   return `<pre><code class="hljs">${markdown.utils.escapeHtml(str)}</code></pre>`;
-  // }
 });
-  // use(markdownItAnchor, {
-  //   permalink: true,
-  //   permalinkSymbol: '#',
-  //   permalinkBefore: true
-  // }).
 
 const renderMarkdown = memoize(content => markdown.render(content));
 
@@ -63,4 +24,4 @@ Markdown.defaultProps = {
   content: ''
 };
 
-module.exports = Markdown;
+export default Markdown;

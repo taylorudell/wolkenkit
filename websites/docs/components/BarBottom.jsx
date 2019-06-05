@@ -1,16 +1,13 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      React = require('react');
-
-const Bar = require('./Bar/index.jsx');
+import Bar from './Bar/index.jsx';
+import React from 'react';
+import { withStyles } from 'thenativeweb-ux';
 
 const styles = Bar.extendStyle(theme => ({
   Bar: {
     background: theme.color.brand.dark,
-    'border-bottom': 0,
-    'border-top': '1px solid rgba(255,255,255, 0.1)',
-    'justify-content': 'center'
+    borderBottom: 0,
+    borderTop: '1px solid rgba(255,255,255, 0.1)',
+    justifyContent: 'center'
   }
 }));
 
@@ -20,4 +17,4 @@ const BarBottom = ({ children, classes, className = '', style }) => (
   </Bar>
 );
 
-module.exports = injectSheet(styles)(BarBottom);
+export default withStyles(styles)(BarBottom);

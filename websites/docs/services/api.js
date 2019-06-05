@@ -1,5 +1,3 @@
-'use strict';
-
 const axios = require('axios');
 
 /* eslint-disable no-process-env */

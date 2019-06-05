@@ -1,28 +1,24 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Brand } = require('thenativeweb-ux');
-
-const ActivePage = require('../services/ActivePage');
+import ActivePage from '../services/ActivePage';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Brand, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   PageFooter: {
-    margin: [ theme.grid.stepSize * 3, 0, 0, 0 ],
-    padding: [ theme.grid.stepSize * 3, theme.grid.stepSize * 5 ],
-    'font-size': theme.font.size.default,
-    'font-weight': 300,
+    margin: [ theme.space(4), 0, 0, 0 ],
+    padding: [ theme.space(4), theme.space(6) ],
+    fontSize: theme.font.size.md,
+    fontWeight: 300,
 
     '& a': {
-      'font-weight': 400
+      fontWeight: 400
     }
   },
 
   About: {
-    'border-top': `1px solid ${theme.color.content.border}`,
-    padding: [ theme.grid.stepSize * 3, 0, 0, 0 ],
-    'text-align': 'center',
+    borderTop: `1px solid ${theme.color.content.border}`,
+    padding: [ theme.space(4), 0, 0, 0 ],
+    textAlign: 'center',
 
     '& p': {
       margin: 0
@@ -30,7 +26,7 @@ const styles = theme => ({
   },
 
   Copyright: {
-    'text-align': 'center',
+    textAlign: 'center',
     padding: 0,
 
     '& p': {
@@ -41,11 +37,11 @@ const styles = theme => ({
   [theme.device.small]: {
     PageFooter: {
       margin: 0,
-      'padding-right': theme.grid.stepSize * 1.5
+      paddingRight: theme.space(2)
     },
 
     Copyright: {
-      'margin-top': theme.grid.stepSize * 1.5
+      marginTop: theme.space(2)
     }
   }
 });
@@ -56,7 +52,7 @@ const PageFooter = function ({ classes, activePage }) {
   return (
     <footer className={ classes.PageFooter }>
       <div className={ classes.About }>
-        <Brand.MadeBy size='m' color='light' />
+        <Brand.MadeBy size='md' color='light' />
         <p>
           Found a bug? Missing something? Want to contribute? Just <a href={ editThisPageUrl }>edit this page</a>.
         </p>
@@ -77,4 +73,4 @@ PageFooter.propTypes = {
   activePage: PropTypes.instanceOf(ActivePage).isRequired
 };
 
-module.exports = injectSheet(styles)(PageFooter);
+export default withStyles(styles)(PageFooter);

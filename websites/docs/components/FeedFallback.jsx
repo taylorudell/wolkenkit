@@ -1,8 +1,5 @@
-'use strict';
-
-const React = require('react');
-
-const FeedItem = require('./FeedItem.jsx');
+import FeedItem from './FeedItem.jsx';
+import React from 'react';
 
 const FeedFallback = function () {
   return (

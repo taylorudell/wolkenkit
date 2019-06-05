@@ -1,17 +1,14 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-const Bar = require('./Bar/index.jsx'),
-      FeedFallback = require('./FeedFallback.jsx'),
-      FeedItem = require('./FeedItem.jsx');
+import Bar from './Bar/index.jsx';
+import FeedFallback from './FeedFallback.jsx';
+import FeedItem from './FeedItem.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Feed: {
     display: 'flex',
-    'flex-direction': 'column',
+    flexDirection: 'column',
     overflow: 'hidden',
     background: theme.color.panel.dark,
     width: '37.5vw'
@@ -20,8 +17,8 @@ const styles = theme => ({
   PlaceholderBar: {},
 
   Title: {
-    padding: [ 0, theme.grid.stepSize * 3, 0, theme.grid.stepSize * 3 ],
-    'font-weight': 600
+    padding: [ 0, theme.space(4), 0, theme.space(4) ],
+    fontWeight: 600
   },
 
   Items: {
@@ -31,7 +28,7 @@ const styles = theme => ({
   },
 
   LoadingIndicator: {
-    padding: [ 0, theme.grid.stepSize * 3.5 ]
+    padding: [ 0, theme.space(4) ]
   },
 
   [theme.device.small]: {
@@ -47,7 +44,7 @@ const styles = theme => ({
     },
 
     Title: {
-      padding: theme.grid.stepSize * 1.5
+      padding: theme.space(2)
     }
   }
 });
@@ -80,4 +77,4 @@ Feed.propTypes = {
   items: PropTypes.array.isRequired
 };
 
-module.exports = injectSheet(styles)(Feed);
+export default withStyles(styles)(Feed);

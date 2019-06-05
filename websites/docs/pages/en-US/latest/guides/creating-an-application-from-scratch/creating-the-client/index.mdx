@@ -1,37 +1,48 @@
-import Documentation from '../../../../../../layouts/Documentation';
+import Code from '../../../../../../components/Code';
 import Hint from '../../../../../../components/Hint';
+import ActivePage from '../../../../../../components/ActivePage';
+import VersionedLink from '../../../../../../components/VersionedLink';
 
 # Creating the client
 
-As wolkenkit is a backend framework, you are completely free to create whatever client you want to, as long as it is able to do HTTP requests.
+As wolkenkit is a backend framework, you are completely free to create whatever
+client you want to, as long as it is able to do HTTP requests.
 
-For JavaScript, there is a client SDK that internally uses this HTTP API, but adds a convenience layer that simplifies talking to your backend dramatically. You can use it inside the browser as well as on the server.
+For JavaScript, there is a client SDK that internally uses this HTTP API, but
+adds a convenience layer that simplifies talking to your backend dramatically.
+You can use it inside the browser as well as on the server.
 
 ## Downloading the client blueprint
 
-To make things easy we have prepared a sample client for you that you are going to extend. [Download the client](https://github.com/thenativeweb/wolkenkit-client-template-spa-vanilla-js/archive/<%= current.version === 'latest' ? 'master' : current.version %>.zip) into your `chat` directory and, from within this directory, run the following commands:
+To make things easy we have prepared a sample client for you that you are going
+toextend. <VersionedLink rewriteLatestAs='master' href='https://github.com/thenativeweb/wolkenkit-client-template-spa-vanilla-js/archive/#VERSION#.zip'>Download the client</VersionedLink> into
+your `chat` directory and, from within this directory, run the following commands:
 
-```shell
-$ export CLIENT_TEMPLATE="wolkenkit-client-template-spa-vanilla-js-<%= current.version === 'latest' ? 'master' : current.version %>"
-$ unzip ${CLIENT_TEMPLATE}.zip
-$ rm ${CLIENT_TEMPLATE}.zip
-$ mv ${CLIENT_TEMPLATE} client
-```
+<ActivePage>
+{ ({ version }) => (
+  <Code language='shell'>{`
+    $ export CLIENT_TEMPLATE="wolkenkit-client-template-spa-vanilla-js-${ version === 'latest' ? 'master' : version }"
+    $ unzip \${CLIENT_TEMPLATE}.zip
+    $ rm \${CLIENT_TEMPLATE}.zip
+    $ mv \${CLIENT_TEMPLATE} client
+  `}</Code>
+)}
+</ActivePage>
 
 As a result, your directory structure should look like this:
 
-```
-chat
-  client
-    package.json
-    webpack.config.js
-    src
-      index.html
-      index.js
-    ...
-  server
-    ...
-```
+<Code language='bash'>{`
+  chat
+    client
+      package.json
+      webpack.config.js
+      src
+        index.html
+        index.js
+      ...
+    server
+      ...
+`}</Code>
 
 <Hint type='congrats'>
 
@@ -65,9 +76,7 @@ Finally, it contains a `run` function which is the main entry point of your clie
 ```javascript
 const run = async function () {
   try {
-
     // Add your code here...
-
   } catch (ex) {
     console.error(ex);
   }

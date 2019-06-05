@@ -1,20 +1,17 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-const ActivePage = require('../../services/ActivePage'),
-      Chapter = require('./Chapter.jsx'),
-      Metadata = require('../../services/Metadata'),
-      Page = require('./Page.jsx'),
-      Section = require('./Section.jsx');
+import ActivePage from '../../services/ActivePage';
+import Chapter from './Chapter.jsx';
+import Metadata from '../../services/Metadata';
+import Page from './Page.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Section from './Section.jsx';
+import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   PageMenu: {
     flex: '1 1 100%',
     display: 'flex',
-    'flex-direction': 'column',
+    flexDirection: 'column',
     overflow: 'hidden',
     position: 'relative'
   },
@@ -25,10 +22,10 @@ const styles = theme => ({
     top: 0,
     bottom: 0,
     display: 'flex',
-    'flex-direction': 'row',
+    flexDirection: 'row',
     transform: 'translate(0, 0)',
     transition: 'transform 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000)',
-    'will-change': 'transform'
+    willChange: 'transform'
   },
 
   Level: {
@@ -84,7 +81,7 @@ class PageMenu extends React.Component {
       return null;
     }
 
-    const [ , , expandedSectionSlug, expandedChapterSlug ] = expandedPath;
+    const [, , expandedSectionSlug, expandedChapterSlug ] = expandedPath;
 
     const expandedSection = metadata.navigation[activePage.version].find(item => item.slug === expandedSectionSlug);
 
@@ -177,4 +174,4 @@ PageMenu.propTypes = {
   onNavigate: PropTypes.func.isRequired
 };
 
-module.exports = injectSheet(styles)(PageMenu);
+export default withStyles(styles)(PageMenu);

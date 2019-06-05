@@ -1,11 +1,7 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-const Link = require('../Link.jsx');
+import Link from '../Link.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Page: {
@@ -15,15 +11,15 @@ const styles = theme => ({
     '& a, & a:visited': {
       position: 'relative',
       display: 'block',
-      padding: [ theme.grid.stepSize * 0.5, theme.grid.stepSize, theme.grid.stepSize * 0.5, theme.grid.stepSize * 3.5 ],
+      padding: [ theme.space(0.5), theme.grid.stepSize, theme.space(0.5), '35px' ],
       color: theme.color.brand.white,
       opacity: 0.5
     },
 
     '& a:hover, & a:focus': {
       opacity: 1,
-      'text-decoration': 'none',
-      'background-color': 'transparent'
+      textDecoration: 'none',
+      backgroundColor: 'transparent'
     }
   },
 
@@ -41,7 +37,7 @@ const styles = theme => ({
     '& a:link, & a:hover, & a:visited': {
       opacity: 1,
       color: theme.color.brand.highlight,
-      'font-weight': 600
+      fontWeight: 600
     }
   }
 });
@@ -70,4 +66,4 @@ Page.propTypes = {
   title: PropTypes.string.isRequired
 };
 
-module.exports = injectSheet(styles)(Page);
+export default withStyles(styles)(Page);

@@ -8,10 +8,6 @@ const express = require('express'),
 const api = require('./services/api');
 
 class Documentation {
-  static async getSitemap () {
-
-  }
-
   async initialize ({ baseUrl, contentDirectory, nodeEnv }) {
     if (!baseUrl) {
       throw new Error('Base url is missing.');

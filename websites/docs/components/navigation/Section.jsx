@@ -1,28 +1,24 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Icon, Text } = require('thenativeweb-ux');
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, Icon, Text, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Section: {
     flex: '1 1 100%',
     display: 'flex',
-    'flex-direction': 'row',
-    'justify-content': 'space-between',
-    'align-items': 'center',
-    'border-bottom': '1px solid rgba(255,255,255, 0.1)',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottom: '1px solid rgba(255,255,255, 0.1)',
 
     '& a:link, & a:visited, & a:active': {
       flex: '1 1 100%',
       display: 'flex',
-      'flex-direction': 'row',
-      'justify-content': 'space-between',
-      'align-items': 'center',
-      'text-decoration': 'none',
-      padding: [ theme.grid.stepSize, theme.grid.stepSize * 1.5 ],
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      textDecoration: 'none',
+      padding: [ theme.grid.stepSize, theme.space(2) ],
       color: theme.color.brand.white
     },
 
@@ -33,7 +29,7 @@ const styles = theme => ({
 
   Chevron: {
     fill: theme.color.brand.white,
-    'margin-left': theme.grid.stepSize
+    marginLeft: theme.grid.stepSize
   },
 
   Label: {
@@ -42,7 +38,7 @@ const styles = theme => ({
   },
 
   IsActive: {
-    'font-weight': 800
+    fontWeight: 800
   }
 });
 
@@ -73,7 +69,7 @@ class Section extends React.PureComponent {
       <div className={ componentClasses }>
         <a href='#' onClick={ this.handleItemClicked }>
           <Text className={ classes.Label }>{ title }</Text>
-          <Icon className={ classes.Chevron } name='chevron' size='s' />
+          <Icon className={ classes.Chevron } name='chevron' size='sm' />
         </a>
       </div>
     );
@@ -87,4 +83,4 @@ Section.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-module.exports = injectSheet(styles)(Section);
+export default withStyles(styles)(Section);

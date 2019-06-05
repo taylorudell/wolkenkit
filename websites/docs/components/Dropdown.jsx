@@ -1,18 +1,14 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, Icon, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Dropdown: {
     position: 'relative',
     display: 'flex',
-    'flex-direction': 'row',
-    'min-height': theme.grid.stepSize * 3,
-    'align-items': 'center'
+    flexDirection: 'row',
+    'min-height': theme.space(4),
+    alignItems: 'center'
   },
 
   IsOpen: {
@@ -41,24 +37,24 @@ const styles = theme => ({
     width: 11,
     height: 11,
     transform: 'rotate(90deg)',
-    'margin-left': 5,
+    marginLeft: 5,
     fill: 'rgba(255, 255, 255, 0.65)'
   },
 
   Options: {
     position: 'absolute',
     background: theme.color.brand.white,
-    top: theme.grid.stepSize * 3,
+    top: theme.space(4),
     left: 0,
-    'margin-left': -5,
+    marginLeft: -5,
     padding: '3px 11px 2px 10px',
     display: 'none',
-    'flex-direction': 'column',
-    'z-index': theme.zIndex.overlay,
+    flexDirection: 'column',
+    zIndex: theme.zIndices.overlay,
 
     '& a, & a:visited': {
-      'line-height': `${theme.grid.stepSize * 3}px`,
-      'font-size': theme.font.size.default,
+      lineHeight: `${theme.space(4)}px`,
+      fontSize: theme.font.size.md,
       color: theme.color.brand.dark,
       background: 'transparent',
       display: 'block'
@@ -86,6 +82,7 @@ class Dropdown extends React.PureComponent {
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleValueClicked = this.handleValueClicked.bind(this);
     this.handleOptionClicked = this.handleOptionClicked.bind(this);
+    this.renderOption = this.renderOption.bind(this);
   }
 
   componentDidMount () {
@@ -162,7 +159,7 @@ class Dropdown extends React.PureComponent {
           <Icon className={ classes.ExpandIcon } name='expand' />
         </a>
         <div className={ classes.Options } onClick={ this.handleOptionClicked }>
-          { options.map(this.renderOption.bind(this)) }
+          { options.map(this.renderOption) }
         </div>
       </div>
     );
@@ -175,4 +172,4 @@ Dropdown.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-module.exports = injectSheet(styles)(Dropdown);
+export default withStyles(styles)(Dropdown);

@@ -1,6 +1,4 @@
-'use strict';
-
-const React = require('react');
+import React from 'react';
 
 const Symbols = function () {
   return (
@@ -28,4 +26,4 @@ const Symbols = function () {
   );
 };
 
-module.exports = Symbols;
+export default Symbols;

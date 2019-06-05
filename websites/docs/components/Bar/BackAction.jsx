@@ -1,22 +1,17 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
-
-const Action = require('./Action.jsx');
+import Action from './Action.jsx';
+import React from 'react';
+import { classNames, Icon, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   BackAction: {
     flex: '1 1 100%',
-    'padding-left': theme.grid.stepSize / 2,
-    'padding-right': theme.grid.stepSize / 2
+    paddingLeft: theme.space(0.5),
+    paddingRight: theme.space(0.5)
   },
 
   Icon: {
-    'margin-left': theme.grid.stepSize / 2,
-    'margin-right': theme.grid.stepSize / 2,
+    marginLeft: theme.space(0.5),
+    marginRight: theme.space(0.5),
     transform: 'rotate(180deg)',
     'transform-origin': '50% 50%',
     fill: 'currentColor'
@@ -26,7 +21,7 @@ const styles = theme => ({
 const BackAction = ({ children, classes, className = '', style, onClick }) => (
   <Action
     className={ classNames(classes.BackAction, className) }
-    icon={ <Icon className={ classes.Icon } name='chevron' size='s' /> }
+    icon={ <Icon className={ classes.Icon } name='chevron' size='sm' /> }
     style={ style }
     onClick={ onClick }
   >
@@ -34,4 +29,4 @@ const BackAction = ({ children, classes, className = '', style, onClick }) => (
   </Action>
 );
 
-module.exports = injectSheet(styles)(BackAction);
+export default withStyles(styles)(BackAction);

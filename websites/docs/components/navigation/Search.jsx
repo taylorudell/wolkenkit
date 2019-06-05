@@ -1,13 +1,10 @@
-'use strict';
-
-const injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-const ActivePage = require('../../services/ActivePage'),
-      Bar = require('../Bar/index.jsx'),
-      search = require('../../services/search'),
-      SearchResults = require('./SearchResults.jsx');
+import ActivePage from '../../services/ActivePage';
+import Bar from '../Bar/index.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import search from '../../services/search';
+import SearchResults from './SearchResults.jsx';
+import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Search: {
@@ -15,34 +12,34 @@ const styles = theme => ({
     left: 0,
     top: theme.barHeight,
     width: '100%',
-    'z-index': theme.zIndex.overlay,
+    zIndex: theme.zIndices.overlay,
     display: 'flex',
-    'flex-direction': 'column'
+    flexDirection: 'column'
   },
 
   SearchBar: {
-    'background-color': theme.color.brand.dark
+    backgroundColor: theme.color.brand.dark
   },
 
   Query: {
     width: '100%',
-    'margin-right': theme.grid.stepSize * 1.5
+    marginRight: theme.space(2)
   },
 
   QueryInput: {
     width: '100%',
-    padding: [ theme.grid.stepSize * 0.5, theme.grid.stepSize, theme.grid.stepSize * 0.5, theme.grid.stepSize * 1.5 ],
-    'font-family': theme.font.family.default,
-    'font-size': theme.font.size.default,
-    'font-weight': 500,
+    padding: [ theme.space(0.5), theme.grid.stepSize, theme.space(0.5), theme.space(2) ],
+    fontFamily: theme.font.family.default,
+    fontSize: theme.font.size.md,
+    fontWeight: 500,
     border: `1px solid ${theme.color.brand.dark}`,
-    'border-radius': 0,
+    borderRadius: 0,
     outline: 0
   },
 
   [theme.device.small]: {
     QueryInput: {
-      'font-size': 16
+      fontSize: 16
     }
   }
 });
@@ -115,4 +112,4 @@ Search.propTypes = {
   onClose: PropTypes.func.isRequired
 };
 
-module.exports = injectSheet(styles)(Search);
+export default withStyles(styles)(Search);

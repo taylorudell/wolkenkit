@@ -1,13 +1,8 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Product, View } = require('thenativeweb-ux');
-
-const Feed = require('./Feed.jsx'),
-      Metadata = require('../services/Metadata');
+import Feed from './Feed.jsx';
+import Metadata from '../services/Metadata';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, Product, View, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   IntroPage: {
@@ -15,7 +10,7 @@ const styles = theme => ({
     width: theme.contentWidth,
     overflow: 'hidden',
     transition: 'width 800ms cubic-bezier(0.190, 1.000, 0.220, 1.000)',
-    'will-change': 'width'
+    willChange: 'width'
   },
 
   IsCollapsed: {
@@ -29,18 +24,18 @@ const styles = theme => ({
 
   Brand: {
     transition: 'opacity 400ms',
-    'will-change': 'opacity'
+    willChange: 'opacity'
   },
 
   Title: {
-    'font-size': theme.font.size.large,
-    'text-align': 'center',
+    fontSize: theme.font.size.lg,
+    textAlign: 'center',
     color: theme.color.brand.white
   },
 
   [theme.device.small]: {
     IntroPage: {
-      'flex-direction': 'column',
+      flexDirection: 'column',
       overflow: 'auto',
       '-webkit-overflow-scrolling': 'touch'
     },
@@ -51,8 +46,8 @@ const styles = theme => ({
     },
 
     Title: {
-      'font-size': theme.font.size.small,
-      'text-align': 'center',
+      fontSize: theme.font.size.sm,
+      textAlign: 'center',
       color: theme.color.brand.white
     }
   }
@@ -79,4 +74,4 @@ IntroPage.propTypes = {
   metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
-module.exports = injectSheet(styles)(IntroPage);
+export default withStyles(styles)(IntroPage);

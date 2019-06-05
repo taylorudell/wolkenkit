@@ -1,9 +1,6 @@
-'use strict';
+import { themes } from 'thenativeweb-ux';
 
-const merge = require('lodash/merge'),
-      themes = require('thenativeweb-ux/dist/themes').default;
-
-const theme = merge({}, themes.wolkenkit, {
+const theme = themes.extend('wolkenkit', {
   id: 'docs',
   barHeight: 48,
   sidebarWidth: '25vw',
@@ -23,9 +20,9 @@ const theme = merge({}, themes.wolkenkit, {
     }
   },
 
-  zIndex: {
-    pattern: 100
+  zIndices: {
+    navigationPattern: 100
   }
 });
 
-module.exports = theme;
+export default theme;

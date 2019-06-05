@@ -1,14 +1,12 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
+import classNames from 'classnames';
+import { Icon } from 'thenativeweb-ux';
+import injectSheet from 'react-jss';
+import React from 'react';
 
 const styles = theme => ({
   MobileNavigation: {
     position: 'fixed',
-    'z-index': theme.zIndex.content,
+    zIndex: theme.zIndices.content,
     top: 0,
     right: 0,
     left: 0,
@@ -32,13 +30,13 @@ const styles = theme => ({
     position: 'absolute',
     top: 5,
     left: 5,
-    'border-radius': '50%',
+    borderRadius: '50%',
     display: 'none',
-    'align-items': 'center',
-    'justify-content': 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 36,
     height: 36,
-    'will-change': 'opacity'
+    willChange: 'opacity'
   },
 
   NavIcon: {
@@ -67,11 +65,11 @@ const MobileNavigation = function ({ classes, isVisible, onClick }) {
     <div className={ classNames(classes.MobileNavigation, { [classes.IsVisible]: isVisible }) }>
       <div onClick={ onClick } className={ classes.Backdrop } />
       <div onClick={ onClick } className={ classes.Toggle }>
-        <Icon className={ classes.NavIcon } name='nav' size='m' />
+        <Icon className={ classes.NavIcon } name='nav' size='md' />
       </div>
     </div>
 
   );
 };
 
-module.exports = injectSheet(styles)(MobileNavigation);
+export default injectSheet(styles)(MobileNavigation);

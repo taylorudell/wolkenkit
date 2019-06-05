@@ -1,9 +1,6 @@
-'use strict';
-
-const PropTypes = require('prop-types'),
-      React = require('react');
-
-const Bar = require('../Bar/index.jsx');
+import Bar from '../Bar';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const MenuBar = ({ backLabel, onBack, onShowSearch }) => (
   <Bar>
@@ -22,4 +19,4 @@ MenuBar.propTypes = {
   backLabel: PropTypes.string
 };
 
-module.exports = MenuBar;
+export default MenuBar;

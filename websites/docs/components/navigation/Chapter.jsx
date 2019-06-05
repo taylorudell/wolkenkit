@@ -1,12 +1,7 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react'),
-      { Icon } = require('thenativeweb-ux');
-
-const Page = require('./Page.jsx');
+import Page from './Page.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, Icon, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Chapter: {
@@ -15,14 +10,14 @@ const styles = theme => ({
 
   Title: {
     display: 'flex',
-    'align-items': 'flex-start',
-    padding: [ theme.grid.stepSize * 0.5, theme.grid.stepSize, theme.grid.stepSize * 0.5, theme.grid.stepSize * 1.5 ],
+    alignItems: 'flex-start',
+    padding: [ theme.space(0.5), theme.grid.stepSize, theme.space(0.5), theme.space(2) ],
     margin: 0,
-    'margin-top': 10,
-    'line-height': 1.1,
+    marginTop: 10,
+    lineHeight: 1.1,
     color: `${theme.color.brand.white} !important`,
     cursor: 'pointer',
-    'text-decoration': 'none',
+    textDecoration: 'none',
     opacity: 0.5,
 
     '&:hover': {
@@ -37,8 +32,8 @@ const styles = theme => ({
     fill: 'currentColor',
     transform: 'rotate(0)',
     transition: 'transform 150ms ease-in-out',
-    'margin-top': 3,
-    'margin-right': 6
+    marginTop: 3,
+    marginRight: 6
   },
 
   IsExpanded: {
@@ -49,7 +44,7 @@ const styles = theme => ({
 
   IsActive: {
     '& $Title': {
-      'font-weight': 600,
+      fontWeight: 600,
       opacity: 1
     }
   },
@@ -143,4 +138,4 @@ Chapter.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-module.exports = injectSheet(styles)(Chapter);
+export default withStyles(styles)(Chapter);

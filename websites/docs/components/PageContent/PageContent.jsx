@@ -1,16 +1,12 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      PropTypes = require('prop-types'),
-      React = require('react');
-
-const ActivePage = require('../../services/ActivePage'),
-      Breadcrumbs = require('../Breadcrumbs.jsx'),
-      Head = require('../Head.jsx'),
-      Metadata = require('../../services/Metadata'),
-      PageFooter = require('../PageFooter.jsx'),
-      styles = require('./styles');
+import ActivePage from '../../services/ActivePage';
+import Breadcrumbs from '../Breadcrumbs.jsx';
+import Head from '../Head.jsx';
+import Metadata from '../../services/Metadata';
+import PageFooter from '../PageFooter.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styles from './styles';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 class PageContent extends React.Component {
   constructor (props) {
@@ -90,4 +86,4 @@ PageContent.propTypes = {
   metadata: PropTypes.instanceOf(Metadata).isRequired
 };
 
-module.exports = injectSheet(styles)(PageContent);
+export default withStyles(styles)(PageContent);

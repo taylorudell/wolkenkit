@@ -1,25 +1,22 @@
-'use strict';
-
-const classNames = require('classnames'),
-      injectSheet = require('react-jss').default,
-      React = require('react');
-
-const HighlightText = require('./HighlightText.jsx');
+import HighlightText from './HighlightText.jsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Keywords: {
     'padding-top': 10,
-    'font-size': 12
+    fontSize: 12
   },
 
   Keyword: {
     display: 'inline-block',
     background: 'rgba(255, 255, 255, 0.2)',
-    'border-radius': 8,
+    borderRadius: 8,
     padding: '0px 7px 1px 7px',
-    'margin-right': 8,
+    marginRight: 8,
     color: theme.color.brand.dark,
-    'margin-bottom': 8
+    marginBottom: 8
   }
 });
 
@@ -39,4 +36,9 @@ const Keywords = ({ classes, className, keywords, searchWords }) => {
   );
 };
 
-module.exports = injectSheet(styles)(Keywords);
+Keywords.propTypes = {
+  keywords: PropTypes.array,
+  searchWords: PropTypes.array
+};
+
+export default withStyles(styles)(Keywords);
