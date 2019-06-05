@@ -28,7 +28,7 @@ const styles = theme => ({
 
   QueryInput: {
     width: '100%',
-    padding: [ theme.space(0.5), theme.grid.stepSize, theme.space(0.5), theme.space(2) ],
+    padding: [ theme.space(0.5), theme.space(1), theme.space(0.5), theme.space(2) ],
     fontFamily: theme.font.family.default,
     fontSize: theme.font.size.md,
     fontWeight: 500,

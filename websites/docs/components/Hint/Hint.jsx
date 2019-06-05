@@ -25,7 +25,7 @@ const styles = theme => ({
   Bubble: {
     ...getBlockquoteBaseStyle(theme),
     marginLeft: `${theme.space(28)}px`,
-    borderRadius: theme.grid.stepSize,
+    borderRadius: theme.space(1),
 
     '& strong': {
       fontFamily: 'Kalam',
@@ -37,7 +37,7 @@ const styles = theme => ({
       position: 'absolute',
       'border-color': `transparent ${theme.color.panel.light} transparent transparent`,
       'border-style': 'solid',
-      'border-width': theme.grid.stepSize,
+      'border-width': theme.space(1),
       top: '50%',
       content: '""',
       left: 0,
@@ -91,8 +91,8 @@ const styles = theme => ({
       '&::after': {
         top: 0,
         left: '50%',
-        marginTop: -theme.grid.stepSize * 2,
-        marginLeft: -theme.grid.stepSize,
+        marginTop: -theme.space(2.5),
+        marginLeft: -theme.space(1),
         borderColor: `transparent transparent ${theme.color.panel.light} transparent`
       }
     }

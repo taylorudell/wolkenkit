@@ -187,7 +187,7 @@ const styles = theme => ({
       position: 'relative',
 
       '& p': {
-        maxWidth: theme.pageContent.maxWidth - 3 * theme.grid.stepSize - 115
+        maxWidth: theme.pageContent.maxWidth - 3 * theme.space(1) - 115
       },
 
       '&::after': {

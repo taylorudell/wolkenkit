@@ -18,7 +18,7 @@ const styles = theme => ({
       justifyContent: 'space-between',
       alignItems: 'center',
       textDecoration: 'none',
-      padding: [ theme.grid.stepSize, theme.space(2) ],
+      padding: [ theme.space(1), theme.space(2) ],
       color: theme.color.brand.white
     },
 
@@ -29,7 +29,7 @@ const styles = theme => ({
 
   Chevron: {
     fill: theme.color.brand.white,
-    marginLeft: theme.grid.stepSize
+    marginLeft: theme.space(1)
   },
 
   Label: {

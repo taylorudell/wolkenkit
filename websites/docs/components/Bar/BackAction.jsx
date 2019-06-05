@@ -5,7 +5,7 @@ import { classNames, Icon, withStyles } from 'thenativeweb-ux';
 const styles = theme => ({
   BackAction: {
     flex: '1 1 100%',
-    paddingLeft: theme.space(0.5),
+    paddingLeft: theme.space(1),
     paddingRight: theme.space(0.5)
   },
 

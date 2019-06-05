@@ -11,7 +11,7 @@ const styles = theme => ({
     '& a, & a:visited': {
       position: 'relative',
       display: 'block',
-      padding: [ theme.space(0.5), theme.grid.stepSize, theme.space(0.5), '35px' ],
+      padding: [ theme.space(0.5), theme.space(1), theme.space(1), '35px' ],
       color: theme.color.brand.white,
       opacity: 0.5
     },

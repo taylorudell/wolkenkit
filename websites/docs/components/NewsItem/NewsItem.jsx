@@ -1,9 +1,9 @@
-import format from 'date-fns/format';
+import Date from '../Date';
 import React from 'react';
 import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
-  FeedItem: {
+  NewsItem: {
     padding: '20px 0 22px 0',
     margin: 0,
     borderBottom: '1px solid rgba(255,255,255, 0.1)',
@@ -31,7 +31,7 @@ const styles = theme => ({
   },
 
   [theme.breakpoints.down('sm')]: {
-    FeedItem: {
+    NewsItem: {
       padding: 0,
       margin: [ theme.space(0.5), 0 ],
       width: '100vw',
@@ -49,22 +49,17 @@ const styles = theme => ({
   }
 });
 
-const FeedItem = function ({ classes, item = {}}) {
-  let publishedAt;
-
-  if (item.date) {
-    publishedAt = new Date(item.date.year, item.date.month - 1, item.date.day);
-  }
-
+const NewsItem = function ({ classes, children, day, month, title, year }) {
   return (
-    <section className={ classes.FeedItem }>
+    <section className={ classes.NewsItem }>
       <h2 className={ classes.Title }>
-        { publishedAt ? <span className={ classes.Date }>{format(publishedAt, 'DD.MM.YYYY')}</span> : null }
-        { item.title }
+        <Date className={ classes.Date } year={ year } month={ month } day={ day } />
+        { title }
       </h2>
-      { item.content }
+
+      { children }
     </section>
   );
 };
 
-export default withStyles(styles)(FeedItem);
+export default withStyles(styles)(NewsItem);

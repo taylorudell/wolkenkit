@@ -36,7 +36,7 @@ const styles = theme => ({
   },
 
   ErrorHelp: {
-    marginTop: theme.grid.stepSize,
+    marginTop: theme.space(1),
     fontWeight: 400,
     color: subtleWhite,
 
