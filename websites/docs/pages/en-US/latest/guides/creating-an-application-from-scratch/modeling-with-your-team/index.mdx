@@ -1,4 +1,4 @@
-import { Hint } from '../../../../../../components';
+import { Hint, StaticImage } from '../../../../../../components';
 
 # Modeling with your team
 
@@ -18,7 +18,7 @@ Anyway, this is not the application's core domain. You don't create the applicat
 
 When modeling an application, the first thing to do is to identify the user actions that update the application state. For that have a look at the following image.
 
-![The chat application](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/chat-commands.png)
+<StaticImage src='chat-commands.png' alt='The chat application' />
 
 As you can see, there are a text box with a *Send message* button, and below each message a button to like it. In wolkenkit, actions like these are called **commands**.
 
@@ -60,7 +60,7 @@ In our simple example there are now two options. You could model the entire chat
 
 Since the aggregate is now called *message*, there is no need to repeat the aggregate's name inside of every command and event. So, *send message*, *like message*, *sent message*, and *liked message* simply become *send*, *like*, *sent*, and *liked*. Now, your whiteboard might look similar to this:
 
-![The message aggregate](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/aggregate-message.png)
+<StaticImage src='aggregate-message.png' alt='The message aggregate' />
 
 ## Defining the context
 
@@ -72,7 +72,7 @@ That's it for the write model.
 
 If you now have another look at the image below, you will realize that the list of messages is still missing, which is another important part of the application:
 
-![The chat application](/static/en-US/latest/guides/creating-an-application-from-scratch/modeling-with-your-team/chat-lists.png)
+<StaticImage src='chat-lists.png' alt='The chat application' />
 
 In contrast to aggregates, commands, and events, reading a list does not update the application state. Hence defining a list does not belong to the write model, but to the read model.
 

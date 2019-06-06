@@ -48,27 +48,27 @@ const styles = theme => ({
 
   TypeCongrats: {
     '&::after': {
-      backgroundImage: 'url(/static/mascot/congrats-medium.svg)'
+      backgroundImage: `url('/static/mascot/congrats-medium.svg')`
     }
   },
   TypeQuestion: {
     '&::after': {
-      backgroundImage: 'url(/static/mascot/question-medium.svg)'
+      backgroundImage: `url('/static/mascot/question-medium.svg')`
     }
   },
   TypeTip: {
     '&::after': {
-      backgroundImage: 'url(/static/mascot/tip-medium.svg)'
+      backgroundImage: `url('/static/mascot/tip-medium.svg')`
     }
   },
   TypeWarning: {
     '&::after': {
-      backgroundImage: 'url(/static/mascot/warning-medium.svg)'
+      backgroundImage: `url('/static/mascot/warning-medium.svg')`
     }
   },
   TypeWisdom: {
     '&::after': {
-      backgroundImage: 'url(/static/mascot/wisdom-medium.svg)'
+      backgroundImage: `url('/static/mascot/wisdom-medium.svg')`
     }
   },
 

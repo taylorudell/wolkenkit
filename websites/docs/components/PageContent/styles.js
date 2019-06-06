@@ -80,7 +80,7 @@ const styles = theme => ({
     },
 
     '& p, ul, ol': {
-      maxWidth: theme.pageContent.maxWidth,
+      maxWidth: `${theme.pageContent.maxWidth}px`,
       fontWeight: 300,
       color: theme.color.copyText
     },
@@ -133,7 +133,7 @@ const styles = theme => ({
 
     '& table': {
       width: '100%',
-      maxWidth: theme.pageContent.maxWidth,
+      maxWidth: `${theme.pageContent.maxWidth}px`,
       marginBottom: theme.space(3),
       borderBottom: `1px solid ${theme.color.content.border}`,
       fontWeight: 300,
@@ -202,15 +202,15 @@ const styles = theme => ({
     },
 
     '& .read-model::after': {
-      backgroundImage: `url(/data-flow/read-model.svg)`
+      backgroundImage: `url('/data-flow/read-model.svg')`
     },
 
     '& .write-model::after': {
-      backgroundImage: `url(/data-flow/write-model.svg)`
+      backgroundImage: `url('/data-flow/write-model.svg')`
     },
 
     '& .flows::after': {
-      backgroundImage: `url(/data-flow/flows.svg)`
+      backgroundImage: `url('/data-flow/flows.svg')`
     }
   },
 

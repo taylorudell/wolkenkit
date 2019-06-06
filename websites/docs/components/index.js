@@ -15,4 +15,5 @@ export { default as News } from './News';
 export { default as NewsItem } from './NewsItem';
 export { default as PageContent } from './PageContent';
 export { default as PageFooter } from './PageFooter';
+export { default as StaticImage } from './StaticImage';
 export { default as VersionedLink } from './VersionedLink';
