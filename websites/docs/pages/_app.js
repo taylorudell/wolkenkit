@@ -23,13 +23,13 @@ class CustomApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <ThemeProvider theme={ theme }>
-        <MDXProvider components={ mdxComponents }>
-          <Container>
+      <Container>
+        <ThemeProvider theme={ theme }>
+          <MDXProvider components={ mdxComponents }>
             <Component { ...pageProps } />
-          </Container>
-        </MDXProvider>
-      </ThemeProvider>
+          </MDXProvider>
+        </ThemeProvider>
+      </Container>
     );
   }
 }

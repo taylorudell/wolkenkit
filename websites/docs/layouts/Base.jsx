@@ -2,7 +2,7 @@ import ActivePage from '../services/ActivePage';
 import Metadata from '../services/Metadata';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Application, classNames, View, withStyles } from 'thenativeweb-ux';
+import { Application, classNames, withStyles } from 'thenativeweb-ux';
 import { Head, Icons, Navigation } from '../components';
 
 const styles = theme => ({
@@ -54,11 +54,10 @@ const Base = function ({ activePage, classes, className, children, metadata }) {
   const componentClasses = classNames(classes.Base, className);
 
   return (
-    <View orientation='horizontal' className={ componentClasses }>
+    <Application orientation='horizontal' className={ componentClasses }>
       <Head>
         <title>{ metadata.title }</title>
       </Head>
-
       <Application.Services />
 
       <Icons />
@@ -69,7 +68,7 @@ const Base = function ({ activePage, classes, className, children, metadata }) {
       />
 
       { children }
-    </View>
+    </Application>
   );
 };
 

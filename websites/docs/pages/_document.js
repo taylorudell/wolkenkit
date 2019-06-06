@@ -38,7 +38,6 @@ class CustomDocument extends NextDocument {
       <Html>
         <Head>
           <link rel='icon' type='image/png' href='/favicon.png' sizes='32x32' />
-          <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700|Ubuntu:300,400,500|Ubuntu+Mono|Kalam' rel='stylesheet' />
         </Head>
 
         <body>
