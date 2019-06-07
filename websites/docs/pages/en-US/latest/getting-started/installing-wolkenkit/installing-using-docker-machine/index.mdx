@@ -1,18 +1,24 @@
+import { Code, Hint } from '../../../../../../components';
+
 # Installing using Docker Machine
 
 To run wolkenkit using Docker Machine you need to setup a few things.
 
 ## Setting up Docker
 
-To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker using Docker Machine, [download and install Docker Toolbox](https://docs.docker.com/toolbox/overview/).
+<p>
+  To run wolkenkit you need Docker { props.versions.docker } or higher. To setup Docker using Docker Machine, <a href='https://docs.docker.com/toolbox/overview/'>download and install Docker Toolbox</a>.
+</p>
 
 Additionally, setup a virtualization engine such as VMware Fusion or VirtualBox. You can find the complete list of supported virtualization engines in the [Docker documentation](https://docs.docker.com/machine/drivers/).
 
-:::hint-warning
-> **Enable VT-x**
->
-> You may have to enable VT-x support in your machine's BIOS for Docker to work.
-:::
+<Hint type='warning'>
+
+  **Enable VT-x**
+
+  You may have to enable VT-x support in your machine's BIOS for Docker to work.
+
+</Hint>
 
 ### Using VMware Fusion
 
@@ -30,13 +36,15 @@ To create a virtual machine using VirtualBox run the following command:
 $ docker-machine create --driver virtualbox wolkenkit
 ```
 
-:::hint-warning
-> **VirtualBox and macOS**
->
-> Currently there is a bug within VirtualBox on macOS that affects running DNS queries from within virtual machines. Hence, after having created the virtual machine you need to run the following command:
->
-> `$ VBoxManage modifyvm wolkenkit --natdnsproxy1 off --natdnshostresolver1 off`
-:::
+<Hint type='warning'>
+
+  **VirtualBox and macOS**
+
+  Currently there is a bug within VirtualBox on macOS that affects running DNS queries from within virtual machines. Hence, after having created the virtual machine you need to run the following command:
+
+  `$ VBoxManage modifyvm wolkenkit --natdnsproxy1 off --natdnshostresolver1 off`
+
+</Hint>
 
 ### Setting up environment variables
 
@@ -54,7 +62,9 @@ $ docker-machine env wolkenkit >> ~/.profile
 
 ## Setting up Node.js
 
-To run wolkenkit you need Node.js <%= current.versions.node %> or higher. We recommend installing Node.js using [nvm](https://github.com/creationix/nvm), which enables switching between different Node.js versions.
+<p>
+  To run wolkenkit you need Node.js { props.versions.node } or higher. We recommend installing Node.js using [nvm](https://github.com/creationix/nvm), which enables switching between different Node.js versions.
+</p>
 
 First, install nvm using this command:
 
@@ -64,19 +74,19 @@ $ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | 
 
 Then, restart your terminal and install Node.js using the following commands:
 
-```shell
-$ nvm install <%= current.versions.node %>
-$ nvm alias default <%= current.versions.node %>
-$ nvm use <%= current.versions.node %>
-```
+<Code language='shell'>{`
+  $ nvm install ${props.versions.node}
+  $ nvm alias default ${props.versions.node}
+  $ nvm use ${props.versions.node}
+`}</Code>
 
 ## Setting up wolkenkit
 
 To download and install wolkenkit, run the following command:
 
-```shell
-$ npm install -g wolkenkit@<%= current.versions.cli %>
-```
+<Code language='shell'>{`
+  $ npm install -g wolkenkit@${props.versions.cli}
+`}</Code>
 
 ## Setting up local.wolkenkit.io
 
@@ -94,10 +104,12 @@ Verify that wolkenkit is installed correctly by running the following command:
 $ wolkenkit --version
 ```
 
-:::hint-congrats
-> **Yay, congratulations!**
->
-> You have successfully installed wolkenkit!
-:::
+<Hint type='congrats'>
 
-To learn how to build and run your first application, have a look at [creating your first application](../../creating-your-first-application/setting-the-objective/) 😊!
+  **Yay, congratulations!**
+
+  You have successfully installed wolkenkit!
+
+</Hint>
+
+To learn how to build and run your first application, have a look at [creating your first application](../creating-your-first-application/setting-the-objective) 😊!

@@ -24,6 +24,7 @@ const styles = theme => ({
 
   Bubble: {
     ...getBlockquoteBaseStyle(theme),
+    padding: `${theme.space(4)}px ${theme.space(5)}px ${theme.space(3)}px ${theme.space(5)}px`,
     marginLeft: `${theme.space(28)}px`,
     borderRadius: theme.space(1),
 
@@ -35,9 +36,9 @@ const styles = theme => ({
 
     '&:after': {
       position: 'absolute',
-      'border-color': `transparent ${theme.color.panel.light} transparent transparent`,
-      'border-style': 'solid',
-      'border-width': theme.space(1),
+      borderColor: `transparent ${theme.color.panel.light} transparent transparent`,
+      borderStyle: 'solid',
+      borderWidth: theme.space(1),
       top: '50%',
       content: '""',
       left: 0,
@@ -76,8 +77,8 @@ const styles = theme => ({
     Hint: {
       '&:after': {
         left: '50%',
-        top: -170,
-        marginLeft: -theme.space(10),
+        top: -theme.space(21),
+        marginLeft: -theme.space(12),
         marginTop: 0,
         width: theme.space(20),
         height: theme.space(20)
@@ -85,14 +86,14 @@ const styles = theme => ({
     },
     Bubble: {
       padding: theme.space(2),
-      marginTop: 180,
+      marginTop: theme.space(24),
       marginLeft: 0,
 
       '&::after': {
         top: 0,
         left: '50%',
-        marginTop: -theme.space(2.5),
-        marginLeft: -theme.space(1),
+        marginTop: -theme.space(2),
+        marginLeft: -theme.space(3),
         borderColor: `transparent transparent ${theme.color.panel.light} transparent`
       }
     }

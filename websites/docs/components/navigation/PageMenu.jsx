@@ -80,11 +80,12 @@ class PageMenu extends React.Component {
       throw new Error('Metadata is missing.');
     }
 
-    if (expandedPath.length < 2) {
+    if (expandedPath.length < 3) {
       return null;
     }
 
-    const [, , expandedSectionSlug, expandedChapterSlug ] = expandedPath;
+    const expandedSectionSlug = expandedPath[2];
+    const expandedChapterSlug = expandedPath[3];
 
     const expandedSection = metadata.navigation[activePage.version].find(item => item.slug === expandedSectionSlug);
 

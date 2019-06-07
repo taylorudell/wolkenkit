@@ -1,10 +1,14 @@
+import { Hint } from '../../../../../../components';
+
 # Installing using Vagrant
 
 To run wolkenkit using Vagrant you need to setup a few things.
 
 ## Setting up Vagrant
 
-To run wolkenkit you need Vagrant <%= current.versions.vagrant %> or higher. To setup Vagrant, follow the installation guide provided in the [Vagrant documentation](https://www.vagrantup.com/intro/getting-started/install.html).
+<p>
+  To run wolkenkit you need Vagrant { props.versions.vagrant } or higher. To setup Vagrant, follow the installation guide provided in the <a href='https://www.vagrantup.com/intro/getting-started/install.html'>Vagrant documentation</a>.
+</p>
 
 ### Using VirtualBox
 
@@ -31,10 +35,12 @@ $ vagrant ssh
 $ wolkenkit --version
 ```
 
-:::hint-congrats
-> **Yay, congratulations!**
->
-> You have successfully installed wolkenkit!
-:::
+<Hint type='congrats'>
 
-To learn how to build and run your first application, have a look at [creating your first application](../../creating-your-first-application/setting-the-objective/) 😊!
+  **Yay, congratulations!**
+
+  You have successfully installed wolkenkit!
+
+</Hint>
+
+To learn how to build and run your first application, have a look at [creating your first application](../creating-your-first-application/setting-the-objective) 😊!
