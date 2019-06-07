@@ -11,7 +11,7 @@ const styles = theme => ({
   Title: {
     display: 'flex',
     alignItems: 'flex-start',
-    padding: [ theme.space(0.5), theme.space(1), theme.space(0.75), theme.space(2) ],
+    padding: [ theme.space(0.5), theme.space(1), theme.space(0.75), theme.space(1.75) ],
     margin: 0,
     marginTop: 10,
     lineHeight: 1.1,

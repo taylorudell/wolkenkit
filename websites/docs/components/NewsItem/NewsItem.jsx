@@ -10,7 +10,7 @@ const styles = theme => ({
     width: '37.5vw',
 
     '& p': {
-      padding: [ 0, theme.space(4) ],
+      padding: [ 0, theme.space(3) ],
       color: 'rgba(255, 255, 255, 0.8)'
     }
   },
@@ -21,13 +21,13 @@ const styles = theme => ({
     fontSize: theme.font.size.md,
     color: theme.color.brand.white,
     fontWeight: 600,
-    padding: [ 0, theme.space(4) ]
+    padding: [ 0, theme.space(3), theme.space(1.75), theme.space(3) ]
   },
 
   Date: {
     color: '#BDBDC1',
     fontWeight: 400,
-    paddingRight: theme.space(4)
+    paddingRight: theme.space(3)
   },
 
   [theme.breakpoints.down('sm')]: {

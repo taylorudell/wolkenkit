@@ -14,7 +14,7 @@ const styles = theme => ({
   PlaceholderBar: {},
 
   Title: {
-    padding: [ 0, theme.space(4), 0, theme.space(4) ],
+    padding: [ 0, theme.space(3) ],
     fontWeight: 600
   },
 

@@ -3,8 +3,8 @@ import Page from './Page.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Section from './Section.jsx';
-import { withStyles } from 'thenativeweb-ux';
 import { ActivePage, Metadata } from '../../content';
+import { classNames, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   PageMenu: {
@@ -33,6 +33,10 @@ const styles = theme => ({
     overflow: 'auto',
     '-webkit-overflow-scrolling': 'touch',
     width: theme.sidebarWidth
+  },
+
+  Level2: {
+    marginTop: theme.space(0.25)
   },
 
   [theme.breakpoints.down('sm')]: {
@@ -150,7 +154,7 @@ class PageMenu extends React.Component {
               })
             }
           </div>
-          <div className={ classes.Level }>
+          <div className={ classNames(classes.Level, classes.Level2) }>
             {
               PageMenu.renderSecondLevel({
                 activePage,

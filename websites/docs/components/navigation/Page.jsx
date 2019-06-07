@@ -11,7 +11,7 @@ const styles = theme => ({
     '& a, & a:visited': {
       position: 'relative',
       display: 'block',
-      padding: [ theme.space(0.5), theme.space(1), theme.space(1), '35px' ],
+      padding: [ theme.space(0.5), theme.space(1), theme.space(1), theme.space(4) ],
       color: theme.color.brand.white,
       opacity: 0.5
     },
@@ -64,6 +64,10 @@ Page.propTypes = {
   isEmphasized: PropTypes.bool.isRequired,
   path: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired
+};
+
+Page.defaultProps = {
+  isEmphasized: false
 };
 
 export default withStyles(styles)(Page);

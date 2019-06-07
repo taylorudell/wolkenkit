@@ -1,7 +1,7 @@
 import { ActivePage } from '../../content';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Brand, withStyles } from 'thenativeweb-ux';
+import { Brand, Link, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   PageFooter: {
@@ -69,7 +69,7 @@ const PageFooter = function ({ classes, activePage }) {
           © Copyright 2016-2018 the native web GmbH. All rights reserved.
         </p>
         <p>
-          <a href={ `/${activePage.version}/legal/imprint/` }>Imprint</a>
+          <Link href={ `/${activePage.language}/${activePage.version}/legal/imprint` }>Imprint</Link>
         </p>
       </div>
     </footer>
