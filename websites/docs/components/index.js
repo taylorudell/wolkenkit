@@ -1,10 +1,10 @@
-export { default as ActivePage } from './ActivePage';
 export { default as Bar } from './Bar';
 export { default as Blockquote } from './Blockquote';
 export { default as Breadcrumbs } from './Breadcrumbs';
 export { default as Code } from './Code';
 export { default as Date } from './Date';
 export { default as Head } from './Head';
+export { default as Headline } from './Headline';
 export { default as HighlightText } from './HighlightText';
 export { default as Hint } from './Hint';
 export { default as Icons } from './Icons';
@@ -17,3 +17,4 @@ export { default as PageContent } from './PageContent';
 export { default as PageFooter } from './PageFooter';
 export { default as StaticImage } from './StaticImage';
 export { default as VersionedLink } from './VersionedLink';
+export { usePageContext, PageContextProvider } from './PageContext';

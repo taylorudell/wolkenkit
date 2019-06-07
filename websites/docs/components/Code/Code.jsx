@@ -13,13 +13,14 @@ const styles = theme => ({
 
     '& code': {
       maxWidth: theme.pageContent.maxWidth,
-      marginTop: theme.space(2),
+      marginTop: theme.space(3),
       marginBottom: theme.space(6),
       border: 0,
       display: 'block',
       color: '#abb2bf',
       background: '#282c34',
-      padding: [ theme.space(2), theme.space(3) ]
+      padding: [ theme.space(2), theme.space(3) ],
+      overflowX: 'auto'
     }
   }
 });

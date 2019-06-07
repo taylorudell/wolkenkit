@@ -1,61 +1,23 @@
-import ActivePage from '../../services/ActivePage';
 import Base from '../Base.jsx';
-import Metadata from '../../services/Metadata';
-import { PageContent } from '../../components';
-import { PageContextProvider } from '../PageContext';
 import React from 'react';
-import search from '../../services/search';
-import { withRouter } from 'next/router';
+import { PageContent, usePageContext } from '../../components';
 
-class Documentation extends React.Component {
-  constructor (props) {
-    super(props);
+const Documentation = ({ children }) => {
+  const { activePage, metadata } = usePageContext();
 
-    const { router } = props;
-
-    const metadata = new Metadata();
-    const activePage = new ActivePage({
-      metadata,
-      path: router.asPath
-    });
-
-    this.state = {
-      metadata,
-      activePage
-    };
-  }
-
-  componentDidMount () {
-    const { metadata } = this.state;
-
-    search.initialize({ metadata });
-  }
-
-  render () {
-    const {
-      activePage,
-      metadata
-    } = this.state;
-
-    const { children } = this.props;
-
-    return (
-      <Base
+  return (
+    <Base
+      activePage={ activePage }
+      metadata={ metadata }
+    >
+      <PageContent
         activePage={ activePage }
         metadata={ metadata }
       >
-        <PageContent
-          activePage={ activePage }
-          metadata={ metadata }
-          isCollapsed={ false }
-        >
-          <PageContextProvider context={{ activePage, metadata }}>
-            { children }
-          </PageContextProvider>
-        </PageContent>
-      </Base>
-    );
-  }
-}
+        { children }
+      </PageContent>
+    </Base>
+  );
+};
 
-export default withRouter(Documentation);
+export default Documentation;

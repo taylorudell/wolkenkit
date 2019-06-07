@@ -1,4 +1,4 @@
-import ActivePage from '../../services/ActivePage';
+import { ActivePage } from '../../content';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Brand, withStyles } from 'thenativeweb-ux';
@@ -37,11 +37,18 @@ const styles = theme => ({
   [theme.breakpoints.down('sm')]: {
     PageFooter: {
       margin: 0,
-      paddingRight: theme.space(2)
+      marginTop: theme.space(6),
+      padding: 0
+    },
+
+    About: {
+      padding: theme.space(4)
     },
 
     Copyright: {
-      marginTop: theme.space(2)
+      padding: theme.space(4),
+      paddingTop: 0,
+      marginBottom: theme.space(1)
     }
   }
 });

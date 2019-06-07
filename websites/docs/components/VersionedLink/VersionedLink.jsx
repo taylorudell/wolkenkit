@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { usePageContext } from '../../layouts/PageContext';
+import { usePageContext } from '..';
 
 const VersionedLink = function ({ href, children, rewriteLatestAs } = {}) {
   const { activePage } = usePageContext();

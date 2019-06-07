@@ -1,20 +1,21 @@
-import ActivePage from '../../services/ActivePage';
 import { Bar } from '..';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import MenuBar from './MenuBar.jsx';
-import Metadata from '../../services/Metadata';
 import MobileToggle from './MobileToggle.jsx';
 import PageMenu from './PageMenu.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Search from './Search.jsx';
 import VersionBar from './VersionBar.jsx';
+import { ActivePage, Metadata } from '../../content';
 import { Brand, Icon, Link, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   Navigation: {
-    position: 'relative',
+    position: 'fixed',
+    top: 0,
+    left: 0,
     flex: theme.sidebarFlex,
     width: theme.sidebarWidth,
     height: '100%',
@@ -65,9 +66,6 @@ const styles = theme => ({
 
   [theme.breakpoints.down('sm')]: {
     Navigation: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
       pointerEvents: 'none',
       zIndex: theme.zIndices.navigation,
       flex: theme.sidebarFlexMobile,
@@ -159,7 +157,7 @@ class Navigation extends React.Component {
       showSearch
     } = this.state;
 
-    const expandedBreadcrumbs = activePage.getBreadcrumbs({ path: expandedPath });
+    const expandedBreadcrumbs = metadata.getBreadcrumbsForPath({ path: expandedPath });
 
     const componentClasses = classNames(classes.Navigation, {
       [classes.IsVisibleOnMobile]: isVisibleOnMobile

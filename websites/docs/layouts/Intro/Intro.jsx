@@ -1,16 +1,17 @@
-import ActivePage from '../../services/ActivePage';
 import Base from '../Base.jsx';
-import Metadata from '../../services/Metadata';
 import React from 'react';
-import search from '../../services/search';
-import { withRouter } from 'next/router';
+import { usePageContext } from '../../components';
 import { Product, View, withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({
   IntroPage: {
     flex: theme.contentFlex,
     width: theme.contentWidth,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    position: 'fixed',
+    left: theme.sidebarWidth,
+    top: 0,
+    right: 0
   },
 
   Brand: {},
@@ -24,6 +25,8 @@ const styles = theme => ({
 
   [theme.breakpoints.down('sm')]: {
     IntroPage: {
+      left: 0,
+      width: '100vw',
       flexDirection: 'column-reverse',
       overflow: 'auto',
       '-webkit-overflow-scrolling': 'touch'
@@ -35,66 +38,31 @@ const styles = theme => ({
     },
 
     SiteTitle: {
-      fontSize: theme.font.size.sm,
-      textAlign: 'center',
-      color: theme.color.brand.white
+      fontSize: theme.font.size.sm
     }
   }
 });
 
-class Intro extends React.Component {
-  constructor (props) {
-    super(props);
+const Intro = function ({ classes, children }) {
+  const { activePage, metadata } = usePageContext();
 
-    const { router } = props;
-
-    const metadata = new Metadata();
-    const activePage = new ActivePage({
-      metadata,
-      path: router.asPath
-    });
-
-    this.state = {
-      metadata,
-      activePage
-    };
-  }
-
-  componentDidMount () {
-    const { metadata } = this.state;
-
-    search.initialize({ metadata });
-  }
-
-  render () {
-    const {
-      activePage,
-      metadata
-    } = this.state;
-
-    const {
-      children,
-      classes
-    } = this.props;
-
-    return (
-      <Base
-        activePage={ activePage }
-        metadata={ metadata }
-      >
-        <View orientation='horizontal' background='dark' className={ classes.IntroPage }>
-          <View className={ classes.IntroContent } scrollable='auto'>
-            { children }
-          </View>
-
-          <View className={ classes.Brand } orientation='vertical' alignItems='center' justifyContent='center' adjust='flex'>
-            <Product name='wolkenkit' isAnimated={ true } size='xl' />
-            <div className={ classes.SiteTitle }>Documentation</div>
-          </View>
+  return (
+    <Base
+      activePage={ activePage }
+      metadata={ metadata }
+    >
+      <View orientation='horizontal' background='dark' className={ classes.IntroPage }>
+        <View className={ classes.IntroContent } scrollable='auto'>
+          { children }
         </View>
-      </Base>
-    );
-  }
-}
 
-export default withRouter(withStyles(styles)(Intro));
+        <View className={ classes.Brand } orientation='vertical' alignItems='center' justifyContent='center' adjust='flex'>
+          <Product name='wolkenkit' isAnimated={ true } size='xl' />
+          <div className={ classes.SiteTitle }>Documentation</div>
+        </View>
+      </View>
+    </Base>
+  );
+};
+
+export default withStyles(styles)(Intro);

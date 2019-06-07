@@ -1,8 +1,7 @@
-import ActivePage from '../../services/ActivePage';
-import Metadata from '../../services/Metadata';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Router from 'next/router';
+import { ActivePage, Metadata } from '../../content';
 import { Bar, Link } from '..';
 import { Dropdown, Product } from 'thenativeweb-ux';
 

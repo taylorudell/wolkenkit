@@ -1,4 +1,4 @@
-import { Hint } from '../../../../../../components';
+import { Code, Hint } from '../../../../../../components';
 
 # Creating the write model
 
@@ -61,14 +61,14 @@ $ touch chat/package.json
 
 Then, open the file and add the following code:
 
-```json
+<Code language='json'>{`
 {
   "name": "chat",
   "version": "0.0.0",
   "wolkenkit": {
     "application": "chat",
     "runtime": {
-      "version": "<%= current.version %>"
+      "version": "${ props.version }"
     },
     "environments": {
       "default": {
@@ -86,7 +86,7 @@ Then, open the file and add the following code:
     }
   }
 }
-```
+`}</Code>
 
 For more details, see [configuring an application](../../../reference/configuring-an-application/naming-an-application/).
 

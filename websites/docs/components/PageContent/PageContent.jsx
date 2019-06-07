@@ -1,10 +1,9 @@
-import ActivePage from '../../services/ActivePage';
-import Metadata from '../../services/Metadata';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './styles';
+import { withStyles } from 'thenativeweb-ux';
+import { ActivePage, Metadata } from '../../content';
 import { Breadcrumbs, Head, PageFooter } from '..';
-import { classNames, withStyles } from 'thenativeweb-ux';
 
 class PageContent extends React.Component {
   constructor (props) {
@@ -13,26 +12,28 @@ class PageContent extends React.Component {
     this.saveContainerRef = this.saveContainerRef.bind(this);
   }
 
-  componentDidMount () {
-    const anchor = global.location.hash;
+  //
+  // componentDidMount () {
+  //   const anchor = global.location.hash;
+  //
+  //   if (anchor) {
+  //     const anchorElement = global.document.querySelector(anchor);
+  //
+  //     if (anchorElement && this.container) {
+  //       this.container.scrollTop = anchorElement.offsetTop;
+  //     }
+  //   }
+  // }
 
-    if (anchor) {
-      const anchorElement = global.document.querySelector(anchor);
-
-      if (anchorElement && this.container) {
-        this.container.scrollTop = anchorElement.offsetTop;
-      }
-    }
-  }
-
-  componentDidUpdate (prevProps) {
-    const { container } = this;
-    const { content } = this.props;
-
-    if (prevProps.content !== content && container) {
-      container.scrollTop = 0;
-    }
-  }
+  // componentDidUpdate (prevProps) {
+  //   const { container } = this;
+  //   const { content } = this.props;
+  //
+  //   if (prevProps.content !== content && container) {
+  //     container.scrollTop = 0;
+  //   }
+  // }
+  //
 
   saveContainerRef (ref) {
     this.container = ref;
@@ -43,7 +44,6 @@ class PageContent extends React.Component {
       activePage,
       children,
       classes,
-      isCollapsed,
       metadata
     } = this.props;
 
@@ -53,12 +53,8 @@ class PageContent extends React.Component {
 
     pageTitle = `${breadcrumbsForTitle} | ${pageTitle}`;
 
-    const componentClasses = classNames(classes.PageContent, {
-      [classes.IsCollapsed]: isCollapsed
-    });
-
     return (
-      <div ref={ this.saveContainerRef } className={ componentClasses }>
+      <div ref={ this.saveContainerRef } className={ classes.PageContent }>
         <Head>
           <title>{ pageTitle }</title>
         </Head>

@@ -4,22 +4,13 @@ const tableCellPadding = '8px 8px 10px 8px';
 
 const styles = theme => ({
   PageContent: {
-    flex: theme.contentFlex,
     width: theme.contentWidth,
-    overflow: 'auto',
-    '-webkit-overflow-scrolling': 'touch',
-    transition: 'width 800ms cubic-bezier(0.190, 1.000, 0.220, 1.000)',
-    willChange: 'width',
+    marginLeft: theme.sidebarWidth,
     background: theme.color.content.background,
 
     '& > *': {
       width: theme.contentWidth
     }
-  },
-
-  IsCollapsed: {
-    flex: '0 0 auto',
-    width: 0
   },
 
   Article: {
@@ -28,55 +19,6 @@ const styles = theme => ({
 
     '& a': {
       fontWeight: 400
-    },
-
-    '& h1, h2, h3, h4, h5': {
-      margin: '1em 0 0.5em 0',
-      lineHeight: '1.1',
-      position: 'relative',
-      fontFamily: theme.font.family.headline,
-      marginTop: theme.space(6),
-      fontWeight: 500
-    },
-
-    '& h1': {
-      fontSize: '40px'
-    },
-
-    '& h2': {
-      fontSize: '25px'
-    },
-
-    '& h3': {
-      fontSize: '20px'
-    },
-
-    '& h4': {
-      fontSize: theme.font.family.copytext,
-      fontFamily: theme.font.family.default,
-      fontWeight: 600
-    },
-
-    '& h5': {
-      fontSize: theme.font.family.copytext,
-      fontFamily: theme.font.family.default,
-      fontWeight: 600
-    },
-
-    '& .header-anchor': {
-      position: 'absolute',
-      display: 'block',
-      left: '-22px',
-      top: '50%',
-      marginTop: '-0.55em',
-      paddingRight: '10px',
-      fontSize: '25px',
-      color: theme.color.content.background,
-      fontWeight: 'normal'
-    },
-
-    '& h1:hover .header-anchor, h2:hover .header-anchor, h3:hover .header-anchor, h4:hover .header-anchor, h5:hover .header-anchor': {
-      color: theme.color.brand.highlight
     },
 
     '& p, ul, ol': {
@@ -216,50 +158,17 @@ const styles = theme => ({
 
   [theme.breakpoints.down('sm')]: {
     PageContent: {
-      flex: '3 3 100vw',
       width: '100vw',
+      marginLeft: 0,
 
       '& > *': {
         width: '100vw'
       }
     },
 
-    IsCollapsed: {
-      flex: '0 0 auto',
-      width: 0
-    },
-
     Article: {
       paddingRight: theme.space(2),
-
-      '& .header-anchor': {
-        color: theme.color.brand.highlight
-      },
-
-      '& h1, h2, h3, h4, h5': {
-        margin: [ theme.space(3), 0, 0, 0 ]
-      },
-
-      '& h1': {
-        fontSize: 26
-      },
-
-      '& h2': {
-        fontSize: 20
-      },
-
-      '& h3': {
-        fontSize: 18
-      },
-
-      '& h4': {
-        fontSize: 18
-      },
-
-      '& h5': {
-        margin: 0,
-        fontSize: 18
-      },
+      fontSize: '17px',
 
       '& ul ul': {
         marginLeft: '0em'

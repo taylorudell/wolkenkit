@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { usePageContext } from '../../layouts/PageContext';
+import { usePageContext } from '..';
 import { withStyles } from 'thenativeweb-ux';
 
 const styles = theme => ({

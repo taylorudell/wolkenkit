@@ -1,10 +1,9 @@
-import ActivePage from '../../services/ActivePage';
 import { Bar } from '..';
 import PropTypes from 'prop-types';
 import React from 'react';
-import search from '../../services/search';
 import SearchResults from './SearchResults.jsx';
 import { withStyles } from 'thenativeweb-ux';
+import { ActivePage, search } from '../../content';
 
 const styles = theme => ({
   Search: {

@@ -1,4 +1,4 @@
-import { ActivePage, Code, Hint, StaticImage, VersionedLink } from '../../../../../../components';
+import { Code, Hint, StaticImage, VersionedLink } from '../../../../../../components';
 
 # Creating the client
 
@@ -15,16 +15,12 @@ To make things easy we have prepared a sample client for you that you are going
 toextend. <VersionedLink rewriteLatestAs='master' href='https://github.com/thenativeweb/wolkenkit-client-template-spa-vanilla-js/archive/#VERSION#.zip'>Download the client</VersionedLink> into
 your `chat` directory and, from within this directory, run the following commands:
 
-<ActivePage>
-{ ({ version }) => (
-  <Code language='shell'>{`
-    $ export CLIENT_TEMPLATE="wolkenkit-client-template-spa-vanilla-js-${ version === 'latest' ? 'master' : version }"
-    $ unzip \${CLIENT_TEMPLATE}.zip
-    $ rm \${CLIENT_TEMPLATE}.zip
-    $ mv \${CLIENT_TEMPLATE} client
-  `}</Code>
-)}
-</ActivePage>
+<Code language='shell'>{`
+  $ export CLIENT_TEMPLATE="wolkenkit-client-template-spa-vanilla-js-${ props.version === 'latest' ? 'master' : version }"
+  $ unzip \${CLIENT_TEMPLATE}.zip
+  $ rm \${CLIENT_TEMPLATE}.zip
+  $ mv \${CLIENT_TEMPLATE} client
+`}</Code>
 
 As a result, your directory structure should look like this:
 

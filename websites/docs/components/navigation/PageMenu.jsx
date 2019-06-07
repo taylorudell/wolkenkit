@@ -1,11 +1,10 @@
-import ActivePage from '../../services/ActivePage';
 import Chapter from './Chapter.jsx';
-import Metadata from '../../services/Metadata';
 import Page from './Page.jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Section from './Section.jsx';
 import { withStyles } from 'thenativeweb-ux';
+import { ActivePage, Metadata } from '../../content';
 
 const styles = theme => ({
   PageMenu: {
