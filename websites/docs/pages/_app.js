@@ -4,12 +4,15 @@ import React from 'react';
 import theme from '../theme/docs';
 import { ActivePage, metadata } from '../content';
 import App, { Container } from 'next/app';
-import { Blockquote, Code, Headline, PageContextProvider } from '../components';
+import { Blockquote, Code, Headline, Link, PageContextProvider } from '../components';
 import { removeServerSideStyles, ThemeProvider } from 'thenativeweb-ux';
 
 const mdxComponents = {
   blockquote: Blockquote,
   code: Code,
+  /* eslint-disable id-length */
+  a: Link,
+  /* eslint-enable id-length */
   h1: ({ children }) => <Headline level='1'>{ children }</Headline>,
   h2: ({ children }) => <Headline level='2'>{ children }</Headline>,
   h3: ({ children }) => <Headline level='3'>{ children }</Headline>,

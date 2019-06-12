@@ -119,40 +119,6 @@ const styles = theme => ({
           borderRight: `1px solid ${theme.color.content.border}`
         }
       }
-    },
-
-    '& .read-model, .write-model, .flows': {
-      paddingLeft: theme.space(4),
-      marginBottom: theme.space(10),
-      marginLeft: 115,
-      borderLeft: '1px solid #eeeeee',
-      position: 'relative',
-
-      '& p': {
-        maxWidth: theme.pageContent.maxWidth - 3 * theme.space(1) - 115
-      },
-
-      '&::after': {
-        position: 'absolute',
-        width: 80,
-        height: 80,
-        left: -115,
-        top: 0,
-        content: '""',
-        backgroundRepeat: 'no-repeat'
-      }
-    },
-
-    '& .read-model::after': {
-      backgroundImage: `url('/data-flow/read-model.svg')`
-    },
-
-    '& .write-model::after': {
-      backgroundImage: `url('/data-flow/write-model.svg')`
-    },
-
-    '& .flows::after': {
-      backgroundImage: `url('/data-flow/flows.svg')`
     }
   },
 
@@ -172,19 +138,6 @@ const styles = theme => ({
 
       '& ul ul': {
         marginLeft: '0em'
-      },
-
-      '& .read-model, .write-model, .flows': {
-        paddingLeft: 0,
-        marginTop: 115 + theme.space(8),
-        marginBottom: theme.space(10),
-        marginLeft: 0,
-        borderLeft: 'none',
-
-        '&::after': {
-          top: -115,
-          left: 0
-        }
       }
     }
   }

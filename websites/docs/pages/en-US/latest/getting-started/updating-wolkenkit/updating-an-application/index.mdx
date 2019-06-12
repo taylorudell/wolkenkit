@@ -1,3 +1,5 @@
+import { Code } from '../../../../../../components';
+
 # Updating an application
 
 To update an application to the current version of wolkenkit follow the steps given below.
@@ -17,7 +19,7 @@ To update an application to the current version of wolkenkit follow the steps gi
       "api": {
         "address": {
           "host": "local.wolkenkit.io",
-          "port": 3000          
+          "port": 3000
         }
       }
     },
@@ -26,13 +28,15 @@ To update an application to the current version of wolkenkit follow the steps gi
 }
 ```
 
-**Current version (<%= current.version %>)**
+<strong>
+  Current version ({ props.version})
+</strong>
 
-```json
+<Code language='json'>{`
 "wolkenkit": {
   "application": "your-app",
   "runtime": {
-    "version": "<%= current.version %>"
+    "version": "${props.version}"
   },
   "environments": {
     "default": {
@@ -43,7 +47,7 @@ To update an application to the current version of wolkenkit follow the steps gi
   },
   "...": "..."
 }
-```
+`}</Code>
 
 For details on how to configure the port, see [setting the port](../../../reference/configuring-an-application/setting-the-port).
 
@@ -62,7 +66,7 @@ For details on how to configure the port, see [setting the port](../../../refere
       "api": {
         "address": {
           "host": "example.com",
-          "port": 3000          
+          "port": 3000
         },
         "certificate": "/server/keys/example.com"
       }
@@ -72,13 +76,15 @@ For details on how to configure the port, see [setting the port](../../../refere
 }
 ```
 
-**Current version (<%= current.version %>)**
+<strong>
+  Current version ({ props.version})
+</strong>
 
-```json
+<Code language='json'>{`
 "wolkenkit": {
   "application": "your-app",
   "runtime": {
-    "version": "<%= current.version %>"
+    "version": "${props.version}"
   },
   "environments": {
     "default": {
@@ -93,7 +99,7 @@ For details on how to configure the port, see [setting the port](../../../refere
   },
   "...": "..."
 }
-```
+`}</Code>
 
 For details on how to configure a custom host, see [using a custom host](../../../reference/configuring-an-application/using-a-custom-host).
 
@@ -119,13 +125,15 @@ For details on how to configure a custom host, see [using a custom host](../../.
 }
 ```
 
-**Current version (<%= current.version %>)**
+<strong>
+  Current version ({ props.version})
+</strong>
 
-```json
+<Code language='json'>{`
 "wolkenkit": {
   "application": "your-app",
   "runtime": {
-    "version": "<%= current.version %>"
+    "version": "${props.version}"
   },
   "environments": {
     "default": {
@@ -139,6 +147,6 @@ For details on how to configure a custom host, see [using a custom host](../../.
   },
   "...": "..."
 }
-```
+`}</Code>
 
-For details on how to configure the identity provider, see [enabling authentication](../../../reference/configuring-an-application/enabling-authentication).
+For details on how to configure the identity provider, see [enabling authentication](../../../reference/configuring-an-application/enabling-authentication/).
