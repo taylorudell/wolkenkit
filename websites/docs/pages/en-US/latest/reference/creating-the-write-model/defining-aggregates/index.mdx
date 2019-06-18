@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining aggregates
 
 To define an aggregate, create a `.js` file with the name of the aggregate within the appropriate context directory:
@@ -7,11 +9,13 @@ $ cd <app>
 $ touch server/writeModel/<context>/<aggregate>.js
 ```
 
-:::hint-tip
-> **Shared code**
->
-> The `server/writeModel` directory must only contain contexts and aggregates. If you want to add a directory or a file that is shared across multiple aggregates, put it into the `server/shared` folder.
-:::
+<Hint type='tip'>
+
+  **Shared code**
+
+  The `server/writeModel` directory must only contain contexts and aggregates. If you want to add a directory or a file that is shared across multiple aggregates, put it into the `server/shared` folder.
+
+</Hint>
 
 E.g., if you want to define an aggregate called `invoice` in the `accounting` context, use the following directory structure:
 

@@ -1,3 +1,5 @@
+import { Code, Hint } from '../../../../../../components';
+
 # Starting from scratch
 
 If you need to control every aspect of an application, you may want to start from scratch. Otherwise, you may be fine by simply [using a template](../using-a-template/).
@@ -25,11 +27,13 @@ Optionally, you may add a `server/shared` directory to store code that is being 
     writeModel
 ```
 
-:::hint-tip
-> **Additional files**
->
-> Additionally, you are free to add arbitrary directories to the root directory itself, e.g. for private files, documentation, or anything else. Everything outside the `server` directory will be ignored by wolkenkit.
-:::
+<Hint type='tip'>
+
+  **Additional files**
+
+  Additionally, you are free to add arbitrary directories to the root directory itself, e.g. for private files, documentation, or anything else. Everything outside the `server` directory will be ignored by wolkenkit.
+
+</Hint>
 
 ## Creating the configuration
 
@@ -37,14 +41,14 @@ Inside of the application's root directory you need to add a `package.json` file
 
 As default, use the following template:
 
-```json
+<Code language='json'>{`
 {
   "name": "<app>",
   "version": "<version>",
   "wolkenkit": {
     "application": "<app>",
     "runtime": {
-      "version": "<%= current.version %>"
+      "version": "${props.version}"
     },
     "environments": {
       "default": {
@@ -62,10 +66,12 @@ As default, use the following template:
     }
   }
 }
-```
+`}</Code>
 
-:::hint-warning
-> **Alphanumeric only**
->
->  The application name must only contain alphanumeric characters. Additionally, it is recommended to only use lowercase characters.
-:::
+<Hint type='warning'>
+
+  **Alphanumeric only**
+
+  The application name must only contain alphanumeric characters. Additionally, it is recommended to only use lowercase characters.
+
+</Hint>

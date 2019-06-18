@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining commands
 
 To define a command add an appropriately named function to the `commands` object of the aggregate the command refers to. This function receives two parameters, the aggregate instance and the command.
@@ -36,11 +38,13 @@ const commands = {
 
 For a detailed list of a command's properties, see the [data structure of commands](../../data-structures/commands/).
 
-:::hint-warning
-> **Reserved command names**
->
-> Do not name a command `transferOwnership` or `authorize`, since these are reserved names.
-:::
+<Hint type='warning'>
+
+  **Reserved command names**
+
+  Do not name a command `transferOwnership` or `authorize`, since these are reserved names.
+
+</Hint>
 
 ## Accessing the command data
 
@@ -54,11 +58,13 @@ if (command.data.amount > 0) {
 }
 ```
 
-:::hint-warning
-> **File storage for large documents**
->
-> Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
-:::
+<Hint type='warning'>
+
+  **File storage for large documents**
+
+  Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
+
+</Hint>
 
 ## Accessing the aggregate state
 
@@ -104,10 +110,11 @@ if (invoice.exists()) {
 }
 ```
 
-:::hint-tip
-> **Middlewares simplify things**
->
-> Instead of calling the `exists` function manually, you can alternatively use a [middleware](../using-command-middleware/) such as [wolkenkit-command-tools](https://github.com/thenativeweb/wolkenkit-command-tools).
->
-> The two functions [`only.ifExists`](../using-command-middleware/#onlyifexists) and [`only.ifNotExists`](../using-command-middleware/#onlyifnotexists) serve the same purpose, but can be integrated more elegantly.
-:::
+<Hint type='tip'>
+
+  **Middlewares simplify things**
+
+  Instead of calling the `exists` function manually, you can alternatively use a [middleware](../using-command-middleware/) such as [wolkenkit-command-tools](https://github.com/thenativeweb/wolkenkit-command-tools).
+  The two functions [`only.ifExists`](../using-command-middleware#onlyifexists) and [`only.ifNotExists`](../using-command-middleware/#onlyifnotexists) serve the same purpose, but can be integrated more elegantly.
+
+</Hint>
