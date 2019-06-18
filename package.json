@@ -142,7 +142,7 @@
     "strip-ansi": "5.2.0",
     "supertest": "4.0.2",
     "terminal-img": "1.1.1",
-    "thenativeweb-ux": "thenativeweb/thenativeweb-ux#970d6c94824b5e526252b4ad0a56ae6835ed01dc",
+    "thenativeweb-ux": "thenativeweb/thenativeweb-ux#bda95ec682ed89241a108ad9e3d44477e96ef84d",
     "twitter": "1.7.1"
   },
   "scripts": {
