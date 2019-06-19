@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Using services
 
 To use services, add `services` as third parameter to your reaction.
@@ -10,7 +12,7 @@ const reactions = {
     'awaiting-payment' (flow, event, services) {
       // ...
     }
-  }  
+  }
 };
 ```
 
@@ -22,7 +24,7 @@ const reactions = {
     'awaiting-payment' (flow, event, { app }) {
       // ...
     }
-  }  
+  }
 };
 ```
 
@@ -30,11 +32,13 @@ const reactions = {
 
 Sometimes you may need to send commands to the application from a reaction. For that use the `app` service, access the context and the aggregate, and call the command function.
 
-:::hint-warning
-> **No callbacks here**
->
-> In contrast to [sending commands when building a client](../../building-a-client/sending-commands/) you can not use the `failed`, `delivered`, `await`, and `timeout` functions here.
-:::
+<Hint type='warning'>
+
+  **No callbacks here**
+
+  In contrast to [sending commands when building a client](../../building-a-client/sending-commands/) you can not use the `failed`, `delivered`, `await`, and `timeout` functions here.
+
+</Hint>
 
 E.g., if you want to send an `awaitPayment` command to the invoice that caused a transition from the `pristine` state to the `awaiting-payment` state, use the following code:
 
@@ -44,7 +48,7 @@ const reactions = {
     'awaiting-payment' (flow, event, { app }) {
       app.accounting.invoice(event.aggregate.id).awaitPayment();
     }
-  }  
+  }
 };
 ```
 
@@ -61,6 +65,6 @@ const reactions = {
       logger.info('Transitioning from pristine to awaiting payment...');
       // ...
     }
-  }  
+  }
 };
 ```
