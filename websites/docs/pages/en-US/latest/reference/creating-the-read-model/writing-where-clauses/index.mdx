@@ -54,7 +54,7 @@ invoices.remove({
     $or: [
       { amount: { $lessThan: 1000 }},
       { tags: { $contains: 'private' }}
-    ]    
+    ]
   }
 });
 ```

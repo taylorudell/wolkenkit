@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Configuring authorization
 
 When a list handles an event that results in adding a new item, this item inherits the authorization from the event. This ensures that the authorization is consistent across events and lists. Additionally, the user that caused the event becomes the owner of the list item.
@@ -58,8 +60,10 @@ invoices.transferOwnership({
 });
 ```
 
-:::hint-warning
-> **Only known users**
->
-> If you provide an id of a non-existent user, the ownership will be transferred anyway. You will not be able to return to the previous state.
-:::
+<Hint type='warning'>
+
+  **Only known users**
+  
+  If you provide an id of a non-existent user, the ownership will be transferred anyway. You will not be able to return to the previous state.
+
+</Hint>

@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining projections
 
 To handle an event, add the fully-qualified name of the event to the `projections` object and provide a function to handle the event. Like commands, this function takes two parameters, the list itself and the event.
@@ -28,11 +30,13 @@ const projections = {
 
 To add an item to a list, call the list's `add` function and provide the item you want to add. You have access to all of the event's data, including its metadata such as the id of the aggregate the event refers to. If you do not provide an `id` explicitly, wolkenkit will automatically use the id of the aggregate the event refers to.
 
-:::hint-tip
-> **JSON only**
->
-> You may use any JavaScript data type and value that is supported by JSON. This especially means that you are not allowed to use constructor functions here. Rely on object and array literals instead.
-:::
+<Hint type='tip'>
+
+  **JSON only**
+
+  You may use any JavaScript data type and value that is supported by JSON. This especially means that you are not allowed to use constructor functions here. Rely on object and array literals instead.
+
+</Hint>
 
 E.g., to add an invoice to the list of invoices once an `issued` event is received, use the following code:
 

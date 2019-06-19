@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining lists
 
 To define a list, create a `.js` file with the name of the list within the `server/readModel/lists` directory:
@@ -7,11 +9,13 @@ $ cd <app>
 $ touch server/readModel/lists/<list>.js
 ```
 
-:::hint-tip
-> **Shared code**
->
-> The `server/readModel/lists` directory must only contain lists. If you want to add a directory or a file that is shared across multiple lists, put it into the `server/shared` folder.
-:::
+<Hint type='tip'>
+
+   **Shared code**
+
+   The `server/readModel/lists` directory must only contain lists. If you want to add a directory or a file that is shared across multiple lists, put it into the `server/shared` folder.
+
+</Hint>
 
 E.g., if you want to define a list called `invoices`, use the following directory structure:
 
@@ -26,11 +30,13 @@ E.g., if you want to define a list called `invoices`, use the following director
     writeModel
 ```
 
-:::hint-question
-> **Where is the context?**
->
-> In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
-:::
+<Hint type='question'>
+
+  **Where is the context?**
+
+  In contrast to the write model the read model does not use contexts. This is because a read model can handle events from multiple contexts, so it may not be possible to assign a read model to a specific context.
+
+</Hint>
 
 ## Structuring the code
 

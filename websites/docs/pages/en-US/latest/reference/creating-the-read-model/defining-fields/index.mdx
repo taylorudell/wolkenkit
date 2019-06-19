@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining fields
 
 To define the fields of a list add their names to the `fields` object and set their initial state.
@@ -24,21 +26,25 @@ const fields = {
 };
 ```
 
-:::hint-tip
-> **Fast ids by default**
->
-> The `id` field of every list is indexed automatically.
-:::
+<Hint type='tip'>
+
+  **Fast ids by default**
+
+  The `id` field of every list is indexed automatically.
+
+</Hint>
 
 ## Marking fields as unique
 
 Optionally, you may mark fields to be unique. For that, add the `isUnique` property and set it to `true`.
 
-:::hint-warning
-> **Unique fields require fast lookup**
->
-> This only works for fields that are indexed using the `fastLookup` property.
-:::
+<Hint type='warning'>
+
+  **Unique fields require fast lookup**
+
+  This only works for fields that are indexed using the `fastLookup` property.
+
+</Hint>
 
 E.g., to mark the `recipient` field of the list of invoices as unique, use the following code:
 
@@ -49,8 +55,10 @@ const fields = {
 };
 ```
 
-:::hint-tip
-> **Unique ids by default**
->
-> The `id` field of every list is marked as unique automatically.
-:::
+<Hint type='tip'>
+
+  **Unique ids by default**
+
+  The `id` field of every list is marked as unique automatically.
+
+</Hint>
