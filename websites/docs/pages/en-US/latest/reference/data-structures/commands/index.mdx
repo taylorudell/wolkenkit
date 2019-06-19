@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Commands
 
 When you send a command from the client or from a flow, internally a JSON object is created. To handle commands, or to create them by yourself, you need to understand their internal structure.
@@ -73,8 +75,10 @@ chat.communication.message().send({
 }
 ```
 
-:::hint-question
-> **What is uuid?**
->
-> The type `uuid` refers to a UUID in version 4, formatted as a lowercased string, without curly braces, but with dashes. To create such UUIDs by yourself, use the [uuidv4](https://www.npmjs.com/package/uuidv4) module.
-:::
+<Hint type='question'>
+
+  **What is uuid?**
+
+  The type `uuid` refers to a UUID in version 4, formatted as a lowercased string, without curly braces, but with dashes. To create such UUIDs by yourself, use the [uuidv4](https://www.npmjs.com/package/uuidv4) module.
+
+</Hint>
