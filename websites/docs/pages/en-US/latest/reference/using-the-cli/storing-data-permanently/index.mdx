@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Storing data permanently
 
 By default, any data that have been created by your application will be destroyed once you run `wolkenkit stop`. This is great for development, but not for production. In production, you will want to store data permanently.
@@ -8,11 +10,13 @@ To enable permanent data storage, provide the `--persist` flag when starting the
 $ wolkenkit start --shared-key <secret> --persist
 ```
 
-:::hint-warning
-> **Beware of environment variables**
->
-> If you use a shared key with special characters, it might contain the `$` sign. Since this character is used by the command line to access environment variables, unexpected things could happen. To avoid this, enclose the shared key in single quotes.
-:::
+<Hint type='warning'>
+
+  **Beware of environment variables**
+
+  If you use a shared key with special characters, it might contain the `$` sign. Since this character is used by the command line to access environment variables, unexpected things could happen. To avoid this, enclose the shared key in single quotes.
+
+</Hint>
 
 ## Restarting an application
 

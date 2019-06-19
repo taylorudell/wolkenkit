@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Exporting and importing data
 
 From time to time you may want to export your application's data, e.g. for backup purposes, or to import data into a new application. For these scenarios, the wolkenkit CLI offers the `export` and `import` commands.
@@ -20,11 +22,13 @@ To import data you need to run `wolkenkit import` and provide a directory that c
 $ wolkenkit import --from <directory>
 ```
 
-:::hint-warning
-> **Use the right directory**
->
-> For the import you have to specify the directory that you specified using the `--to` flag of the export command, *not* the sub-directory `<directory>/event-store` that was created for the events.
-:::
+<Hint type='warning'>
+
+  **Use the right directory**
+
+  For the import you have to specify the directory that you specified using the `--to` flag of the export command, *not* the sub-directory `<directory>/event-store` that was created for the events.
+
+</Hint>
 
 Once the import has finished, you need to reload your application by running the following command:
 
