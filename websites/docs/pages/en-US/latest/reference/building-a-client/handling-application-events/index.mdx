@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Handling application events
 
 The client application is an [EventEmitter](https://nodejs.org/dist/v<%= current.versions.node %>/docs/api/events.html#events_class_eventemitter) that emits multiple lifecycle events.
@@ -32,14 +34,16 @@ app.on('connected', () => {
 });
 ```
 
-:::hint-tip
-> **Reload on connected**
->
-> Even if a connection gets established again, the client application and the wolkenkit application need to be synchronized again. Hence it is recommended to reload the client application. You may use the `connected` event to do this automatically.
->
-> ```javascript
-> app.on('connected', () => {
->   window.location.reload();
-> });
-> ```
-:::
+<Hint type='tip'>
+
+  **Reload on connected**
+
+  Even if a connection gets established again, the client application and the wolkenkit application need to be synchronized again. Hence it is recommended to reload the client application. You may use the `connected` event to do this automatically.
+
+  ```javascript
+   app.on('connected', () => {
+     window.location.reload();
+   });
+  ```
+
+</Hint>

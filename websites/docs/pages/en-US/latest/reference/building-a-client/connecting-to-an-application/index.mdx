@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Connecting to an application
 
 To connect to an application, you need to use the wolkenkit SDK. As it is a universal module, it works in the browser as well as in Node.js.
@@ -12,11 +14,13 @@ To install the wolkenkit SDK, use npm:
 $ npm install wolkenkit-client@<%= current.versions.clientSdkJs %>
 ```
 
-:::hint-warning
-> **Polyfill old browsers**
->
-> Please note that for Internet Explorer 11, you additionally need to install the module [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to make things work. For details on how to integrate this polyfill into your application, see its [documentation](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack).
-:::
+<Hint type='warning'>
+
+  **Polyfill old browsers**
+
+  Please note that for Internet Explorer 11, you additionally need to install the module [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to make things work. For details on how to integrate this polyfill into your application, see its [documentation](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack).
+
+</Hint>
 
 ## Using the SDK
 
@@ -57,8 +61,10 @@ There are two protocols that the wolkenkit SDK can use to connect to the wolkenk
 const app = await wolkenkit.connect({ host: 'local.wolkenkit.io', protocol: 'wss' });
 ```
 
-:::hint-warning
-> **Browsers are not yet ready for streaming**
->
-> While the `wss` protocol makes use of web sockets, the `https` protocol uses streaming HTTP. Unfortunately, not all current browsers support streaming HTTP in a reasonable fashion. Hence, you may safely use `wss` on Node.js, but consider `https` to be experimental in the browser.
-:::
+<Hint type='warning'>
+
+  **Browsers are not yet ready for streaming**
+
+  While the `wss` protocol makes use of web sockets, the `https` protocol uses streaming HTTP. Unfortunately, not all current browsers support streaming HTTP in a reasonable fashion. Hence, you may safely use `wss` on Node.js, but consider `https` to be experimental in the browser.
+
+</Hint>

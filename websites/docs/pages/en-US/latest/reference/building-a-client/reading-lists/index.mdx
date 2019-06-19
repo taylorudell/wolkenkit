@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Reading lists
 
 To read data from a list use the `lists` context and the list name to call its `read` function. Provide a `finished` function to retrieve the list once it has been read.
@@ -102,7 +104,7 @@ app.lists.invoices.read({
     $or: [
       { amount: { $lessThan: 1000 }},
       { tags: { $contains: 'private' }}
-    ]    
+    ]
   }
 }).
   finished(invoices => {
@@ -162,11 +164,13 @@ The `read` and `readOne` functions only return a snapshot of a list. While this 
 
 For this use `readAndObserve` instead of `read`. Additionally, instead of `finished` you have to provide a `started` and an `updated` function that are called accordingly.
 
-:::hint-tip
-> **Same API as read**
->
-> You can use `where`, `orderBy`, `skip` and `take` as before. Also the `failed` function works in exactly the same way.
-:::
+<Hint type='tip'>
+
+  **Same API as read**
+
+  You can use `where`, `orderBy`, `skip` and `take` as before. Also the `failed` function works in exactly the same way.
+
+</Hint>
 
 E.g., to read and observe the list of invoices, use the following code:
 

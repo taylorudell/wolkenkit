@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Sending commands
 
 To send a command get a reference to the wolkenkit application, get the context and the aggregate, and call the command function.
@@ -18,11 +20,13 @@ app.accounting.invoice().issue({
 });
 ```
 
-:::hint-warning
-> **File storage for large documents**
->
-> Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
-:::
+<Hint type='warning'>
+
+  **File storage for large documents**
+
+  Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
+
+</Hint>
 
 ## Addressing existing aggregates
 
@@ -87,11 +91,13 @@ app.accounting.invoice().issue({
 
 If there are multiple events that may happen, add the `await` function multiple times, or provide the event names in an array.
 
-:::hint-warning
-> **Await only runs once**
->
-> If you specify multiple `await` functions or multiple events as an array, only the first event will cause the `await` function to be run.
-:::
+<Hint type='warning'>
+
+  **Await only runs once**
+
+  If you specify multiple `await` functions or multiple events as an array, only the first event will cause the `await` function to be run.
+
+</Hint>
 
 E.g., to wait for the `issued` or the `noted` event after having sent an `issue` command, use the following code:
 
@@ -108,11 +114,13 @@ app.accounting.invoice().issue({
 
 If you send a command and await an event, you probably want to limit the time to wait. For that, add the `timeout` function and provide a duration and a callback that takes the command. If you don't provide the timeout function, wolkenkit defaults to 120 seconds.
 
-:::hint-tip
-> **Timeout always works**
->
-> You can use the `timeout` function whether you specify an `await` function or not.
-:::
+<Hint type='tip'>
+
+  **Timeout always works**
+
+  You can use the `timeout` function whether you specify an `await` function or not.
+
+</Hint>
 
 ```javascript
 app.accounting.invoice().issue({
