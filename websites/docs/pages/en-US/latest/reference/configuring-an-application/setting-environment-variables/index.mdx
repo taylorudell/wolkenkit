@@ -1,12 +1,16 @@
+import { Hint } from '../../../../../../components';
+
 # Setting environment variables
 
 From time to time, you may want to configure an application at runtime, e.g. to provide credentials depending on the environment. Therefore you can use environment variables. Open the application's `package.json` file and use the `wolkenkit/environments/default/environmentVariables` section.
 
-:::hint-warning
-> **Choose the right environment**
->
-> If you use an environment different than `default`, make sure that you use the name of the appropriate environment.
-:::
+<Hint type='warning'>
+
+  **Choose the right environment**
+
+  If you use an environment different than `default`, make sure that you use the name of the appropriate environment.
+
+</Hint>
 
 E.g., to set environment variables, use the following code:
 
@@ -70,8 +74,10 @@ process.env.WOLKENKIT_IS_ADMINISTRATOR
 // => true
 ```
 
-:::hint-warning
-> **Watch the names**
->
-> Note that the environment variables' names get transformed, as they are capitalized and prefixed with `WOLKENKIT_`. Any camel casing is replaced by the `_` character. This way `isAdministrator` becomes `WOLKENKIT_IS_ADMINISTRATOR`.
-:::
+<Hint type='warning'>
+
+  **Watch the names**
+
+  Note that the environment variables' names get transformed, as they are capitalized and prefixed with `WOLKENKIT_`. Any camel casing is replaced by the `_` character. This way `isAdministrator` becomes `WOLKENKIT_IS_ADMINISTRATOR`.
+
+</Hint>

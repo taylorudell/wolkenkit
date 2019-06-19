@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Using a custom host
 
 If you want to use a custom host for the API, you also have to provide a custom certificate that matches the related host name. To enable that, you have to configure the host name and the certificate in the application's `package.json` file, and you also have to copy the certificate and its private key to your application.
@@ -25,11 +27,13 @@ E.g., to use a custom certificate for the domain `example.com`, use the followin
 
 Next, open the application's `package.json` file, navigate to `wolkenkit/environments/default/api/host` and set the `name` and the `certificate` properties to the name of the host and to the path of the directory that contains the private key and the certificate itself. Use an absolute path and consider the application directory as root.
 
-:::hint-warning
-> **Choose the right environment**
->
-> If you use an environment different than `default`, make sure that you use the name of the appropriate environment.
-:::
+<Hint type='warning'>
+
+  **Choose the right environment**
+
+  If you use an environment different than `default`, make sure that you use the name of the appropriate environment.
+
+</Hint>
 
 E.g., to use the host `example.com` with a matching certificate in the directory `server/keys/example.com`, use the following code:
 
@@ -43,7 +47,7 @@ E.g., to use the host `example.com` with a matching certificate in the directory
           "certificate": "/server/keys/example.com"
         }
       }
-    }    
+    }
   }
 }
 ```
