@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Defining flows
 
 To define a stateless flow, create a `.js` file with the name of the flow within the `server/flows` directory:
@@ -7,11 +9,13 @@ $ cd <app>
 $ touch server/flows/<flow>.js
 ```
 
-:::hint-tip
-> **Shared code**
->
-> The `server/flows` directory must only contain flows. If you want to add a directory or a file that is shared across multiple flows, put it into the `server/shared` folder.
-:::
+<Hint type='tip'>
+
+  **Shared code**
+
+  The `server/flows` directory must only contain flows. If you want to add a directory or a file that is shared across multiple flows, put it into the `server/shared` folder.
+
+</Hint>
 
 E.g., if you want to define a flow called `onIssued`, use the following directory structure:
 
