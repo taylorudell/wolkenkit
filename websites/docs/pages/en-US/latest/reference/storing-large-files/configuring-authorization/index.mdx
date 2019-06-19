@@ -1,3 +1,5 @@
+import { Hint } from '../../../../../../components';
+
 # Configuring authorization
 
 If you want to configure authorization for a file, there are basically two different approaches: First, you can transfer the ownership of a file; second, you can configure the access permissions for the users who try to access the file.
@@ -13,11 +15,13 @@ await depotClient.transferOwnership({
 });
 ```
 
-:::hint-warning
-> **Only known users**
->
-> If you provide an id of a non-existent user, the ownership will be transferred anyway. You will not be able to return to the previous state.
-:::
+<Hint type='warning'>
+
+  **Only known users**
+
+  If you provide an id of a non-existent user, the ownership will be transferred anyway. You will not be able to return to the previous state.
+
+</Hint>
 
 ### Using the HTTP API
 

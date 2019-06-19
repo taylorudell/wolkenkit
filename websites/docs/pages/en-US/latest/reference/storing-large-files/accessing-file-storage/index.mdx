@@ -1,3 +1,5 @@
+import { Code, Hint } from '../../../../../../components';
+
 # Accessing file storage
 
 wolkenkit contains a service for storing large files. It is designed to allow you to store documents such as PDFs, images and videos so that your commands remain small. This file storage is called *depot*.
@@ -10,15 +12,17 @@ In addition to the ability to store and retrieve files, file storage also provid
 
 Basically, there are two different ways to access file storage. For easy access, there is the depot SDK, which is available as a universal module, and therefore works in the browser as well as in Node.js. Alternatively, it is possible to access file storage directly via an HTTP API.
 
-The depot SDK has been tested against Chrome <%= current.versions.chrome %>+ and Node.js <%= current.versions.node %>+. Other platforms may work as well, they have just not been tested.
+<p>
+  The depot SDK has been tested against Chrome { props.versions.chrome }+ and Node.js  { props.versions.node }+. Other platforms may work as well, they have just not been tested.
+</p>
 
 ## Installing the SDK
 
 To install the depot SDK, use npm:
 
-```shell
-$ npm install wolkenkit-depot-client@<%= current.versions.depotClientSdkJs %>
-```
+<Code language='shell'>{`
+  $ npm install wolkenkit-depot-client@${props.versions.depotClientSdkJs}
+`}</Code>
 
 ## Using the depot SDK
 
@@ -75,11 +79,13 @@ const depotClient = new DepotClient({
 });
 ```
 
-:::hint-warning
-> **Secure access**
->
-> Access via `http` is insecure, so you should always use `https`. The only exception is the internal access from a wolkenkit application, which always takes place via a secure virtual network. Here you have to use `http`, otherwise you will get certificate errors.
-:::
+<Hint type='warning'>
+
+  **Secure access**
+
+  Access via `http` is insecure, so you should always use `https`. The only exception is the internal access from a wolkenkit application, which always takes place via a secure virtual network. Here you have to use `http`, otherwise you will get certificate errors.
+
+</Hint>
 
 ## Using the HTTP API
 

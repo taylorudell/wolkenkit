@@ -5,7 +5,7 @@ import { Link as StyledLink } from 'thenativeweb-ux';
 import { usePageContext } from '..';
 
 const CustomLink = ({ as, href, children, className }) => {
-  if (!href.includes('http') && !href.includes('https')) {
+  if (!href.startsWith('http') && !href.startsWith('https')) {
     let absolutePath = href;
 
     if (!href.startsWith('/')) {
