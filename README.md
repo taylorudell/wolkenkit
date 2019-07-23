@@ -3,6 +3,7 @@
 wolkenkit is an open-source CQRS and event-sourcing framework for JavaScript and Node.js that perfectly matches DDD.
 
 ![wolkenkit](assets/logo.png "wolkenkit")
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftaylorudell%2Fwolkenkit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftaylorudell%2Fwolkenkit?ref=badge_shield)
 
 > wolkenkit is a CQRS and event-sourcing framework for JavaScript and Node.js. wolkenkit uses an event-driven model based on DDD to setup an API for your business in no time. This way, wolkenkit bridges the language gap between your domain and technology.
 
@@ -111,3 +112,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see [GNU Licenses](http://www.gnu.org/licenses/).
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftaylorudell%2Fwolkenkit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftaylorudell%2Fwolkenkit?ref=badge_large)
