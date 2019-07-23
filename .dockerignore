@@ -1,0 +1,7 @@
+.circleci
+.dependabot
+.git
+.github
+assets
+node_modules
+test
